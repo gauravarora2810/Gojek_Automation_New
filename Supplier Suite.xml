@@ -1,0 +1,60 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Supplier Suite">
+
+<test name="Supplier Listing Test">
+   <classes>         
+        <class name="com.sirion.suite.supplier.SupplierListing" ></class>
+    </classes>
+ </test>
+
+<test name="Contract Creation Test">
+    <classes>         
+        <class name="com.sirion.suite.supplier.ContractCreation" ></class>
+    </classes>    
+</test>
+
+<test name="Action Creation Test">
+    <classes>         
+        <class name="com.sirion.suite.supplier.ActionCreation" ></class>
+    </classes>    
+</test>
+
+<test name="CR Creation Test">
+    <classes>         
+        <class name="com.sirion.suite.supplier.ChangeRequestCreation" ></class>
+    </classes>    
+</test>
+
+<test name="Interpretation Creation Test">
+    <classes>         
+        <class name="com.sirion.suite.supplier.InterpretationCreation" ></class>
+    </classes>    
+</test>
+
+<test name="Issue Creation Test">
+    <classes>         
+        <class name="com.sirion.suite.supplier.IssueCreation" ></class>
+    </classes>    
+</test>
+
+<test name="Invoice Creation Test">
+    <classes>         
+        <class name="com.sirion.suite.supplier.InvoiceCreation" ></class>
+    </classes>    
+</test>
+
+<test name="Supplier Non Workflow Test">
+    <classes>         
+        <class name="com.sirion.suite.supplier.SupplierNonWorkflow" ></class>
+    </classes>    
+</test>
+
+<test name="Data Creation Test">
+    <classes>         
+        <class name="com.sirion.suite.supplier.ManyContractCreation" ></class>
+    </classes>    
+</test>
+
+
+</suite>
+

@@ -1,0 +1,154 @@
+package test.resources.com.sirion.suite.sirionAdmin;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.SkipException;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import test.resources.com.sirion.util.TestUtil;
+//import net.sf.saxon.sort.GroupStartingIterator;
+
+
+public class UpdateOBPerformanceType extends TestSuiteBase{
+	String runmodes[]=null;
+	static int count=-1;
+	//static boolean pass=false;
+	static boolean fail=true;
+	static boolean skip=false;
+	static boolean isTestPass=true;
+	// Runmode of test case in a suite
+	@BeforeTest
+	public void checkTestSkip(){
+		
+		if(!TestUtil.isTestCaseRunnable(sirion_admin_suite_xls,this.getClass().getSimpleName())){
+			APP_LOGS.debug("Skipping Test Case "+this.getClass().getSimpleName()+" as runmode set to NO");//logs
+			throw new SkipException("Skipping Test Case "+this.getClass().getSimpleName()+" as runmode set to NO");//reports
+		}
+		// load the runmodes off the tests
+		runmodes=TestUtil.getDataSetRunmodes(sirion_admin_suite_xls, this.getClass().getSimpleName());
+	}
+	
+	@Test (dataProvider="getTestData")
+	public void OBPerformanceTypeCreation( String obPerformanceType, String obPerformanceTypeUpdate, String obPerformanceTypeActive) throws InterruptedException 
+	
+	{
+		// test the runmode of current dataset
+		count++;
+		if(!runmodes[count].equalsIgnoreCase("Y")){
+			skip=true;
+			throw new SkipException("Runmode for test set data set -- " +obPerformanceType +" to no " +count);
+		}
+		
+		openBrowser();
+		driver.manage().window().maximize();
+		
+		// creating ob performance type
+		sirionAdminLogin(CONFIG.getProperty("sirionAdminURL"), CONFIG.getProperty("sirionAdminUsername"), CONFIG.getProperty("sirionAdminPassword")); 
+		APP_LOGS.debug("Executing Sirion Admin Obligation Performance Type update test -- " +obPerformanceType);
+		getObject("admin_tab_link").click();
+		getObject("sa_ob_performance_type_link").click();
+		new Select (getObject("sa_ob_performance_type_display_dropdown")).selectByIndex(3);
+	    driver.findElement(By.xpath("//*[@id='l_com_sirionlabs_model_MasterPerformanceType']/tbody/tr[@role='row']/td[contains(.,'"+ obPerformanceType +"')]/a/div")).click();
+	   // Thread.sleep(5000);
+	    getObject("sa_ob_performance_type_edit_textbox").click();
+	    getObject("sa_ob_performance_type_textbox").clear();
+	    getObject("sa_ob_performance_type_textbox").sendKeys(obPerformanceTypeUpdate);
+	    getObject("sa_ob_performance_type_submit_button").click();
+
+	   /*String ObPerformanceTypeShowPage = getObject("sa_ob_performance_type_show").getText();
+	   Assert.assertEquals(ObPerformanceTypeShowPage, obPerformanceTypeUpdate, "Obligation performance type at show page is -- " +ObPerformanceTypeShowPage+ " instead of -- " +obPerformanceTypeUpdate);
+	   String obPerformanceTypeActiveShowPage = getObject("sa_ob_performance_type_active_show").getText();
+       Assert.assertEquals(obPerformanceTypeActiveShowPage, obPerformanceTypeActive, "Obligation performance type status at show page is -- " +obPerformanceTypeActiveShowPage+ " instead of -- " +obPerformanceTypeActive);
+       */fail = false;
+       APP_LOGS.debug("Obligation Performance Type open successfully, following parameters have been validated: Obligation Performance Type updated name -- " +obPerformanceTypeUpdate +
+           ", Obligation Performance Type status -- "+obPerformanceTypeActive);
+       
+		getObject("admin_tab_link").click();
+		}
+
+	@AfterMethod
+	public void reportDataSetResult(){
+		if(skip)
+			TestUtil.reportDataSetResult(sirion_admin_suite_xls, this.getClass().getSimpleName(), count+2, "SKIP");
+		else if(fail){
+			isTestPass=false;
+			TestUtil.reportDataSetResult(sirion_admin_suite_xls, this.getClass().getSimpleName(), count+2, "FAIL");
+		}
+		else
+			TestUtil.reportDataSetResult(sirion_admin_suite_xls, this.getClass().getSimpleName(), count+2, "PASS");
+		
+		skip=false;
+		fail=true;
+		
+
+	}
+	
+	@AfterTest
+	public void reportTestResult(){
+		if(isTestPass)
+			TestUtil.reportDataSetResult(sirion_admin_suite_xls, "Test Cases", TestUtil.getRowNum(sirion_admin_suite_xls,this.getClass().getSimpleName()), "PASS");
+		else
+			TestUtil.reportDataSetResult(sirion_admin_suite_xls, "Test Cases", TestUtil.getRowNum(sirion_admin_suite_xls,this.getClass().getSimpleName()), "FAIL");
+	}
+	
+	@DataProvider
+	public Object[][] getTestData(){
+		return TestUtil.getData(sirion_admin_suite_xls, this.getClass().getSimpleName()) ;
+	}
+}
+
+//List<WebElement> allElements = driver.findElements(By.className("dataTables_scrollBody"));
+
+//System.out.println(allElements.size());
+/*      int index=0;
+boolean itemPresent=false;
+for (WebElement element: allElements) {
+    String[] arr=element.getText().split("\n");
+    for(String ele:arr){
+        index++;
+          if(index%2==0){
+              
+              continue;
+          }
+         // System.out.println(index+" : "+ele+" ;;;;;;;;;;;;;;;;;;;");
+          if (performanceType.equals("pppp")){
+              itemPresent=true;
+              break;
+                        
+          }
+          if(itemPresent){
+              break;
+          }
+          
+    }
+              
+//    System.out.println("split size is " +split.length);
+//    for (int i=0; i < split.length; i++){
+//        
+//        System.out.println(+i+ " split element is " +split[i]);
+//        
+//       
+//       // Assert.assertTrue(split[0].equalsIgnoreCase("aaaa ob per tt1"), "this is message");
+//        
+//       // Assert.assertEquals(split[i], "aaaa ob per tt1");
+//        
+//    }
+              
+     // Assert.assertEquals(driver.findElement(By.xpath("//a/div")).getText(), "aaaaa ob per tt1");
+     // System.out.println("end----------------------end");
+
+}
+if (itemPresent) {
+    System.out.println("pass");
+    APP_LOGS.debug(" Obligation performance type -- " +performanceType+ " is present in listing");
+}
+else{ 
+    System.out.println("fail");
+    APP_LOGS.debug(" Obligation performance type -- " +performanceType+ " is not present in listing");
+    fail=true;
+}   */
+

@@ -1,0 +1,43 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Action Suite">
+
+
+<test name="Action Listing Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.action.ActionListing" ></class> 
+    </classes>
+</test>
+
+<test name="Action Creation Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.action.ActionCreation" ></class>  
+    </classes>
+</test>
+
+<test name="Issue Creation Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.action.IssueCreation" ></class>  
+    </classes>
+</test>
+
+<test name="CR Creation Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.action.ChangeRequestCreation" ></class>  
+    </classes>
+</test>
+
+<test name="Interpretation Creation Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.action.InterpretationCreation" ></class>  
+    </classes>
+</test>
+
+<test name="Action Workflow Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.action.ActionWorkflow" ></class>  
+    </classes>
+</test>
+
+
+</suite>
+

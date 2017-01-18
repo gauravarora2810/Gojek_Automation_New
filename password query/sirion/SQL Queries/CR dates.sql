@@ -1,0 +1,1 @@
+﻿select * from change_request  where    effective_date and  

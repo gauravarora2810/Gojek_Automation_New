@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="Interpretation Suite">
+
+
+
+
+<test name="Interpretation Listing Test">
+    <classes>
+        <class name="com.sirion.suite.dashboard.Dashboard" ></class>  
+    </classes>
+</test>
+</suite>

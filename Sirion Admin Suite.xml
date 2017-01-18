@@ -1,0 +1,279 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Sirion Admin Suite">
+
+
+<test name="Sirion Admin Test - OB Performance Type">
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.OBPerformanceType" ></class> 
+    </classes>
+</test>
+
+<test name="Sirion Admin Test - Obligation Performance Type Update">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.UpdateOBPerformanceType" ></class>        
+    </classes>    
+</test>
+
+
+<test name="Sirion Admin Test - OB Phase">   
+    <classes>
+          <class name="test.resources.com.sirion.suite.sirionAdmin.OBPhase" ></class>   
+    </classes>
+</test>
+
+<test name="Sirion Admin Test - Obligation Phase Update">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.UpdateOBPhase" ></class>        
+    </classes>    
+</test>
+
+
+<test name="Sirion Admin Test - OB Category">     
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.OBCategory" ></class>       
+    </classes>
+</test>
+ 
+
+<test name="Sirion Admin Test - Obligation Category Update">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.UpdateOBCategory" ></class>        
+    </classes>    
+</test>
+
+
+ <test name="Sirion Admin Test - Action Type">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.ActionType" ></class>
+    </classes>
+ </test>
+ 
+ <test name="Sirion Admin Test - Action Type Update">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.UpdateActionType" ></class>        
+    </classes>    
+</test>
+ 
+ 
+ 
+ <test name="Sirion Admin Test - Issue Type">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.IssueType" ></class>
+    </classes>
+ </test>
+ 
+ 
+ 
+<test name="Sirion Admin Test - Issue Type Update">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.UpdateIssueType" ></class>        
+    </classes>    
+</test>
+
+
+ 
+ <test name="Sirion Admin Test - CR Type">     
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.CrType" ></class>    
+    </classes>
+ </test>
+ 
+ <test name="Sirion Admin Test - CR Type Update">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.UpdateCrType" ></class>        
+    </classes>    
+</test>
+ 
+  <test name="Sirion Admin Test - CR Class">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.CrClass" ></class>    
+    </classes>
+</test>
+ 
+  
+<test name="Sirion Admin Test - CR Class Update">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.UpdateCrClass" ></class>        
+    </classes>    
+</test>
+  
+  <test name="Sirion Admin Test - WOR Type">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.WorType" ></class>  
+    </classes>
+  </test>
+ 
+ <test name="Sirion Admin Test - WOR Type Update">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.UpdateWorType" ></class>        
+    </classes>    
+</test>
+  
+ 
+ 
+  <test name="Sirion Admin Test - Interpretation Type">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.IntType" ></class>      
+    </classes>
+</test>
+ 
+  <test name="Sirion Admin Test - Interpretation Type Update">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.UpdateIntType" ></class>        
+    </classes>    
+</test>
+  
+  
+  
+  <test name="Sirion Admin Test - Function">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.Function" ></class>  
+    </classes>
+</test>
+
+  <test name="Sirion Admin Test - Function Update">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.UpdateFunction" ></class>        
+    </classes>    
+</test>
+ 
+  <test name="Sirion Admin Test - Service">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.Service" ></class> 
+    </classes>
+ </test>
+ 
+  
+  <test name="Sirion Admin Test - Service Update">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.UpdateService" ></class>        
+    </classes>    
+</test>
+  
+ <test name="Sirion Admin Test - Service Category">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.SerCategory" ></class>     
+    </classes>
+</test>
+
+ <test name="Sirion Admin Test - Service Category Update">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.UpdateSerCategory" ></class>        
+    </classes>    
+</test>
+ 
+
+ <test name="Sirion Admin Test - Service Sub Category">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.SerSubCategory" ></class>     
+    </classes>
+</test>
+
+ 
+<test name="Sirion Admin Test - Service Sub Category Update">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.UpdateSerSubCategory" ></class>        
+    </classes>    
+</test>
+ 
+ 
+<test name="Sirion Admin Test - Contract Service">    
+    <classes>   
+        <class name="test.resources.com.sirion.suite.sirionAdmin.ConService" ></class>
+    </classes>
+ </test>
+ 
+
+
+<test name="Sirion Admin Test - Contract Service Update">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.UpdateConService" ></class>        
+    </classes>    
+</test>
+
+
+
+  <test name="Sirion Admin Test - SL Category">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.SlCategory" ></class>        
+    </classes>
+</test>
+
+  <test name="Sirion Admin Test - SL Category Update">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.UpdateSlCategory" ></class>        
+    </classes>    
+</test>
+  
+  
+ <test name="Sirion Admin Test - SL Sub Category">     
+    <classes> 
+        <class name="test.resources.com.sirion.suite.sirionAdmin.SlSubCategory" ></class> 
+    </classes>
+</test>
+ 
+  <test name="Sirion Admin Test - SL Item">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.SlItem" ></class>        
+    </classes>
+   </test>
+    
+  
+ <test name="Sirion Admin Test - SL Item Update">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.UpdateSlItem" ></class>        
+    </classes>    
+</test>
+  
+    
+<test name="Sirion Admin Test - Frequency">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.Frequency" ></class>        
+    </classes>    
+</test>
+
+<test name="Sirion Admin Test - Frequency Update">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.UpdateFrequency" ></class>        
+    </classes>    
+</test>
+
+
+<test name="Sirion Admin Test - Composite Rating">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.CompositeRating" ></class>        
+    </classes>    
+</test>
+
+<test name="Sirion Admin Test - Update Composite Rating">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.UpdateCompositeRating" ></class>        
+    </classes>    
+</test>
+
+<test name="Sirion Admin Test - Custom Group">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.CustomGroup" ></class>        
+    </classes>    
+</test>
+
+<test name="Sirion Admin Test - Update Custom Group">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.UpdateCustomGroup" ></class>        
+    </classes>    
+</test>
+
+<test name="Sirion Admin Test - Custom Field">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.CustomField" ></class>        
+    </classes>    
+</test>
+
+<test name="Sirion Admin Test - Logout">    
+    <classes>
+        <class name="test.resources.com.sirion.suite.sirionAdmin.Logout" ></class>        
+    </classes>    
+</test>
+
+</suite>
+

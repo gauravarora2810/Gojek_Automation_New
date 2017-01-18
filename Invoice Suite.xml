@@ -1,0 +1,46 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Invoice Suite">
+
+
+<test name="Invoice Listing Test">
+    <classes>
+        <class name="com.sirion.suite.invoice.InvoiceListing" ></class> 
+    </classes>
+</test>
+
+
+<test name="Issue Creation Test">
+    <classes>
+        <class name="com.sirion.suite.invoice.IssueCreation" ></class> 
+    </classes>
+</test>
+
+<test name="Action Creation Test">
+    <classes>
+        <class name="com.sirion.suite.invoice.ActionCreation" ></class> 
+    </classes>
+</test>
+
+
+
+<test name="CR Creation Test">
+    <classes>
+        <class name="com.sirion.suite.invoice.ChangeRequestCreation" ></class> 
+    </classes>
+</test>
+
+<test name="Interpretation Creation Test">
+    <classes>
+        <class name="com.sirion.suite.invoice.InterpretationCreation" ></class> 
+    </classes>
+</test>
+
+
+<test name="Invoice Workflow Test">
+    <classes>
+        <class name="com.sirion.suite.invoice.InvoiceWorkflow" ></class> 
+    </classes>
+</test>
+
+</suite>
+

@@ -1,0 +1,90 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Child Obligation Suite">
+
+
+    
+<!-- <test name="Issue Creation Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.childObligation.IssueCreation" ></class>  
+    </classes>
+</test>
+
+<test name="Action Creation Test">
+    
+     <groups>
+        <run>
+            <include name="linkage" />
+            <include name="ActionCreation" />
+            
+            
+        </run>
+    </groups>
+    <classes>
+        <class name="test.resources.com.sirion.suite.childObligation.ActionCreation" >
+        <methods >
+            <include name="ActionCreation"></include>
+            <include name="checkTestSkip"></include>
+            
+        </methods>
+        
+        </class>  
+    </classes>
+     
+</test> -->
+
+
+<test name="Action Creation Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.childObligation.ActionCreation" ></class>  
+    </classes>
+</test>
+
+<test name="Issue Creation Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.childObligation.IssueCreation" ></class>  
+    </classes>
+</test>
+
+
+<test name="Interpretation Creation Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.childObligation.InterpretationCreation" ></class>  
+    </classes>
+</test>
+
+<test name="CR Creation Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.childObligation.ChangeRequestCreation" ></class>  
+    </classes>
+</test>
+
+
+ <test name="Child Obligation Workflow Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.childObligation.ChildObligationWorkflow" ></class>  
+    </classes>
+</test>
+
+
+
+<test name="Child Obligation Communication Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.childObligation.ChildObligationCommunication" ></class>  
+    </classes>
+</test>
+    
+        <test name="Child Obligation Audit Log Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.childObligation.ChildObligationAuditLog" ></class>  
+    </classes>
+</test>
+
+        <test name="Child Obligation Listing Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.childObligation.ChildObligationListing" ></class>  
+    </classes>
+</test>
+
+        
+</suite>
+

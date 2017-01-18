@@ -1,0 +1,65 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SL Suite">
+    
+
+<test name="SL Listing Test">
+    <classes>
+        <class name="com.sirion.suite.sl.SLListing" ></class>  
+    </classes>
+</test>
+
+
+
+
+<test name="Action Creation Test">
+    <classes>
+        <class name="com.sirion.suite.sl.ActionCreation" ></class>  
+    </classes>
+</test>
+
+<test name="Issue Creation Test">
+    <classes>
+        <class name="com.sirion.suite.sl.IssueCreation" ></class>  
+    </classes>
+</test>
+
+<test name="CR Creation Test">
+    <classes>
+        <class name="com.sirion.suite.sl.ChangeRequestCreation" ></class>  
+    </classes>
+</test>
+
+<test name="Interpretation Creation Test">
+    <classes>
+        <class name="com.sirion.suite.sl.InterpretationCreation" ></class>  
+    </classes>
+</test>
+
+<test name="SL Workflow Test">
+    <classes>
+        <class name="com.sirion.suite.sl.SLWorkflow" ></class>  
+    </classes>
+</test>
+
+
+<test name="SL Updation Test">
+    <classes>
+        <class name="com.sirion.suite.sl.ServiceLevelUpdation" ></class>  
+    </classes>
+</test>
+
+
+<test name="SL Communication Test">
+    <classes>
+        <class name="com.sirion.suite.sl.ServiceLevelCommunication" ></class>  
+    </classes>
+</test>
+
+<test name="SL Audit Log Test">
+    <classes>
+        <class name="com.sirion.suite.sl.ServiceLevelAuditLog" ></class>  
+    </classes>
+</test>
+
+</suite>
+

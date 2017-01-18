@@ -1,0 +1,50 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="CR Suite">
+
+
+<test name="CR Listing Test">
+    <classes>
+        <class name="com.sirion.suite.cr.CRListing" ></class> 
+    </classes>
+</test>
+
+<test name="Open CR from Listing Test">
+    <classes>
+        <class name="com.sirion.suite.cr.OpenCRFromListing" ></class> 
+    </classes>
+</test>
+
+<test name="CR Creation Test">
+    <classes>
+        <class name="com.sirion.suite.cr.ChangeRequestCreation" ></class> 
+    </classes>
+</test>
+
+<test name="Action Creation Test">
+    <classes>
+        <class name="com.sirion.suite.cr.ActionCreation" ></class> 
+    </classes>
+</test>
+
+<test name="Issue Creation Test">
+    <classes>
+        <class name="com.sirion.suite.cr.IssueCreation" ></class> 
+    </classes>
+</test>
+
+<test name="Interpretation Creation Test">
+    <classes>
+        <class name="com.sirion.suite.cr.InterpretationCreation" ></class> 
+    </classes>
+</test>
+
+
+
+<test name="CR Workflow Test">
+    <classes>
+        <class name="com.sirion.suite.cr.ChangeRequestWorkflow" ></class> 
+    </classes>
+</test>
+
+</suite>
+
