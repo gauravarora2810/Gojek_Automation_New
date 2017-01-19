@@ -35,7 +35,9 @@ public class QuickLinkContentControl extends TestSuiteBase{
                 }
                 
                 @Test (dataProvider="getTestData")
-                public void QuicklinkcontentControl() throws InterruptedException 
+                public void ContentControlSetup(String entityName, 
+                		String status, String supplierSuffix, String parameter1, String parameter2,
+                		String parameter3) throws InterruptedException 
                 
                 {
                                 // test the runmode of current dataset
@@ -51,71 +53,36 @@ public class QuickLinkContentControl extends TestSuiteBase{
                         		
                         		clientAdminLogin(CONFIG.getProperty("clientAdminURL"), CONFIG.getProperty("clientAdminUsername"), CONFIG.getProperty("clientAdminPassword"));
                         		
-                        		getObject("admin_tab_link").click();
-                        		Thread.sleep(5000);
-                                driver.findElement(By.xpath("//a[contains(.,'Quick Link Content Controls')]")).click();    
+                        	    getObject("admin_tab_link").click();
+                        	    getObject("ca_quick_link_content_control_link").click(); 
+                        	    
+                        	    getObject("ca_quick_link_content_control_textbox").sendKeys(entityName);
+                        	    getObject("ca_quick_link_content_control_update_link").click();
+                        	    
+                        	    // Select multiple quick link status
+                        	    String[] statusSplit=  status.split(";");
+                        	    for (int i=0; i < statusSplit.length ;i++){
+                        	      new Select(getObject("ca_report_content_control_status_multi")).selectByVisibleText(statusSplit[i]);
+                        	      Thread.sleep(5000);
+                        	      System.out.println("select status "+statusSplit[i]);
+                        	  }
+                        	    
+                        	    if (supplierSuffix.equalsIgnoreCase("Yes")) {
+                        			getObject("ca_quick_link_content_control_supplier_suffix_checkbox").click();
+                        	    }
                                 
-                                for (int i=1;i<=10;i++){
-                                                try
-                                                {
-                                                if (driver.findElement(By.xpath("//*[@id='l_com_sirionlabs_model_MasterGroup_paginate']/span/a["+i+"]")).isDisplayed()){
-                                                driver.findElement(By.xpath("//*[@id='l_com_sirionlabs_model_MasterGroup_paginate']/span/a["+i+"]")).click();
-                                                
-                                                WebElement totalitems = driver.findElement(By.cssSelector("#l_com_sirionlabs_model_MasterGroup>tbody"));
-                                                List <WebElement> totaloptions = totalitems.findElements(By.tagName("tr"));
-                                                
-                                                for (int j=1; j<totaloptions.size();j++){
-                                                                
-                                                                driver.findElement(By.xpath(".//*[@id='l_com_sirionlabs_model_MasterGroup']/tbody/tr["+j+"]/td[2]/div/a")).click();
-                                                                Select contentcontrol = new Select (driver.findElement(By.xpath("//*[@id='_params[0].statusList_id']")));
-                                                              // WebElement contentcontrol2_element=driver.findElement(By.xpath("//*[@id='_params[1].statusList_id']"));
-                                                                //Select contentcontrol2 = new Select (driver.findElement(By.xpath("//*[@id='_params[1].statusList_id']")));
-                                                                List <WebElement> elementcount = contentcontrol.getOptions();
-                                                                int contentcontroloptions = elementcount.size();
-                                                                
-                                                                for(int k = 0; k<contentcontroloptions; k++){
-                                                                                
-                                                                             
-                                                                	contentcontrol.selectByIndex(k);
-                                                                }
-                                                                try
-                                                                {
-                                                                	WebElement contentcontrol2_element=driver.findElement(By.xpath("//*[@id='_params[1].statusList_id']"));
-                                                                    Select contentcontrol2 = new Select (driver.findElement(By.xpath("//*[@id='_params[1].statusList_id']")));
-                                                                    List <WebElement> elementcount2 = contentcontrol2.getOptions();
-                                                                    int contentcontroloptions2 = elementcount2.size();
-                                                                	
-                                                                if(contentcontrol2_element.isDisplayed())
-                                                                		{
-                                                                		for(int l = 0; l<contentcontroloptions2; l++)
-                                                                		{
-                                                                    	contentcontrol2.selectByIndex(l);
-                                                                		}
-                                                                		}
-                                                                }
-                                                                catch(Exception e)
-                                                                {
-                                                                	
-                                                                }
-                                                                driver.findElement(By.xpath("//input[@value='Save']")).click();
-                                                                driver.findElement(By.xpath("//button[contains(.,'OK')]")).click();
-                                                                driver.findElement(By.xpath("//*[@id='h-adminstration']/a")).click();
-                                                                driver.findElement(By.xpath("//a[contains(.,'Quick Link Content Controls')]")).click();
-                                                                driver.findElement(By.xpath("//*[@id='l_com_sirionlabs_model_MasterGroup_paginate']/span/a["+i+"]")).click();
-                                                }
-                                }
-                                                else{
-                                                    
-                                                    driver.findElement(By.xpath("//*[@id='h-adminstration']/a")).click();
-                                    }
-                                                }
-                                                catch(Exception e)
-                                                {
-                                                	
-                                                } 	
+                        	    getObject("ca_quick_link_content_control_save_button").click();
+                        	    
+                        	    if(driver.getPageSource().contains("List Parameters updated successfully")){
+                        	      APP_LOGS.debug("List content control set successfully for list -- "+entityName);
+                        	      getObject("ca_quick_link_content_control_popup_ok_button").click();
+                        	      fail=false;
+                        	  }
+                        	    getObject("admin_tab_link").click();
+
                                                 	
                                                 	
-                                }
+                               
 }
                 @AfterMethod
                 public void reportDataSetResult(){
