@@ -190,13 +190,7 @@ public class Dashboard extends TestSuiteBase
 	}
 	
 	  
-	  @Test(groups = "ActionCreation", dataProvider = "getTestData")
-	  public void checkForWait() throws Throwable
-	  {
-		 System.out.println("Wait for 1 minute");
-		  Thread.sleep(60000);
-	  }
-	  
+	
 	  
 	    @AfterMethod
 	    public void reportDataSetResult(){
