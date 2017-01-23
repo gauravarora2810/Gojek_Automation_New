@@ -79,7 +79,7 @@
     <sourceDirectory>${basedir}/src</sourceDirectory>
     <!-- <scriptSourceDirectory>${basedir}/src/main/scripts</scriptSourceDirectory> -->
    <!--  <testSourceDirectory>${basedir}/src</testSourceDirectory> -->
-    <outputDirectory>${basedir}/target/test-classes</outputDirectory>
+    <outputDirectory>${basedir}/target</outputDirectory>
     <!-- <testOutputDirectory>${basedir}/target/test-classes</testOutputDirectory> -->
     <plugins>
     
