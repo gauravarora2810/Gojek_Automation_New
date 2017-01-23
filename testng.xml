@@ -4,11 +4,12 @@
   
     
     <suite-files>
-        <suite-file path="Sirion Admin Suite.xml" /> 
-        
+        <!-- <suite-file path="Sirion Admin Suite.xml" />  -->
         <suite-file path="Client Setup Admin Suite.xml" />
         <suite-file path="Sirion User Admin Suite.xml" />
         <suite-file path="Client Admin Suite.xml" />
+        <suite-file path="Dashboard Suite.xml" />
+       
     	
     	<!-- <suite-file path="Relation Suite.xml" />
     	<suite-file path="Supplier Suite.xml" />

@@ -7,7 +7,7 @@
 
 <test name="Interpretation Listing Test">
     <classes>
-        <class name="com.sirion.suite.dashboard.Dashboard" ></class>  
+        <class name="test.resources.com.sirion.suite.dashboard.Dashboard" ></class>  
     </classes>
 </test>
 </suite>

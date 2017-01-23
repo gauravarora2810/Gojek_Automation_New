@@ -74,7 +74,7 @@
  
  <test name="Sirion Admin Test - CR Type">     
     <classes>
-        <class name="test.resources.com.sirion.suite.sirionAdmin.CrType" ></class>    
+        <class name="test.resources.com.sirion.suite.sirionAdmin.CRType" ></class>    
     </classes>
  </test>
  
@@ -86,7 +86,7 @@
  
   <test name="Sirion Admin Test - CR Class">    
     <classes>
-        <class name="test.resources.com.sirion.suite.sirionAdmin.CrClass" ></class>    
+        <class name="test.resources.com.sirion.suite.sirionAdmin.CRClass" ></class>    
     </classes>
 </test>
  
@@ -99,7 +99,7 @@
   
   <test name="Sirion Admin Test - WOR Type">    
     <classes>
-        <class name="test.resources.com.sirion.suite.sirionAdmin.WorType" ></class>  
+        <class name="test.resources.com.sirion.suite.sirionAdmin.WORType" ></class>  
     </classes>
   </test>
  
@@ -113,7 +113,7 @@
  
   <test name="Sirion Admin Test - Interpretation Type">    
     <classes>
-        <class name="test.resources.com.sirion.suite.sirionAdmin.IntType" ></class>      
+        <class name="test.resources.com.sirion.suite.sirionAdmin.InterpretationType" ></class>      
     </classes>
 </test>
  

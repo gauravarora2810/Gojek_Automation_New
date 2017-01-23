@@ -12,10 +12,10 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import test.resources.com.sirion.util.TestUtil;
-import testlink.api.java.client.TestLinkAPIException;
+//import test.resources.com.sirion.util.TestUtil;
+//import testlink.api.java.client.TestLinkAPIException;
 
-public class ServiceLevelCreation extends TestSuiteBase {
+public class ServiceLevelCreation /*extends TestSuiteBase*/ {/*
 	String result = null;
 	String runmodes[] = null;
 	static int count = -1;
@@ -47,7 +47,7 @@ public class ServiceLevelCreation extends TestSuiteBase {
 			String slFinancialImpactApplicable, String slFinancialImpactValue, String slFinancialImpactClause, String slImpactDays, String slImpactType,
 			String slCreditImpactApplicable, String slCreditImpactValue, String slCreditImpactClause, String slComments, String slActualDate, String slRequestedBy,
 			String slChangeRequest, String slUploadFile, String slSupplier, String slSource, String slSourceName, String slGlobalCreation)
-			throws InterruptedException, TestLinkAPIException {
+			throws InterruptedException {
 
 		count++;
 		if (!runmodes[count].equalsIgnoreCase("Y")) {
@@ -724,4 +724,4 @@ public class ServiceLevelCreation extends TestSuiteBase {
 	public Object[][] getTestData() {
 		return TestUtil.getData(sl_suite_xls, this.getClass().getSimpleName());
 		}
-	}
+	*/}
