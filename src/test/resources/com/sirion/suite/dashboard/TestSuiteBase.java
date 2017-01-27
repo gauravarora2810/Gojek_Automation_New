@@ -1,6 +1,7 @@
 package test.resources.com.sirion.suite.dashboard;
 
 import org.testng.SkipException;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
 import test.resources.com.sirion.base.TestBase;
@@ -17,5 +18,11 @@ public class TestSuiteBase extends TestBase{
 			throw new SkipException("Runmode of Interpretation Suite set to no. So Skipping all tests in Suite");
 		}
 		
+	}
+	
+	@AfterSuite
+	public void checkSuiteClosure()
+	{
+		closeBrowser();
 	}
 }

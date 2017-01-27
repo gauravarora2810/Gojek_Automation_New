@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -27,13 +28,18 @@ import test.resources.com.sirion.util.TestUtil;
 public class Dashboard extends TestSuiteBase
 {
 	String chart_id;
-	String chart_id_outside;
+	String dashboardCategoryTypeId;
+	//String chart_id_outside;
+	WebElement ele=null;
 	 String runmodes[] = null;
 	  static int count = -1;
 	  // static boolean pass=false;
 	  static boolean fail = false;
 	  static boolean skip = false;
 	  static boolean isTestPass = true;
+	  Iterator<WebElement> iterator_obj=null;
+	  Actions mouse_hover_on_download_icon;
+	  Actions mouse_hover_on_select_classic_chart;
 
 	  // Runmode of test case in a suite
 	  @BeforeTest
@@ -46,60 +52,84 @@ public class Dashboard extends TestSuiteBase
 	    // load the runmodes off the tests
 	    runmodes = TestUtil.getDataSetRunmodes(dashboard_suite_xls, this.getClass().getSimpleName());
 	  }
-	  @Test(groups = "ActionCreation", dataProvider = "getTestData")
-	public void dashboardTesting(String dashboardID) throws InterruptedException, Exception
+	  @Test(dataProvider = "getTestData")
+	public void dashboardTesting(String dashboardCategoryType, String dashboardID, String dashboardName, String dashboardDownloadGraph, String dashboardDownloadExcel) throws InterruptedException, Exception
 	{
 		
 		  count++;
-	        if(!runmodes[count].equalsIgnoreCase("Y")){
-	            skip=true;
-	            throw new SkipException("Runmode for test set data set to no "+count);
-	        }
-	        
+		    if (!runmodes[count].equalsIgnoreCase("Y")) {
+		      skip = true;
+		      throw new SkipException("Runmode for test set data set to no " + count);
+		    }
 	        APP_LOGS.debug("Executing Test Case Issue Audit Log Creation");
-	        System.out.println(dashboardID);
+	        System.out.println("Dashboard Selected "+dashboardID);
 	        openBrowser();
+	      
 			endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			Thread.sleep(10000);
+			mouse_hover_on_select_classic_chart=new Actions(driver);
 			getObject("analytics_link").click();
-			Thread.sleep(60000);
-			System.out.println("Gaurav");
+			Thread.sleep(30000);
+			dashboardCategoryTypeId=Integer.valueOf(
+					(Double.valueOf(Double.parseDouble(dashboardCategoryType))).intValue())
+					.toString();
+			System.out.println("Gaurav Arora");
+			System.out.println("dashboard category type is "+dashboardCategoryTypeId);
+			if(dashboardCategoryTypeId.equalsIgnoreCase("2"))
+			{
 			driver.findElement(By.xpath(".//*[@id='priorityListModernView']/a/span")).click();
-			System.out.println("Arora");
-			
+			System.out.println("Kumar");
+			}
+			else if(dashboardCategoryTypeId.equalsIgnoreCase("1"))
+			{
+				System.out.println("In classic chart first line");
+				driver.findElement(By.xpath(".//*[@id='srsDashboardCharts']/ul/li[1]/a/span")).click();
+				Thread.sleep(30000);
+				mouse_hover_on_select_classic_chart.moveToElement(driver.findElement(By.xpath(".//*[@id='mainOL']/div[2]/div[1]/div/div[1]/ul/li[5]/a/span"))).clickAndHold().build().perform();
+				System.out.println("In classic chart second line");
+				Thread.sleep(5000);
+				driver.findElement(By.xpath(".//*[@id='PriorityLink']")).click();
+				System.out.println("classic charts");
+		
+			}
 			
 			List<WebElement> allOptions=driver.findElements(By.tagName("input"));
-			System.out.println(allOptions);
+			//System.out.println(allOptions);
 
-			    Iterator<WebElement> iterator_obj = allOptions.iterator();
+			    iterator_obj = allOptions.iterator();
 			    while(iterator_obj.hasNext()) {
-			        WebElement ele = iterator_obj.next();
+			         ele = iterator_obj.next();
 			        if (ele.isSelected()) {
 			            ele.click();
 			        // do something in else perhaps
 			        }
 			    }
 			
-			    
-			Thread.sleep(5000);
-			String[] select_chart_array=dashboardID.split(",");
-			System.out.println(select_chart_array.toString());
-			for (int i=0 ; i <= select_chart_array.length-1 ; i++)
-			{
+			chart_id=Integer.valueOf(
+					(Double.valueOf(Double.parseDouble(dashboardID))).intValue())
+					.toString();
+			System.out.println(chart_id);
 			
-				chart_id=select_chart_array[i];
-				Thread.sleep(2000);
-				driver.findElement(By.xpath(".//input[@id='"+chart_id+"']")).click();
-	        }
-
+			
+			System.out.println("Gaurav Arora hi new");   
+			//System.out.println(chart_id_string);
+			// chart_id=Integer.valueOf(dashboardID);
+			//System.out.println("chart id is "+chart_id);
+			
+			 
+			
+			 Thread.sleep(2000);
+			 driver.findElement(By.xpath(".//input[@id='"+chart_id+"']")).click();
+	        
+Thread.sleep(5000);
 			driver.findElement(By.xpath(".//*[@id='savePreferences']")).click();
 			System.out.println("Hello Gaurav");
 			Thread.sleep(30000);
-			for (int i=0 ; i <= select_chart_array.length-1 ; i++)
-			{
-				chart_id_outside=select_chart_array[i];
-				System.out.println(chart_id_outside);
-				driver.findElement(By.xpath(".//*[@id='"+chart_id_outside+"']")).click();
+			
+				
+				
+				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath(".//*[@id='"+chart_id+"']")));
+				driver.findElement(By.xpath(".//*[@id='"+chart_id+"']")).click();
 				Thread.sleep(10000);
 				if(driver.findElement(By.xpath(".//*[@id='chartContainerDiv']/div[1]/div/ul/li[1]/a/span")).isDisplayed())
 				{
@@ -113,7 +143,7 @@ public class Dashboard extends TestSuiteBase
 				}*/
 				Thread.sleep(30000);
 				
-				if(driver.findElement(By.xpath(".//*[@id='"+"db_"+chart_id_outside+"']")).isDisplayed())
+			/*	if(driver.findElement(By.xpath(".//*[@id='"+"db_"+chart_id_outside+"']")).isDisplayed())
 				{
 					Actions mouse_hover_on_download_icon=new Actions(driver);
 					mouse_hover_on_download_icon.moveToElement(driver.findElement(By.xpath(".//*[@id='"+"db_"+chart_id_outside+"']"))).build().perform();
@@ -121,24 +151,39 @@ public class Dashboard extends TestSuiteBase
 					driver.findElement(By.xpath(".//*[@id='"+"exportChartImg"+chart_id_outside+"']")).click();
 					driver.findElement(By.xpath(".//button/span[contains(.,'OK')]")).click();
 					//driver.findElement(By.xpath(".//*[@id='exportChartImg+"+chart_id_outside+"']")).click();
-				}
-				
-				if(driver.findElement(By.xpath(".//*[@id='"+"db_"+chart_id_outside+"']")).isDisplayed())
+				}*/
+				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath(".//*[@id='"+"db_"+chart_id+"']")));
+				if(driver.findElement(By.xpath(".//*[@id='"+"db_"+chart_id+"']")).isDisplayed())
 				{
 					System.out.println("In  excel download function first line");
-					Actions mouse_hover_on_download_icon=new Actions(driver);
-					mouse_hover_on_download_icon.moveToElement(driver.findElement(By.xpath(".//*[@id='"+"db_"+chart_id_outside+"']"))).click().build().perform();
+					
+					mouse_hover_on_download_icon.moveToElement(driver.findElement(By.xpath(".//*[@id='"+"db_"+chart_id+"']"))).click().build().perform();
 					//driver.findElement(By.xpath(".//*[@id='"+"db_"+chart_id_outside+"']")).click();
-					driver.findElement(By.xpath(".//*[@id='"+"exportChart"+chart_id_outside+"']")).click();
+					if(!dashboardDownloadExcel.equalsIgnoreCase(""))
+					{
+					if(driver.findElement(By.xpath(".//*[@id='"+"exportChart"+chart_id+"']")).isDisplayed())
+					{
+						driver.findElement(By.xpath(".//*[@id='"+"exportChart"+chart_id+"']")).click();
 					driver.findElement(By.xpath(".//button/span[contains(.,'OK')]")).click();
+					}
 					Thread.sleep(10000);
-					 System.out.println("In @ Test after excel download");
-					if(driver.findElement(By.xpath(".//*[@id='"+"db_"+chart_id_outside+"']")).isDisplayed())
+					}
+					System.out.println("In @ Test after excel download");
+					((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath(".//*[@id='"+"db_"+chart_id+"']")));
+					
+					if(driver.findElement(By.xpath(".//*[@id='"+"db_"+chart_id+"']")).isDisplayed())
 					{
 						System.out.println("In  chart download function first line");
-					mouse_hover_on_download_icon.moveToElement(driver.findElement(By.xpath(".//*[@id='"+"db_"+chart_id_outside+"']"))).click().build().perform();
-					driver.findElement(By.xpath(".//*[@id='"+"exportChartImg"+chart_id_outside+"']")).click();
+					mouse_hover_on_download_icon.moveToElement(driver.findElement(By.xpath(".//*[@id='"+"db_"+chart_id+"']"))).click().build().perform();
+					if(!dashboardDownloadGraph.equalsIgnoreCase(""))
+					{
+					if(driver.findElement(By.xpath(".//*[@id='"+"exportChartImg"+chart_id+"']")).isDisplayed())
+					{
+						driver.findElement(By.xpath(".//*[@id='"+"exportChartImg"+chart_id+"']")).click();
 					driver.findElement(By.xpath(".//button/span[contains(.,'OK')]")).click();
+					}
+					}
+					
 					System.out.println("In  chart download function last line");
 					}
 					System.out.println("In @ Test after chart download");
@@ -151,12 +196,13 @@ public class Dashboard extends TestSuiteBase
 			        robot.keyPress(KeyEvent.VK_DOWN); // press keyboard arrow key to select Save radio button	
 			        Thread.sleep(2000);	
 			        robot.keyPress(KeyEvent.VK_ENTER);	*/
-			        Thread.sleep(5000);
+			       /* Thread.sleep(5000);
 			        Alert myAlert = driver.switchTo().alert();
-			        myAlert.accept();
-			        System.out.println("In @ Test last line");
+			        myAlert.accept();*/
+			        System.out.println("In for loop last line");
 				}
-			}	
+				Thread.sleep(10000);
+			
 				
 				/*Thread.sleep(10000);
 				driver.findElement(By.xpath(".//*[@id='mainOL']/div[2]/div[1]/div/div[1]/ul/li[4]/a/span")).click();
@@ -186,7 +232,7 @@ public class Dashboard extends TestSuiteBase
 				//driver.findElement(By.className("ui-button-icon-primary ui-icon ui-icon-closethick")).click();
 			
 			
-			
+			System.out.println("Last line of @Test Annotation");
 	}
 	
 	  
