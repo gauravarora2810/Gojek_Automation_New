@@ -183,8 +183,9 @@ public class TestBase {
 			isBrowserOpened = true;
 			driver.manage().window().maximize();
 			}
-		wait_in_report = new WebDriverWait(driver, 60);
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		//wait_in_report = new WebDriverWait(driver, 120);
+		System.out.println("Implicitly again wait applied for 1 seconds for check test waiting");
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		}
 
 	// Closing a Browser

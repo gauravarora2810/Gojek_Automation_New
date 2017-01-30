@@ -4,20 +4,20 @@
   
     
     <suite-files>
-        <!-- <suite-file path="Sirion Admin Suite.xml" />  -->
-        <suite-file path="Client Setup Admin Suite.xml" />
+        <!-- <suite-file path="Sirion Admin Suite.xml" />  
+         <suite-file path="Client Setup Admin Suite.xml" />
         <suite-file path="Sirion User Admin Suite.xml" />
-        <suite-file path="Client Admin Suite.xml" />
-        <suite-file path="Dashboard Suite.xml" />
+        <suite-file path="Client Admin Suite.xml" /> 
+        <suite-file path="Dashboard Suite.xml" />-->
        
     	
     	<!-- <suite-file path="Relation Suite.xml" />
     	<suite-file path="Supplier Suite.xml" />
     	<suite-file path="Contract Suite.xml" />
     	<suite-file path="Obligation Suite.xml" />
-    	<suite-file path="SL Suite.xml" />
+    	<suite-file path="SL Suite.xml" />-->
     	<suite-file path="Action Suite.xml" />
-    	<suite-file path="Issue Suite.xml" />
+    	<!--<suite-file path="Issue Suite.xml" />
     	<suite-file path="Interpretation Suite.xml" />
     	<suite-file path="CR Suite.xml" />
     	<suite-file path="WOR Suite.xml" />

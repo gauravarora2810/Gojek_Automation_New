@@ -2,12 +2,12 @@
 <suite name="Action Suite">
 
 
-<test name="Action Listing Test">
+<!-- <test name="Action Listing Test">
     <classes>
         <class name="test.resources.com.sirion.suite.action.ActionListing" ></class> 
     </classes>
 </test>
-
+ -->
 <test name="Action Creation Test">
     <classes>
         <class name="test.resources.com.sirion.suite.action.ActionCreation" ></class>  
@@ -35,6 +35,12 @@
 <test name="Action Workflow Test">
     <classes>
         <class name="test.resources.com.sirion.suite.action.ActionWorkflow" ></class>  
+    </classes>
+</test>
+
+<test name="Action Update Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.action.ActionUpdate" ></class>  
     </classes>
 </test>
 
