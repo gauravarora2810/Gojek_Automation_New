@@ -70,6 +70,7 @@ public class TestBase {
 	public static Xls_Reader clause_suite_xls = null;
 	public static Xls_Reader contract_template_suite_xls = null;
 	public static Xls_Reader contract_draft_request_suite_xls = null;
+	public static Xls_Reader purchaseorder_suite_xls=null;
 
 	public static Xls_Reader supplier_listing_suite_xls = null;
 	public static Xls_Reader supplier_report_suite_xls = null;
@@ -146,7 +147,7 @@ public class TestBase {
 			clause_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Clause Suite.xlsx");
 			contract_template_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Contract Template Suite.xlsx");
 			contract_draft_request_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Contract Draft Request Suite.xlsx");
-
+			purchaseorder_suite_xls= new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//PurchaseOrder Suite.xlsx");
 			supplier_report_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Supplier Report Suite.xlsx");
 			contract_report_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Contract Report Suite.xlsx");
 			sl_report_suite_xls = new Xls_Reader(System.getProperty("user.dir")	+ "//src//test//resources//com//sirion//xls//ServiceLevel Report Suite.xlsx");
@@ -165,6 +166,7 @@ public class TestBase {
 			rc1_11_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//RC1_11 Suite.xlsx");
 			APP_LOGS.debug("Loaded XLS Files Successfully");
 			isInitialized = true;
+			System.out.println("at last oof function intiallized");
 			}
 		}
 
@@ -183,7 +185,7 @@ public class TestBase {
 			isBrowserOpened = true;
 			driver.manage().window().maximize();
 			}
-		//wait_in_report = new WebDriverWait(driver, 120);
+		wait_in_report = new WebDriverWait(driver, 60);
 		System.out.println("Implicitly again wait applied for 1 seconds for check test waiting");
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		}

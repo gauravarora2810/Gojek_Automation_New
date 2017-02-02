@@ -1,4 +1,4 @@
-package test.resources.com.sirion.suite.cr;
+package test.resources.com.sirion.suite.changeRequest;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

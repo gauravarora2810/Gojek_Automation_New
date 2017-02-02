@@ -1,4 +1,4 @@
-package test.resources.com.sirion.suite.cr;
+package test.resources.com.sirion.suite.changeRequest;
 
 import java.util.Date;
 
@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 
 import test.resources.com.sirion.util.TestUtil;
 
-public class ChangeRequestCreationExisting extends TestSuiteBase
+public class ChangeRequestCreationExistingOld extends TestSuiteBase
 
 {
 	String runmodes[]=null;

@@ -1,4 +1,4 @@
-package test.resources.com.sirion.suite.cr;
+package test.resources.com.sirion.suite.changeRequest;
 
 
 import org.testng.annotations.Test;
@@ -14,7 +14,7 @@ import org.testng.annotations.DataProvider;
 
 import test.resources.com.sirion.util.*;
 
-public class ChangeRequestCreation extends TestSuiteBase
+public class ChangeRequestCreationExisting extends TestSuiteBase
 
 {
 	String runmodes[] = null;

@@ -1,5 +1,7 @@
-package test.resources.com.sirion.suite.cr;
+package test.resources.com.sirion.suite.changeRequest;
 
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import java.sql.SQLException;
 
 import org.openqa.selenium.By;
@@ -60,19 +62,20 @@ public class ChangeRequestWorkflowExisting extends TestSuiteBase {
 		
 		getObject("analytics_link").click();
  getObject("cr_quick_link").click(); // IP Quick Link Clicking
+
+ 
  Thread.sleep(20000);
- WebDriverWait wait=new WebDriverWait(driver, 50);
- //wait.until(ExpectedConditions.elementToBeClickable(getObject("cr_id_link")));
+ 
  getObject("cr_id_link").click(); 
 		
 		
 		Thread.sleep(10000);
         
-		//Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Clone')]")));
+		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Clone')]")));
 		driver.findElement(By.xpath("//button[contains(.,'Clone')]")).click();
 		Thread.sleep(20000);
         
-		//Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Save')]")));
+		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Save')]")));
 		driver.findElement(By.xpath("//button[contains(.,'Save')][@clientvalidation='true']")).click();
 		Thread.sleep(10000);
         
@@ -83,7 +86,7 @@ public class ChangeRequestWorkflowExisting extends TestSuiteBase {
 	    	String cr_id = getObject("cr_popup_id").getText();
 	    	APP_LOGS.debug("Action Cloned successfully with Issue id "+cr_id);
 		
-	    	Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'OK')]")));
+	    	AssertJUnit.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'OK')]")));
 	    	driver.findElement(By.xpath("//button[contains(.,'OK')]")).click();
 	    	Thread.sleep(5000);
 		
@@ -100,33 +103,31 @@ public class ChangeRequestWorkflowExisting extends TestSuiteBase {
 		}
 		Thread.sleep(10000);
 		
-		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Submit')]")));
+		AssertJUnit.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Submit')]")));
 		driver.findElement(By.xpath("//button[contains(.,'Submit')]")).click();
 		Thread.sleep(5000);
-         Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
+         AssertJUnit.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
          driver.findElement(By.xpath("//button[contains(.,'Approve')]")).click();
          Thread.sleep(5000);
-         Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
+         AssertJUnit.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
          driver.findElement(By.xpath("//button[contains(.,'Approve')]")).click();
          Thread.sleep(5000);
-         Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
+         AssertJUnit.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
          driver.findElement(By.xpath("//button[contains(.,'Approve')]")).click();
          Thread.sleep(5000);
-         Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
+         AssertJUnit.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
          driver.findElement(By.xpath("//button[contains(.,'Approve')]")).click();
          Thread.sleep(5000);
-         Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
+         AssertJUnit.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
          driver.findElement(By.xpath("//button[contains(.,'Approve')]")).click();
          Thread.sleep(5000);
-         Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
+         AssertJUnit.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
          driver.findElement(By.xpath("//button[contains(.,'Approve')]")).click();
          Thread.sleep(5000);
-         /*String ob_status = getObject("ac_status_id").getText();
          
-         Assert.assertEquals(ob_status, "Approved");  */   
          
-              
-		fail = false; //this executes if assertion passes
+       //this executes if assertion passes 
+		fail = false; 
 			 }
           
   @AfterMethod

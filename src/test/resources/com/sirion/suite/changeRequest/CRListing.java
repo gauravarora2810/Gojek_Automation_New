@@ -1,5 +1,6 @@
-package test.resources.com.sirion.suite.cr;
+package test.resources.com.sirion.suite.changeRequest;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 import org.testng.Assert;
@@ -12,7 +13,7 @@ import org.testng.annotations.Test;
 
 import test.resources.com.sirion.util.TestUtil;
 
-public class OpenCRFromListing extends TestSuiteBase {
+public class CRListing extends TestSuiteBase {
   String runmodes[] = null;
   static int count = -1;
   // static boolean pass=false;
@@ -20,7 +21,9 @@ public class OpenCRFromListing extends TestSuiteBase {
   static boolean skip = false;
   static boolean isTestPass = true;
 
-  
+  String numberOfEntries = null;
+  String[] numberOfEntriesSplit = null;
+  String numberOfCr;
   
   // Runmode of test case in a suite
   @BeforeTest
@@ -35,7 +38,7 @@ public class OpenCRFromListing extends TestSuiteBase {
   }
 
   @Test 
-	public void OpenCRFromListing() throws InterruptedException, ClassNotFoundException, SQLException
+	public void CRListing() throws InterruptedException, ClassNotFoundException, SQLException
 			 {
 		// test the runmode of current dataset
 		count++;
@@ -44,28 +47,27 @@ public class OpenCRFromListing extends TestSuiteBase {
 			throw new SkipException("Runmode for test set data set to no "+count);
 		}
 		
-		APP_LOGS.debug("Executing Test Case - Open CR From Listing");
-        String CrIdFromListing = getObject("cr_id_link").getText();
-        System.out.println("CR id from listing is "+CrIdFromListing);
-        APP_LOGS.debug("CR id from listing is "+CrIdFromListing);
+		APP_LOGS.debug(" Executing Test Case CR Listing");
 				
-		getObject("cr_id_link").click();
-		//
-		Thread.sleep(5000);
+		openBrowser();
+		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
+		getObject("cr_quick_link").click(); 
 		
-		//String textFromCR= driver.findElement(By.xpath("//*[@id='mainForm']/ng-form/fieldset[1]/p")).getText();
-		String CrIdFromShowPage=getObject("cr_id_text").getText();
-
-		System.out.println("CR id from show page is "+CrIdFromShowPage);
-		APP_LOGS.debug("CR id from show page is "+CrIdFromShowPage);
+		Thread.sleep(10000);
+		numberOfEntries = getObject("cr_entries_text").getText();
 		
-		//Assert.assertEquals(textFromCR, "BASIC INFORMATION");
-		Assert.assertEquals(CrIdFromShowPage, CrIdFromListing);
-		
-		APP_LOGS.debug("CR show page open successfully with CR id " +CrIdFromShowPage);
+		System.out.println("Number of  CR in listing page " +numberOfEntries);
+		APP_LOGS.debug("Number of  CR in listing page " +numberOfEntries);
+		numberOfEntriesSplit = numberOfEntries.split(" ");
+		numberOfCr = numberOfEntriesSplit[4];
+				
+	    Connection con = getDbConnection();
+		APP_LOGS.debug("Executing CR listing query");
+		String countFromDb = queryResult(con, CONFIG.getProperty("cr_listing_query"));
+		System.out.println("count from db " +countFromDb);
+		Assert.assertEquals(numberOfCr, countFromDb);
+		APP_LOGS.debug(" CR listing is displaying correct entries.");
 		fail = false; //this executes if assertion passes
-		
-
 			 }
           
   @AfterMethod

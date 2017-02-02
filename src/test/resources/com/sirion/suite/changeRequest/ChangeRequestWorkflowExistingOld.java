@@ -1,7 +1,5 @@
-package test.resources.com.sirion.suite.cr;
+package test.resources.com.sirion.suite.changeRequest;
 
-import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
 import java.sql.SQLException;
 
 import org.openqa.selenium.By;
@@ -17,7 +15,7 @@ import org.testng.annotations.Test;
 
 import test.resources.com.sirion.util.TestUtil;
 
-public class ChangeRequestWorkflow extends TestSuiteBase {
+public class ChangeRequestWorkflowExistingOld extends TestSuiteBase {
   String runmodes[] = null;
   static int count = -1;
   // static boolean pass=false;
@@ -62,20 +60,19 @@ public class ChangeRequestWorkflow extends TestSuiteBase {
 		
 		getObject("analytics_link").click();
  getObject("cr_quick_link").click(); // IP Quick Link Clicking
-
- 
  Thread.sleep(20000);
- 
+ WebDriverWait wait=new WebDriverWait(driver, 50);
+ //wait.until(ExpectedConditions.elementToBeClickable(getObject("cr_id_link")));
  getObject("cr_id_link").click(); 
 		
 		
 		Thread.sleep(10000);
         
-		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Clone')]")));
+		//Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Clone')]")));
 		driver.findElement(By.xpath("//button[contains(.,'Clone')]")).click();
 		Thread.sleep(20000);
         
-		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Save')]")));
+		//Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Save')]")));
 		driver.findElement(By.xpath("//button[contains(.,'Save')][@clientvalidation='true']")).click();
 		Thread.sleep(10000);
         
@@ -86,7 +83,7 @@ public class ChangeRequestWorkflow extends TestSuiteBase {
 	    	String cr_id = getObject("cr_popup_id").getText();
 	    	APP_LOGS.debug("Action Cloned successfully with Issue id "+cr_id);
 		
-	    	AssertJUnit.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'OK')]")));
+	    	Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'OK')]")));
 	    	driver.findElement(By.xpath("//button[contains(.,'OK')]")).click();
 	    	Thread.sleep(5000);
 		
@@ -103,31 +100,33 @@ public class ChangeRequestWorkflow extends TestSuiteBase {
 		}
 		Thread.sleep(10000);
 		
-		AssertJUnit.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Submit')]")));
+		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Submit')]")));
 		driver.findElement(By.xpath("//button[contains(.,'Submit')]")).click();
 		Thread.sleep(5000);
-         AssertJUnit.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
+         Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
          driver.findElement(By.xpath("//button[contains(.,'Approve')]")).click();
          Thread.sleep(5000);
-         AssertJUnit.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
+         Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
          driver.findElement(By.xpath("//button[contains(.,'Approve')]")).click();
          Thread.sleep(5000);
-         AssertJUnit.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
+         Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
          driver.findElement(By.xpath("//button[contains(.,'Approve')]")).click();
          Thread.sleep(5000);
-         AssertJUnit.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
+         Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
          driver.findElement(By.xpath("//button[contains(.,'Approve')]")).click();
          Thread.sleep(5000);
-         AssertJUnit.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
+         Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
          driver.findElement(By.xpath("//button[contains(.,'Approve')]")).click();
          Thread.sleep(5000);
-         AssertJUnit.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
+         Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
          driver.findElement(By.xpath("//button[contains(.,'Approve')]")).click();
          Thread.sleep(5000);
+         /*String ob_status = getObject("ac_status_id").getText();
          
+         Assert.assertEquals(ob_status, "Approved");  */   
          
-       //this executes if assertion passes 
-		fail = false; 
+              
+		fail = false; //this executes if assertion passes
 			 }
           
   @AfterMethod
