@@ -1,0 +1,27 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Purchase Order Suite">
+
+
+ <test name="Purchase Order Creation">
+    <classes>
+        <class name="test.resources.com.sirion.purchaseOrder.PurchaseOrderCreation" ></class> 
+    </classes>
+</test>
+
+<test name="Purchase Order Update">
+    <classes>
+        <class name="test.resources.com.sirion.purchaseOrder.PurchaseOrderUpdate" ></class>  
+    </classes>
+</test>
+
+<test name="Purchase Order Workflow">
+    <classes>
+        <class name="test.resources.com.sirion.purchaseOrder.PurchaseOrderWorkflow" ></class>  
+    </classes>
+</test>
+
+
+
+
+</suite>
+
