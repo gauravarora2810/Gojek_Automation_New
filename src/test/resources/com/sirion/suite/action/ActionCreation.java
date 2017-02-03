@@ -86,20 +86,20 @@ public class ActionCreation extends TestSuiteBase implements ITestListener {
 		// getObject("action_quick_link").click(); // IP Quick Link Clicking
 		Thread.sleep(20000);
 
-		WebDriverWait wait = new WebDriverWait(driver, 50);
+		
 		
 		// clicking the first record in the contract listing page
 		getObject("contract_id_link").click();
 		System.out
 				.println("clicked the first record in the contract listing page");
 
-		wait.until(ExpectedConditions.elementToBeClickable(By
+		wait_in_report.until(ExpectedConditions.elementToBeClickable(By
 				.xpath("//*[@id='mainContainer']/div/div[2]/a")));
 		System.out.println("Plus button is available now ");
 		plus_button("ac_plus_button_link"); // web element for plus button on
 											// contract page
 		System.out.println("Clicked on the plus button");
-		wait.until(ExpectedConditions
+		wait_in_report.until(ExpectedConditions
 				.elementToBeClickable(getObject("ac_create_link_from_ac")));
 		getObject("ac_create_link_from_ac").click(); // click issue create link
 		System.out.println("clicked the create action");

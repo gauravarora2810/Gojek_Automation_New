@@ -1,4 +1,4 @@
-package test.resources.com.sirion.suite.wor;
+package test.resources.com.sirion.suite.workOrderRequest;
 
 import java.util.Date;
 

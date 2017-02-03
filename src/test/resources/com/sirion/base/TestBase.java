@@ -28,10 +28,11 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import test.resources.com.sirion.suite.clientAdmin.Database_Password_Change_Query;
 import test.resources.com.sirion.util.ErrorUtil;
 import test.resources.com.sirion.util.Xls_Reader;
 
-public class TestBase {
+public class TestBase{
 	
 
 	public static boolean isInitialized = false;

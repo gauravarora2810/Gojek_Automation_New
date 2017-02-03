@@ -1,4 +1,4 @@
-package test.resources.com.sirion.suite.wor;
+package test.resources.com.sirion.suite.workOrderRequest;
 
 import java.sql.SQLException;
 
@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 
 import test.resources.com.sirion.util.TestUtil;
 
-public class WORWorkflow extends TestSuiteBase {
+public class WORWorkflowExisting extends TestSuiteBase {
   String runmodes[] = null;
   static int count = -1;
   // static boolean pass=false;

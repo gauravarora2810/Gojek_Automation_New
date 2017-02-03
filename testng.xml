@@ -20,14 +20,14 @@
     	<!--<suite-file path="Issue Suite.xml" />
     	<suite-file path="Interpretation Suite.xml" />
     	<suite-file path="Change Request Suite.xml" />
-    	<suite-file path="Work Order Request Suite.xml" />
+    	
     	<suite-file path="Invoice Suite.xml" />
     	<suite-file path="Child Obligation Suite.xml" />
     	<suite-file path="Child SL Suite.xml" />
     	<suite-file path="Child SL Suite.xml" /> 
-    	<suite-file path="Purchase Order Suite.xml" />-->
-   		<suite-file path="Governance Body Suite.xml" />
-   		
+    	<suite-file path="Purchase Order Suite.xml" />
+   		<suite-file path="Governance Body Suite.xml" />-->
+   		<suite-file path="Work Order Request Suite.xml" />
 </suite-files>
     
 </suite> <!-- Suite -->

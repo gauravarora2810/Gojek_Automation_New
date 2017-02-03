@@ -27,7 +27,7 @@ public class DatePicker extends TestBase {
 	public void pickExpDate(String CalendarName) throws InterruptedException {
 
 		// Click on date text box to open date picker popup.
-		driver.findElement(By.name(CalendarName)).click();
+		driver.findElement(By.xpath("//input[@name='"+CalendarName+"']")).click();
 		dateNotFound = true;
 
 		// This loop will be executed continuously till dateNotFound Is true.

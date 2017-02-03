@@ -15,7 +15,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import test.resources.com.sirion.suite.cr.TestSuiteBase;
+import test.resources.com.sirion.suite.changeRequest.TestSuiteBase;
 import test.resources.com.sirion.util.*;
 
 public class ActionCreation extends TestSuiteBase {

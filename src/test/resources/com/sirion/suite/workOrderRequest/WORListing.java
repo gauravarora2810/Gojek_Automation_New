@@ -1,5 +1,6 @@
-package test.resources.com.sirion.suite.wor;
+package test.resources.com.sirion.suite.workOrderRequest;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 import org.testng.Assert;
@@ -12,15 +13,17 @@ import org.testng.annotations.Test;
 
 import test.resources.com.sirion.util.TestUtil;
 
-public class OpenWORFromListing extends TestSuiteBase {
+public class WORListing extends TestSuiteBase {
   String runmodes[] = null;
   static int count = -1;
   // static boolean pass=false;
-  static boolean fail = true;
+  static boolean fail = false;
   static boolean skip = false;
   static boolean isTestPass = true;
 
-  
+  String numberOfEntries = null;
+  String[] numberOfEntriesSplit = null;
+  String numberOfwor;
   
   // Runmode of test case in a suite
   @BeforeTest
@@ -28,14 +31,14 @@ public class OpenWORFromListing extends TestSuiteBase {
 
     if (!TestUtil.isTestCaseRunnable(wor_suite_xls, this.getClass().getSimpleName())) {
       APP_LOGS.debug("Skipping Test Case" + this.getClass().getSimpleName() + " as runmode set to NO");// logs
-      throw new SkipException("Skipping Test Case " + this.getClass().getSimpleName() + " as runmode set to NO");// reports
+      throw new SkipException("Skipping Test Case" + this.getClass().getSimpleName() + " as runmode set to NO");// reports
     }
     // load the runmodes off the tests
     runmodes = TestUtil.getDataSetRunmodes(wor_suite_xls, this.getClass().getSimpleName());
   }
 
   @Test 
-	public void OpenWORFromListing() throws InterruptedException, ClassNotFoundException, SQLException
+	public void ActionListing() throws InterruptedException, ClassNotFoundException, SQLException
 			 {
 		// test the runmode of current dataset
 		count++;
@@ -44,28 +47,31 @@ public class OpenWORFromListing extends TestSuiteBase {
 			throw new SkipException("Runmode for test set data set to no "+count);
 		}
 		
-		APP_LOGS.debug("Executing Test Case - Open WOR From Listing");
-        String WorIdFromListing = getObject("wor_id_link").getText();
-        System.out.println("WOR id from listing is "+WorIdFromListing);
-		APP_LOGS.debug("WOR id from listing is "+WorIdFromListing);		
-		getObject("wor_id_link").click();
-		//
-		Thread.sleep(5000);
+		APP_LOGS.debug("Executing Test Case WOR Listing");
+				
+		openBrowser();
+		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
+		getObject("wor_quick_link").click(); 
+		Thread.sleep(10000);
+		numberOfEntries = getObject("wor_entries_text").getText();
+		System.out.println("Number of  WOR in listing page " +numberOfEntries);
+		APP_LOGS.debug("Number of  WOR in listing page " +numberOfEntries);
 		
-		//String textFromCR= driver.findElement(By.xpath("//*[@id='mainForm']/ng-form/fieldset[1]/p")).getText();
-		String WorIdFromShowPage=getObject("wor_id_text").getText();
+		numberOfEntriesSplit = numberOfEntries.split(" ");
+		numberOfwor = numberOfEntriesSplit[4];
+		System.out.println(numberOfwor);
 
-		System.out.println("WOR id from show page is "+WorIdFromShowPage);
-		APP_LOGS.debug("WOR id from show page is "+WorIdFromShowPage);
-		//Assert.assertEquals(textFromCR, "BASIC INFORMATION");
-		Assert.assertEquals(WorIdFromShowPage, WorIdFromListing);
+		Connection con = getDbConnection();
 		
-		APP_LOGS.debug("WOR show page open successfully with WOR id " +WorIdFromShowPage);
-		fail = false; //this executes if assertion passes
+		APP_LOGS.debug("Executin WOR listing query");
 		
-
+		String countFromDb = queryResult(con, CONFIG.getProperty("wor_listing_query"));
+		Assert.assertEquals(numberOfwor, countFromDb);
+	    APP_LOGS.debug("WOR listing is displaying correct entries.");
+	    System.out.println("WOR listing is displaying correct entries.");
+	    fail = false; //this executes if assertion passes
 			 }
-          
+
   @AfterMethod
   public void reportDataSetResult() {
     if (skip)
