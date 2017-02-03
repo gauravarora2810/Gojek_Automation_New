@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 
 import test.resources.com.sirion.util.TestUtil;
 
-public class GBUpdate extends TestSuiteBase {
+public class GBUpdateExisting extends TestSuiteBaseExisting {
 	  String runmodes[] = null;
 	  static int count = -1;
 	  // static boolean pass=false;
@@ -56,7 +56,7 @@ public class GBUpdate extends TestSuiteBase {
 	        Thread.sleep(5000);
 	        getObject("gb_id_link").click();
 	        
-	        Thread.sleep(15000);
+	        Thread.sleep(9000);
 	        
 	       /* String GBNameShowPage = getObject("gb_title_text").getText();
 	        Thread.sleep(5000);*/

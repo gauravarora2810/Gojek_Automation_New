@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 
 import test.resources.com.sirion.util.TestUtil;
 
-public class GBworkflow extends TestSuiteBase {
+public class GBworkflowExisting extends TestSuiteBaseExisting {
   String runmodes[] = null;
   static int count = -1;
   // static boolean pass=false;
@@ -54,24 +54,22 @@ public class GBworkflow extends TestSuiteBase {
 				
 		openBrowser();
 		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
-		Thread.sleep(10000);
 		getObject("gb_quick_link").click(); 
-		Thread.sleep(10000);
+		Thread.sleep(20000);
 		getObject("gb_listing_link").click(); 
-		Thread.sleep(10000);
-		
+		Thread.sleep(20000);
+		WebDriverWait wait=new WebDriverWait(driver, 50); 
 		//wait.until(ExpectedConditions.elementToBeClickable(getObject("ac_id_link")));
 		getObject("gb_id_link").click();
 		
 			 
 		Thread.sleep(10000);
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//button[contains(.,'Clone')]")));
+        
 		//Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Clone')]")));
 		driver.findElement(By.xpath("//button[contains(.,'Clone')]")).click();
-		Thread.sleep(10000);
+		Thread.sleep(20000);
         
 		//Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Save')]")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//button[contains(.,'Save')][@clientvalidation='true']")));
 		driver.findElement(By.xpath("//button[contains(.,'Save')][@clientvalidation='true']")).click();
 		Thread.sleep(10000);
 	    if(getObject("gb_popup_id")!=null){
@@ -87,55 +85,46 @@ public class GBworkflow extends TestSuiteBase {
 		
 	    	getObject("quick_search_textbox").sendKeys(gb_id);
 	    	
-	    	Thread.sleep(5000);
+	    	
 	    	getObject("quick_search_textbox").sendKeys(Keys.ENTER);
 	    	Thread.sleep(10000);
 		
 	    	
 	    	/*---Send for Internal review-----*/
-	    	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", getObject("gb_sendforinternalreview_button"));
 	    	getObject("gb_sendforinternalreview_button").click();
 	    	
-	    	Thread.sleep(10000);
+	    	Thread.sleep(5000);
 	    	/*---Internal review complete-----*/
-	    	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", getObject("gb_internalreviewcomplete_button"));
 	    	getObject("gb_internalreviewcomplete_button").click();
-	    	Thread.sleep(10000);
+	    	Thread.sleep(5000);
 
 	    	/*---Send for client review-----*/
-	    	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", getObject("gb_sendforclientreview_button"));
 	    	getObject("gb_sendforclientreview_button").click();
 	    	
-	    	Thread.sleep(10000);
+	    	Thread.sleep(5000);
 	    	/*---approve-----*/
-	    	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", getObject("gb_approve_button"));
 	    	getObject("gb_approve_button").click();
 	    	
-	    	Thread.sleep(10000);
+	    	Thread.sleep(5000);
 	    	/*---publish-----*/
-	    	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", getObject("gb_publish_button"));
 	    	getObject("gb_publish_button").click();
 	    	
-	    	Thread.sleep(10000);
+	    	Thread.sleep(5000);
 
 	    	/*---archive-----*/
-	    	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", getObject("gb_archive_button"));
 	    	getObject("gb_archive_button").click();
-	    	Thread.sleep(10000);
+	    	Thread.sleep(5000);
 
 	    	/*---restore-----*/
-	    	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", getObject("gb_restore_button"));
 	    	getObject("gb_restore_button").click();
-	    	Thread.sleep(10000);
+	    	Thread.sleep(5000);
 
 	    	/*---onhold-----*/
-	    	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", getObject("gb_onhold_button"));
 	    	getObject("gb_onhold_button").click();
-	    	Thread.sleep(10000);
+	    	Thread.sleep(5000);
 	    	
 
 	    	/*---activate-----*/
-	    	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", getObject("gb_activate_button"));
 	    	getObject("gb_activate_button").click();
 	    	
 	    	Thread.sleep(5000);

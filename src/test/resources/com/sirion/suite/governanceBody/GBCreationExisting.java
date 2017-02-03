@@ -6,7 +6,6 @@ import java.util.Date;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.SkipException;
@@ -18,15 +17,13 @@ import org.testng.annotations.Test;
 
 import test.resources.com.sirion.util.TestUtil;
 
-public class GBCreation extends TestSuiteBase {
+public class GBCreationExisting extends TestSuiteBaseExisting {
   String runmodes[] = null;
   static int count = -1;
   // static boolean pass=false;
   static boolean fail = true;
   static boolean skip = false;
   static boolean isTestPass = true;
-  Date date;
-  Date date1;
 
   // Runmode of test case in a suite
   @BeforeTest
@@ -72,17 +69,10 @@ System.out.println("Hello contract");
 //    driver.findElement(By.xpath("gb_contract_listing_id")).click();
    Thread.sleep(10000);
 
-   wait_in_report.until(ExpectedConditions.elementToBeClickable(By
-			.xpath("//*[@id='mainContainer']/div/div[2]/a")));
-	System.out.println("Plus button is available now ");
-	plus_button("contract_plus_button"); // web element for plus button on
-										// contract page
-	System.out.println("Clicked on the plus button");
-	wait_in_report.until(ExpectedConditions
-			.elementToBeClickable(getObject("gb_create_link_from_contract")));
-	getObject("gb_create_link_from_contract").click(); // click issue create link
-	System.out.println("clicked the create governance body");
-	Thread.sleep(5000);
+   getObject("contract_plus_button").click(); // web element for plus button on contract page
+  
+    getObject("gb_create_link_from_contract").click(); // click governance body create link
+    Thread.sleep(1000);
    
     if (!supplier.equalsIgnoreCase("")) {
         new Select(getObject("gb_supplier_select")).selectByVisibleText(supplier); //gb supplier
@@ -163,7 +153,7 @@ System.out.println("Hello contract");
 
     }
 
-     date = new Date();
+    Date date = new Date();
 
     int current_month = date.getMonth();
 
@@ -236,41 +226,39 @@ System.out.println("Hello contract");
     }
     */
    /*-----------------------------Pattern Date-----------------------------*/
-	   
-	      
-	      
-	      
 	      driver.findElement(By.name("patternDate")).click();
-		    Double temp_gbPatternDateYear_double = Double.parseDouble(gbEndDateYear);
-		    int temp_gbPatternDateYear_int = temp_gbPatternDateYear_double.intValue();
-		    String gbPatternDateYear_string = Integer.toString(temp_gbPatternDateYear_int);
-		    // WebElement datepicker_ui=driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']"));
 
-		    System.out.println(datepicker_ui.isDisplayed());
-		    if (datepicker_ui.isDisplayed() == true) {
-		      WebElement datepicker_ui_year = driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/div/select"));
-		      new Select(datepicker_ui_year).selectByVisibleText(gbPatternDateYear_string);
-		    }
 
-		    Double temp_gbPatternDateMonth_double = Double.parseDouble(gbEndDateMonth);
-		    int temp_gbPatternDateMonth_int = temp_gbPatternDateMonth_double.intValue();
-		    System.out.println(" gbEndDateMonth " + temp_gbPatternDateMonth_int);
+	      Double temp_gbPatternDateYear_double = Double.parseDouble(gbPatternDateYear);
+	      int temp_gbPatternDateYear_int = temp_gbPatternDateYear_double.intValue();
+	      String gbPatternDateYear_string = Integer.toString(temp_gbPatternDateYear_int);
 
-		    int clickp = temp_gbEndDateMonth_int - current_month;
-		    System.out.println("click " + clickp);
-		    for (; clickp >= 0; clickp = clickp - 1) {
-		      driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/a[2]/span")).click();
-		    }
+	      WebElement datepickerr_ui = driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']"));
+	      System.out.println(datepicker_ui.isDisplayed());
+	      if (datepickerr_ui.isDisplayed() == true) {
+	        WebElement datepickerr_ui_year = driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/div/select"));
+	        new Select(datepickerr_ui_year).selectByVisibleText(gbPatternDateYear_string);
 
-		    Double temp_gbPatternDateDate_double = Double.parseDouble(gbPatternDateDate);
-		    int temp_gbPatternDateDate_int = temp_gbPatternDateDate_double.intValue();
-		    String gbPatternDateDate_string = Integer.toString(temp_gbPatternDateDate_int);
-		    System.out.println(gbPatternDateDate_string);
-		    driver.findElement(By.linkText(gbPatternDateDate_string)).click(); // enter date
-	    
-		    
-	      
-	      
+	      }
+
+	      Date date1 = new Date();
+
+	      int current_month1 = date.getMonth();
+
+	      Double temp_gbPatternDateMonth_double = Double.parseDouble(gbPatternDateMonth);
+	      int temp_gbPatternDateMonth_int = temp_gbPatternDateMonth_double.intValue();
+
+	      int clickp = current_month - temp_gbStartDateMonth_int;
+	      System.out.println("click " + clickp);
+	      for (; clickp >= 0; clickp = clickp - 1) {
+	  		driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/a[2]/span")).click();
+
+	      }
+
+	      Double temp_gbPatternDateDate_double = Double.parseDouble(gbPatternDateDate);
+	      int temp_gbPatternDateDate_int = temp_gbPatternDateDate_double.intValue();
+	      String gbPatternDateDate_string = Integer.toString(temp_gbPatternDateDate_int);
+	      driver.findElement(By.linkText(gbPatternDateDate_string)).click(); 
   /*-----------------------------pattern date end -------------------------*/
     
     
@@ -284,7 +272,7 @@ System.out.println("Hello contract");
 
 	      WebElement datepickerrr_ui = driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']"));
 	      System.out.println(datepicker_ui.isDisplayed());
-	      if (datepickerrr_ui.isDisplayed() == true) {
+	      if (datepickerr_ui.isDisplayed() == true) {
 		        WebElement datepickerr_ui_year = driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/div/select"));
 		        new Select(datepickerr_ui_year).selectByVisibleText(gbEffectiveDateYear_string);
 
@@ -311,20 +299,19 @@ System.out.println("Hello contract");
   /*-----------------------------Effective date end -------------------------*/
 	      
 	 getObject("gb_create_button").click(); // click on submit button
-      Thread.sleep(10000);
+      Thread.sleep(3000);
       
     String gb_id = getObject("gb_popup_id").getText();
     
     APP_LOGS.debug("Governance Body created successfully with GB id "+gb_id);
-    Thread.sleep(10000);
+    Thread.sleep(3000);
 
     getObject("gb_popup_ok_button").click();
-    Thread.sleep(10000);
+    Thread.sleep(25000);
     
     APP_LOGS.debug("Quick Search the created contract with GB id "+gb_id);
     
     getObject("quick_search_textbox").sendKeys(gb_id);
-    Thread.sleep(5000);
     getObject("quick_search_textbox").sendKeys(Keys.ENTER);
     Thread.sleep(5000);
     

@@ -25,9 +25,9 @@
     	<suite-file path="Child Obligation Suite.xml" />
     	<suite-file path="Child SL Suite.xml" />
     	<suite-file path="Child SL Suite.xml" /> 
-    	<suite-file path="Governance Body Suite.xml" />-->
-    	<suite-file path="Purchase Order Suite.xml" />
-   
+    	<suite-file path="Purchase Order Suite.xml" />-->
+   		<suite-file path="Governance Body Suite.xml" />
+   		
 </suite-files>
     
 </suite> <!-- Suite -->
