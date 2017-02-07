@@ -278,7 +278,14 @@ public class ObligationCreation extends TestSuiteBase {
 		if (!obFrequency.equalsIgnoreCase("")) {
 			new Select(getObject("ob_frequency_dropdown")).selectByVisibleText(obFrequency);
 			}
-
+System.out.println("Gaurav");
+		// Select ob week type
+		if (!obWeekType.equalsIgnoreCase("")) {
+			System.out.println("Arora");
+			new Select(getObject("ob_week_type_dropdown")).selectByVisibleText(obWeekType);
+			}
+		System.out.println("Arora");
+		
 		// Select ob Start Date
 		((JavascriptExecutor)driver).executeScript("arguments[0].click();", driver.findElement(By.name("startDate")));
 		if (!obStartDate.equalsIgnoreCase("")) {
