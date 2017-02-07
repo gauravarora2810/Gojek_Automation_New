@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 
 import test.resources.com.sirion.util.TestUtil;
 
-public class IssueCreation extends TestSuiteBase
+public class IssueCreation extends TestSuiteBaseExisting
 {
     String runmodes[]=null;
     static int count=-1;

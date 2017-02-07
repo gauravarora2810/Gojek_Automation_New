@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 
 import test.resources.com.sirion.util.TestUtil;
 
-public class ChangeRequestCreation extends TestSuiteBase
+public class ChangeRequestCreation extends TestSuiteBaseExisting
 
 {
 	String runmodes[]=null;

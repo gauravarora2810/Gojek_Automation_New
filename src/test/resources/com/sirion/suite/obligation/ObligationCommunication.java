@@ -17,7 +17,7 @@ import test.resources.com.sirion.util.TestUtil;
 
 
 
-public class ObligationCommunication extends TestSuiteBase{
+public class ObligationCommunication extends TestSuiteBaseExisting{
     String runmodes[]=null;
     static int count=-1;
     //static boolean pass=false;

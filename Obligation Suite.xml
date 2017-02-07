@@ -1,69 +1,74 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Obligation Suite">
 
-
+ <test name="Obligation Creation Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.obligation.ObligationCreation" ></class>  
+    </classes>
+</test>
 
 <test name="Issue Creation Test">
     <classes>
-        <class name="com.sirion.suite.obligation.IssueCreation" ></class>  
+        <class name="test.resources.com.sirion.suite.obligation.IssueCreation" ></class>  
     </classes>
 </test>
 
 <test name="Action Creation Test">
     <classes>
-        <class name="com.sirion.suite.obligation.ActionCreation" ></class>  
+        <class name="test.resources.com.sirion.suite.obligation.ActionCreation" ></class>  
     </classes>
 </test>
 
 <test name="Interpretation Creation Test">
     <classes>
-        <class name="com.sirion.suite.obligation.InterpretationCreation" ></class>  
+        <class name="test.resources.com.sirion.suite.obligation.InterpretationCreation" ></class>  
     </classes>
 </test>
 
 <test name="CR Creation Test">
     <classes>
-        <class name="com.sirion.suite.obligation.ChangeRequestCreation" ></class>  
+        <class name="test.resources.com.sirion.suite.obligation.ChangeRequestCreation" ></class>  
     </classes>
 </test>
-
-
  
- <test name="Obligation Workflow Test">
+
+
+<!--  <test name="Obligation Non Workflow Test">
     <classes>
-        <class name="com.sirion.suite.obligation.ObligationWorkflow" ></class>  
+        <class name="test.resources.com.sirion.suite.obligation.ObligationNonWorkflow" ></class>  
     </classes>
 </test>
-
- <test name="Obligation Non Workflow Test">
-    <classes>
-        <class name="com.sirion.suite.obligation.ObligationNonWorkflow" ></class>  
-    </classes>
-</test>
-
+ -->
  
- <test name="Obligation Updation Test">
+
+  <test name="Obligation Workflow Test">
     <classes>
-        <class name="com.sirion.suite.obligation.ObligationUpdation" ></class>  
+        <class name="test.resources.com.sirion.suite.obligation.ObligationWorkflowNonWorkflow" ></class>  
     </classes>
 </test>
 
+   <test name="Obligation Updation Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.obligation.ObligationUpdation" ></class>  
+    </classes>
+</test>
+  
    
     <test name="Obligation Linkage Test">
     <classes>
-        <class name="com.sirion.suite.obligation.ObligationLinkage" ></class>  
+        <class name="test.resources.com.sirion.suite.obligation.ObligationLinkage" ></class>  
     </classes>
 </test>
 
     <test name="Obligation Communication Test">
     <classes>
-        <class name="com.sirion.suite.obligation.ObligationCommunication" ></class>  
+        <class name="test.resources.com.sirion.suite.obligation.ObligationCommunication" ></class>  
     </classes>
 </test>
     
         <test name="Obligation Audit Log Test">
     <classes>
-        <class name="com.sirion.suite.obligation.ObligationAuditLog" ></class>  
+        <class name="test.resources.com.sirion.suite.obligation.ObligationAuditLog" ></class>  
     </classes>
 </test>
 

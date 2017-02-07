@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 
 import test.resources.com.sirion.util.TestUtil;
 
-public class ObligationNonWorkflow extends TestSuiteBase {
+public class ObligationNonWorkflow extends TestSuiteBaseExisting {
 	  String runmodes[] = null;
 	  static int count = -1;
 	  static boolean fail = true;

@@ -1,11 +1,10 @@
 package test.resources.com.sirion.suite.obligation;
 
-import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -16,15 +15,18 @@ import org.testng.annotations.Test;
 import test.resources.com.sirion.util.TestUtil;
 
 
+public class ObligationUpdationExisting extends TestSuiteBaseExisting
 
-public class ObligationAuditLog extends TestSuiteBaseExisting{
-    String runmodes[]=null;
+
+{
+
+	
+	String runmodes[]=null;
     static int count=-1;
     //static boolean pass=false;
     static boolean fail=true;
     static boolean skip=false;
     static boolean isTestPass=true;
-    
     
     int t =0;
     // Runmode of test case in a suite
@@ -38,10 +40,9 @@ public class ObligationAuditLog extends TestSuiteBaseExisting{
         // load the run modes off the tests
         runmodes=TestUtil.getDataSetRunmodes(obligation_suite_xls, this.getClass().getSimpleName());
     }
-    
     @Test (dataProvider = "getTestData")
-    public void ObligationCommunicationTest(
-        String obligationContractName, String obTitle, String obDescription, String  obPerformanceType, String  obCategory, String obTimezone, 
+    public void ObligationUpdationTest(
+       String obligationNameforUpdate, String obTitle, String obDescription, String  obPerformanceType, String  obCategory, String obTimezone, 
         String obDeliveryCountries, String    obCurrency, String obSupplierAccess, String   obTier, String obPriority, String obPhase, String    obTriggered, 
         String    obReference, String    obClause, String   obPageNumber, String   obFrequencyType, String    obFrequency, String    obWeekType, 
         String obStartDateDate, String    obStartDateMonth, String   obStartDateYear, 
@@ -49,8 +50,7 @@ public class ObligationAuditLog extends TestSuiteBaseExisting{
         String  obIncludeStartDate, String obIncludeEndDate, 
         String   obPatternDateDate, String  obPatternDateMonth, String obPatternDateYear, 
         String  obEffectiveDateDate, String    obEffectiveDateMonth, String   obEffectiveDateYear, 
-        String    obResponsibity, String obFinancialImpactApplicable, String    obCreditImpactApplicable, String obComment, String obActualDateDate,String obActualDateMonth, String obActualDateYear,
-        String obRequestedBy, String obChangeRequest, String obUploadedFile
+        String    obResponsibity, String obFinancialImpactApplicable, String    obCreditImpactApplicable       
             ) throws InterruptedException {
         // test the runmode of current dataset
         count++;
@@ -59,86 +59,362 @@ public class ObligationAuditLog extends TestSuiteBaseExisting{
             throw new SkipException("Runmode for test set data set to no "+count);
         }
         
-        APP_LOGS.debug("Executing Test Case Obligation Creation");
+        APP_LOGS.debug("Executing Test Case Obligation Updation");
+       
+        Thread.sleep(10000);
+       
         
+        openBrowser();
+		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
+        
+        getObject("analytics_link").click();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        getObject("child_obligaiton_quick_link").click(); 
+		Thread.sleep(20000);
+        getObject("obligaiton_link").click();
+        
+        Thread.sleep(20000);
+		//driver.findElement(By.xpath("(//*[@id='cr']/tbody/tr[@role='row']/td[contains(.,'"+ obligationNameforUpdate +"')]/preceding-sibling::td[1]/a)[1]")).click();
+        WebDriverWait wait=new WebDriverWait(driver, 50);
+       // wait.until(ExpectedConditions.elementToBeClickable(getObject("ob_id_link")));
+
+ 		getObject("ob_id_link").click(); 
         
 //        if (!checkElementPresence("supplier_quick_link")) {
 //          fail = true;
 //          // return; // conditional
 //        }
-        openBrowser();
-		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		getObject("analytics_link").click();
-		getObject("contract_quick_link").click(); 
-		Thread.sleep(10000);
-		driver.findElement(By.xpath("//*[@id='cr']/tbody/tr[@role='row']/td[contains(.,'"+ obligationContractName +"')]/preceding-sibling::td[1]/a")).click();
-        //getObject("contract_id_link").click(); //click on contract id
-        Thread.sleep(5000);
-        plus_button("co_plus_button_link"); // web element for plus button on supplier page
-        getObject("ob_create_link").click(); // click obligation create link
+
+       // getObject("ob_id_link").click(); 
+        Thread.sleep(10000);
+        //plus_button("ob_plus_button_link"); // web element for plus button on supplier page
+//        plus_button("ob_plus_button_link"); // web element for plus button on obligation page
+//        Thread.sleep(4000);
+//        getObject("ac_create_link_from_ob").click(); // click Action create link 
         
-        if(!obTitle.equalsIgnoreCase("")){    
-        getObject("ob_title_textbox").sendKeys(obTitle); // name
+        //driver.findElement(By.xpath("//button[contains(.,'Send For Peer Review')]")).click();
+        driver.findElement(By.xpath("//button[contains(.,'Edit')]")).click();
+        //driver.findElement(By.xpath("//*[@id='kk']/div/div/div[2]/div[1]/div/form/div[4]/ng-form/div/button[4]")).click();
+       /// driver.findElement(By.tagName(name))
+        boolean obTitle_tag=false;
+        try{
+        //System.out.println(getObject("ob_title_textbox"));
+        
+        if(getObject("ob_title_textbox") != null){
+        	obTitle_tag = getObject("ob_title_textbox").isEnabled();
         }
-        if(!obDescription.equalsIgnoreCase("")){    
-        getObject("ob_desc_textarea").sendKeys(obDescription); // name
         }
-        if (!obPerformanceType.equalsIgnoreCase("")) {
+        catch(Exception e)
+        {
+        	obTitle_tag=false;
+        }
+        //if(!obTitle.equalsIgnoreCase("")  &&  @FindBy(id = "myElementID").isDisplayed());
+        System.out.println("not inserted into if condition");
+        if(!obTitle.equalsIgnoreCase("")  &&  obTitle_tag)
+        {    
+        	getObject("ob_title_textbox").clear();
+        	getObject("ob_title_textbox").sendKeys(obTitle); // name
+        }
+        
+        System.out.println("not inserted into if condition");
+        
+        
+        boolean obDescription_tag=false;
+        try{
+        //System.out.println(getObject("ob_desc_textarea"));
+        
+        if(getObject("ob_desc_textarea") != null){
+        	obDescription_tag = getObject("ob_desc_textarea").isEnabled();
+        }
+        }
+        catch(Exception e)
+        {
+        	obDescription_tag=false;
+        }
+        
+        if(!obDescription.equalsIgnoreCase("") && obDescription_tag){    
+        	getObject("ob_desc_textarea").clear(); 
+        	getObject("ob_desc_textarea").sendKeys(obDescription); // name
+        }
+        
+        boolean obPerformanceType_tag=false;
+        try{
+        //System.out.println(getObject("ob_perf_type_dropdown"));
+        
+        if(getObject("ob_perf_type_dropdown") != null){
+        	obPerformanceType_tag = getObject("ob_perf_type_dropdown").isEnabled();
+        }
+        }
+        catch(Exception e)
+        {
+        	obPerformanceType_tag=false;
+        }
+        if (!obPerformanceType.equalsIgnoreCase("") && obPerformanceType_tag) {
           new Select(getObject("ob_perf_type_dropdown")).selectByVisibleText(obPerformanceType);
-        }       
-        if (!obCategory.equalsIgnoreCase("")) {
+        }  
+        
+        boolean obCategory_tag=false;
+        try{
+        //System.out.println(getObject("ob_category_dropdown"));
+        
+        if(getObject("ob_category_dropdown") != null){
+        	obCategory_tag = getObject("ob_category_dropdown").isEnabled();
+        }
+        }
+        catch(Exception e)
+        {
+        	obCategory_tag=false;
+        }
+        
+        
+        if (!obCategory.equalsIgnoreCase("") && obCategory_tag) {
           new Select(getObject("ob_category_dropdown")).selectByVisibleText(obCategory);
         } 
-        if (!obTimezone.equalsIgnoreCase("")) {
-          new Select(getObject("ob_timezone_dropdown")).selectByVisibleText(obTimezone);
         
-          try {
-      		if (driver.findElement(By.className("success-icon")).getText().contains("Current Date is different for the selected Time Zone"))
-      			driver.findElement(By.xpath(".//button[contains(.,'OK')]")).click();
-      	} catch (Exception e) {
-      		
-      	}
+        
+        boolean obTimezone_tag=false;
+        try{
+       // System.out.println(getObject("ob_timezone_dropdown"));
+        
+        if(getObject("ob_timezone_dropdown") != null){
+        	obTimezone_tag = getObject("ob_timezone_dropdown").isEnabled();
+        }
+        }
+        catch(Exception e)
+        {
+        	obTimezone_tag=false;
+        }
+        if (!obTimezone.equalsIgnoreCase("") && obTimezone_tag) {
+          new Select(getObject("ob_timezone_dropdown")).selectByVisibleText(obTimezone);
         } 
-        if (!obDeliveryCountries.equalsIgnoreCase("")) {
+        
+        
+        boolean obDeliveryCountries_tag=false;
+        try{
+        //System.out.println(getObject("ob_delcountry_multi"));
+        
+        if(getObject("ob_delcountry_multi") != null){
+        	obDeliveryCountries_tag = getObject("ob_delcountry_multi").isEnabled();
+        }
+        }
+        catch(Exception e)
+        {
+        	obDeliveryCountries_tag=false;
+        }
+        if (!obDeliveryCountries.equalsIgnoreCase("") && obDeliveryCountries_tag) {
           new Select(getObject("ob_delcountry_multi")).selectByVisibleText(obDeliveryCountries);
         } 
-        if (!obCurrency.equalsIgnoreCase("")) {
+        
+        boolean obCurrency_tag=false;
+        try{
+        //System.out.println(getObject("ob_currency_dropdown"));
+        
+        if(getObject("ob_currency_dropdown") != null){
+        	obCurrency_tag = getObject("ob_currency_dropdown").isEnabled();
+        }
+        }
+        catch(Exception e)
+        {
+        	obCurrency_tag=false;
+        }
+       
+        if (!obCurrency.equalsIgnoreCase("") && obCurrency_tag) {
           new Select(getObject("ob_currency_dropdown")).selectByVisibleText(obCurrency);
         }
-        if (obSupplierAccess.equalsIgnoreCase("Yes")){
+        
+        boolean obSupplierAccess_tag=false;
+        try{
+        //System.out.println(getObject("ob_supplier_access_checkbox"));
+        
+        if(getObject("ob_supplier_access_checkbox") != null){
+        	obSupplierAccess_tag = getObject("ob_supplier_access_checkbox").isEnabled();
+        }
+        }
+        catch(Exception e)
+        {
+        	obSupplierAccess_tag=false;
+        }
+       
+        if (obSupplierAccess.equalsIgnoreCase("Yes") && obSupplierAccess_tag){
           getObject("ob_supplier_access_checkbox").click();
         }
-        if (!obTier.equalsIgnoreCase("")) {
+        
+        boolean obTier_tag=false;
+        try{
+        //System.out.println(getObject("ob_tier_dropdown"));
+        
+        if(getObject("ob_tier_dropdown") != null){
+        	obTier_tag = getObject("ob_tier_dropdown").isEnabled();
+        }
+        }
+        catch(Exception e)
+        {
+        	obTier_tag=false;
+        }
+        
+        if (!obTier.equalsIgnoreCase("") && obTier_tag) {
           new Select(getObject("ob_tier_dropdown")).selectByVisibleText(obTier);
         }
-        if (!obPriority.equalsIgnoreCase("")) {
+        
+        boolean obPriority_tag=false;
+        try{
+       // System.out.println(getObject("ob_priority_dropdown"));
+        
+        if(getObject("ob_priority_dropdown") != null){
+        	obPriority_tag = getObject("ob_priority_dropdown").isEnabled();
+        }
+        }
+        catch(Exception e)
+        {
+        	obPriority_tag=false;
+        }
+        
+        if (!obPriority.equalsIgnoreCase("") && obPriority_tag) {
           new Select(getObject("ob_priority_dropdown")).selectByVisibleText(obPriority);
         }
-        if (!obPhase.equalsIgnoreCase("")) {
+        
+        
+        boolean obPhase_tag=false;
+        try{
+        //System.out.println(getObject("ob_phase_dropdown"));
+        
+        if(getObject("ob_phase_dropdown") != null){
+        	obPhase_tag = getObject("ob_phase_dropdown").isEnabled();
+        }
+        }
+        catch(Exception e)
+        {
+        	obPhase_tag=false;
+        }
+        
+        if (!obPhase.equalsIgnoreCase("") && obPhase_tag) {
           new Select(getObject("ob_phase_dropdown")).selectByVisibleText(obPhase);
         }
-        if (obTriggered.equalsIgnoreCase("Yes")){
+        
+        boolean obTriggered_tag=false;
+        try{
+        //System.out.println(getObject("ob_triggered_checkbox"));
+        
+        if(getObject("ob_triggered_checkbox") != null){
+        	obTriggered_tag = getObject("ob_triggered_checkbox").isEnabled();
+        }
+        }
+        catch(Exception e)
+        {
+        	obTriggered_tag=false;
+        }
+        
+        if (obTriggered.equalsIgnoreCase("Yes") && obTriggered_tag){
           getObject("ob_triggered_checkbox").click();
         }
-        if (!obReference.equalsIgnoreCase("")) {
+        
+        boolean obReference_tag=false;
+        try{
+        //System.out.println(getObject("ob_reference_dropdown"));
+        
+        if(getObject("ob_reference_dropdown") != null){
+        	obReference_tag = getObject("ob_reference_dropdown").isEnabled();
+        }
+        }
+        catch(Exception e)
+        {
+        	obReference_tag=false;
+        }
+        
+        
+        if (!obReference.equalsIgnoreCase("") && obReference_tag) {
           new Select(getObject("ob_reference_dropdown")).selectByVisibleText(obReference);
         }
-        if(!obClause.equalsIgnoreCase("")){    
+        
+        boolean obClause_tag=false;
+        try{
+        //System.out.println(getObject("ob_clause_textbox"));
+        
+        if(getObject("ob_clause_textbox") != null){
+        	obClause_tag = getObject("ob_clause_textbox").isEnabled();
+        }
+        }
+        catch(Exception e)
+        {
+        	obClause_tag=false;
+        }
+        
+        if(!obClause.equalsIgnoreCase("") && obClause_tag){    
+        getObject("ob_clause_textbox").clear();
         getObject("ob_clause_textbox").sendKeys(obClause); // name
         }
-        if(!obPageNumber.equalsIgnoreCase("")){    
-        getObject("ob_page_no_textbox").sendKeys(obPageNumber); // name
+        
+        boolean obPageNumber_tag=false;
+        try{
+        //System.out.println(getObject("ob_page_no_textbox"));
+        
+        if(getObject("ob_page_no_textbox") != null){
+        	obPageNumber_tag = getObject("ob_page_no_textbox").isEnabled();
         }
-        if (!obFrequencyType.equalsIgnoreCase("")) {
+        }
+        catch(Exception e)
+        {
+        	obPageNumber_tag=false;
+        }
+        
+        if(!obPageNumber.equalsIgnoreCase("") && obPageNumber_tag){    
+        	getObject("ob_page_no_textbox").clear();
+        	getObject("ob_page_no_textbox").sendKeys(obPageNumber); // name
+        }
+        
+        boolean obFrequencyType_tag=false;
+        try{
+        //System.out.println(getObject("ob_frequency_type_dropdown"));
+        
+        if(getObject("ob_frequency_type_dropdown") != null){
+        	obFrequencyType_tag = getObject("ob_frequency_type_dropdown").isEnabled();
+        }
+        }
+        catch(Exception e)
+        {
+        	obFrequencyType_tag=false;
+        }
+        
+        
+        if (!obFrequencyType.equalsIgnoreCase("") && obFrequencyType_tag) {
           new Select(getObject("ob_frequency_type_dropdown")).selectByVisibleText(obFrequencyType);
         }
-        if (!obFrequency.equalsIgnoreCase("")) {
+        
+        
+        boolean obFrequency_tag=false;
+        try{
+        //System.out.println(getObject("ob_frequency_dropdown"));
+        
+        if(getObject("ob_frequency_dropdown") != null){
+        	obFrequency_tag = getObject("ob_frequency_dropdown").isEnabled();
+        }
+        }
+        catch(Exception e)
+        {
+        	obFrequency_tag=false;
+        }
+        
+        
+        if (!obFrequency.equalsIgnoreCase("") && obFrequency_tag) {
           new Select(getObject("ob_frequency_dropdown")).selectByVisibleText(obFrequency);
         }
         
         
-        if (!obWeekType.equalsIgnoreCase("")) {
+        boolean obWeekType_tag=false;
+        try{
+        //System.out.println(getObject("ob_week_type_dropdown"));
+        
+        if(getObject("ob_week_type_dropdown") != null){
+        	obWeekType_tag = getObject("ob_week_type_dropdown").isEnabled();
+        }
+        }
+        catch(Exception e)
+        {
+        	obWeekType_tag=false;
+        }
+        
+        
+        if (!obWeekType.equalsIgnoreCase("") && obWeekType_tag) {
           new Select(getObject("ob_week_type_dropdown")).selectByVisibleText(obWeekType);
         }
 
@@ -147,10 +423,10 @@ public class ObligationAuditLog extends TestSuiteBaseExisting{
 */        
       //  driver.findElement(By.xpath("//*[@id='kk']/div/div/div[3]/div/div/form/div[4]/ng-form/div/button[1]")).click();
         
-        Date date = new Date();
-        int current_month = date.getMonth();
-
-        
+//        Date date = new Date();
+//        int current_month = date.getMonth();
+//
+//        
         /*driver.findElement(By.name("startDate")).click();
         Thread.sleep(3000);
         Double temp_obStartDateYear_double = Double.parseDouble(obStartDateYear);
@@ -266,44 +542,73 @@ public class ObligationAuditLog extends TestSuiteBaseExisting{
         int temp_obEffectiveDateDate_int = temp_obEffectiveDateDate_double.intValue();
         String obEffectiveDateDate_string = Integer.toString(temp_obEffectiveDateDate_int);
         driver.findElement(By.linkText(obEffectiveDateDate_string)).click();
-*/        
-        if (!obResponsibity.equalsIgnoreCase("")) {
+*/       
+        
+        boolean obResponsibity_tag=false;
+        try{
+        //System.out.println(getObject("ob_responsibility_dropdown"));
+        
+        if(getObject("ob_responsibility_dropdown") != null){
+        	obResponsibity_tag = getObject("ob_responsibility_dropdown").isEnabled();
+        }
+        }
+        catch(Exception e)
+        {
+        	obResponsibity_tag=false;
+        }
+        
+        if (!obResponsibity.equalsIgnoreCase("") && obResponsibity_tag) {
           new Select(getObject("ob_responsibility_dropdown")).selectByVisibleText(obResponsibity);
-        }       
-        if (obFinancialImpactApplicable.equalsIgnoreCase("Yes")){
+        }
+        
+        boolean obFinancialImpactApplicable_tag=false;
+        try{
+        //System.out.println(getObject("ob_financial_imapct_applicable_checkbox"));
+        
+        if(getObject("ob_financial_imapct_applicable_checkbox") != null){
+        	obFinancialImpactApplicable_tag = getObject("ob_financial_imapct_applicable_checkbox").isEnabled();
+        }
+        }
+        catch(Exception e)
+        {
+        	obFinancialImpactApplicable_tag=false;
+        }
+       
+        if (obFinancialImpactApplicable.equalsIgnoreCase("Yes") && obFinancialImpactApplicable_tag){
           getObject("ob_financial_imapct_applicable_checkbox").click();
         }
-        if (obCreditImpactApplicable.equalsIgnoreCase("Yes")){
+        
+        
+        boolean obCreditImpactApplicable_tag=false;
+        try{
+       // System.out.println(getObject("ob_credit_imapct_applicable_checkbox"));
+        
+        if(getObject("ob_credit_imapct_applicable_checkbox") != null){
+        	obCreditImpactApplicable_tag = getObject("ob_credit_imapct_applicable_checkbox").isEnabled();
+        }
+        }
+        catch(Exception e)
+        {
+        	obCreditImpactApplicable_tag=false;
+        }
+        
+        
+        if (obCreditImpactApplicable.equalsIgnoreCase("Yes") && obCreditImpactApplicable_tag){
           getObject("ob_credit_imapct_applicable_checkbox").click();
         }
         
         
-        // Communication Group Entry
         
         
-        if(!obComment.equalsIgnoreCase(""))
-        {
-        	driver.findElement(By.xpath(".//*[@id='elem_86']/textarea")).sendKeys(obComment);
-        }
         
-        if(!obRequestedBy.equalsIgnoreCase(""))
-        {
-        	new Select(driver.findElement(By.xpath(".//*[@id='elem_88']/select"))).selectByVisibleText(obRequestedBy);
-        }
         
-        if(!obChangeRequest.equalsIgnoreCase(""))
-        {
-        	new Select(driver.findElement(By.xpath(".//*[@id='elem_89']/select"))).selectByVisibleText(obChangeRequest);
-        }
         
-        if(!obUploadedFile.equalsIgnoreCase(""))
-        {
-        	//driver.findElement(By.xpath("(//input[@name='documentFileData'])[2]")).clear();
-            driver.findElement(By.xpath("(//input[@name='documentFileData'])[2]")).sendKeys("C:\\Users\\gaurav.arora\\Desktop\\Master_Obligation_Salil (2) latest.xlsx");
-        	//WebElement file_input = driver.findElement(By.xpath(".//*[@id='elem_41_']/div[1]/button"));
-        	//file_input.sendKeys("C:\\Users\\gaurav.arora\\Desktop\\Master_Obligation_Salil (2) latest.xlsx");
-        }
-       
+        
+        
+        
+        
+        
+        
 
 //      driver.findElement(By.name("startDate")).click();
 //      //WebElement fromDate_datePicker=driver.findElement(By.xpath(".//*[@id='dp1430214695387']"));
@@ -385,66 +690,33 @@ public class ObligationAuditLog extends TestSuiteBaseExisting{
 //              Thread.sleep(5000); 
                // getObject("ob_savebutton").click();
               //.sleep(2000);
-                driver.findElement(By.xpath("//button[contains(.,'Save')]")).click();
+        		
+        
+        driver.findElement(By.xpath("//button[contains(.,'Update')]")).click();
                
-                String ob_id = getObject("ob_popup_id").getText();
-                
-                APP_LOGS.debug("Obligation created successfully with Obligation id " + ob_id);
-
-                getObject("ob_popup_ok_button").click();
-
-                APP_LOGS.debug("Quick Search the created action with Obligation id " + ob_id);
-
-                getObject("quick_search_textbox").sendKeys(ob_id);
-                //getObject("quick_search_textbox").sendKeys("AC01001"); // created for testing
-                getObject("quick_search_textbox").sendKeys(Keys.ENTER);
+//                String ob_id = getObject("ob_popup_id").getText();
+//                
+//                APP_LOGS.debug("Obligation updated successfully with Obligation id " + ob_id);
+//
+//                getObject("ob_popup_ok_button").click();
+//
+//                APP_LOGS.debug("Quick Search the created action with Obligation id " + ob_id);
+//                getObject("quick_search_textbox").clear();
+//                getObject("quick_search_textbox").sendKeys(ob_id);
+//                //getObject("quick_search_textbox").sendKeys("AC01001"); // created for testing
+//                getObject("quick_search_textbox").sendKeys(Keys.ENTER);
 //                String obIdFromShowPage = getObject("ob_show_id").getText();
 //
 //                Assert.assertEquals(obIdFromShowPage, ob_id);
 //
-//                APP_LOGS.debug("Obligation show page open successfully with action id " + ob_id);
-//                
-                Thread.sleep(5000);
-                driver.findElement(By.xpath("//a[contains(.,'AUDIT LOG')]")).click();
-               
-               
-//                boolean present;
-//                try {
-//                   driver.findElement(By.id("logoutLink"));
-//                   present = true;
-//                } catch (NoSuchElementException e) {
-//                   present = false;
-//                }
-                
-                String requestedByName=driver.findElement(By.xpath(".//*[@id='329']/tbody/tr/td[1]/a")).getText();
-                   System.out.println(obRequestedBy);
-//                
-              if(requestedByName.equalsIgnoreCase(obRequestedBy))
-                {
-                	System.out.println("Document Name: "+ requestedByName +" in communication tab and "+ "File Name that we have uploaded in communication section i.e " + obRequestedBy +" are same");
-                }
-//              
-//              	String commentTrigger=driver.findElement(By.xpath(".//*[@id='329']/tbody/tr/td[2]")).getText();
-//              	System.out.println(commentName);
-//              	if(commentName.equalsIgnoreCase(obComment))
-//              	{
-//              		System.out.println("Comment Name: "+ commentName +" in communication tab and "+ "Comment that we have entered in communication section i.e " + obComment +" are same");
-//              	}
-             /*   String obTitle, String obDescription, String  obPerformanceType, String  obCategory, String obTimezone, 
-                String obDeliveryCountries, String    obCurrency, String obSupplierAccess, String   obTier, String obPriority, String obPhase, String    obTriggered, 
-                String    obReference, String    obClause, String   obPageNumber, String   obFrequencyType, String    obFrequency, String    obWeekType, 
-                String obStartDateDate, String    obStartDateMonth, String   obStartDateYear, 
-                String    obEndDateDate, String  obEndDateMonth, String obEndDateYear, 
-                String  obIncludeStartDate, String obIncludeEndDate, 
-                String   obPatternDateDate, String  obPatternDateMonth, String obPatternDateYear, 
-                String  obEffectiveDateDate, String    obEffectiveDateMonth, String   obEffectiveDateYear, 
-                String    obResponsibity, String obFinancialImpactApplicable, String    obCreditImpactApplicable  */
+//                APP_LOGS.debug("Obligation show page open successfully with obligation id " + ob_id);
                 
                 
 //                String OBTitleShowPage= getObject("ob_title_show").getText();
 //                try
 //                {
 //                Assert.assertEquals(OBTitleShowPage, obTitle ,"OB Title is= " +OBTitleShowPage +"instead of" + obTitle);
+//                System.out.println("OB Title is= "+OBTitleShowPage + " same as " + obTitle);
 //                }
 //                catch(Throwable e)
 //                {
@@ -455,6 +727,7 @@ public class ObligationAuditLog extends TestSuiteBaseExisting{
 //                try
 //                {
 //                Assert.assertEquals(OBDescriptionShowPage, obDescription ,"OB Description is= " +OBDescriptionShowPage +"instead of" + obDescription);
+//                System.out.println("OB Description is= "+OBDescriptionShowPage +" same as " + obDescription);
 //                }
 //                catch(Throwable e)
 //                {
@@ -466,6 +739,7 @@ public class ObligationAuditLog extends TestSuiteBaseExisting{
 //                try
 //                {
 //                Assert.assertEquals(OBPerformanceTypeShowPage, obPerformanceType ,"OB Performance Type is= " +OBPerformanceTypeShowPage +"instead of" + obPerformanceType);
+//                System.out.println("OB Performance Type is= "+OBPerformanceTypeShowPage +" same as " + obPerformanceType);
 //                }
 //                catch(Throwable e)
 //                {
@@ -476,6 +750,7 @@ public class ObligationAuditLog extends TestSuiteBaseExisting{
 //                try
 //                {
 //                Assert.assertEquals(OBCategoryShowPage, obCategory ,"OB Category is= " +OBCategoryShowPage +"instead of" + obCategory);
+//                System.out.println("OB Catefory is= "+OBCategoryShowPage +" same as " + obCategory);
 //                }
 //                catch(Throwable e)
 //                {
@@ -669,21 +944,22 @@ public class ObligationAuditLog extends TestSuiteBaseExisting{
 //                {
 //              	  System.out.println("OB Financial Impact Applicable is= "+OBFinancialImpactShowPage +"instead of" + obFinancialImpactApplicable);
 //                }
-                
-                
- // need to put the above code in obligation workflow after publish task because in update page assertion gives problem i.e. 
-                // On update page some fields become non editable and some remains editable thus we are moving all the assertion from update file and even also from create file 
-                // to only workflow file [However it is still unknown that after publish all fields become non editable]
-                
-             // this executes if assertion passes
+//                
+//                
+//              
+//                
+                fail = false; // this executes if assertion passes
+//
+//                // driver.findElement(By.xpath(".//*[@id='h-analytics']/a")).click();
+//                getObject("analytics_link").click();
+//                getObject("contract_quick_link").click();
+        
+        
 
-                // driver.findElement(By.xpath(".//*[@id='h-analytics']/a")).click();
-              
-            getObject("analytics_link").click();
-            fail = false;
-                //driver.findElement(By.xpath("//a[contains(.,'COMMUNICATION')]")).click();
-                
-               
+                // need to put the above code in obligation workflow after publish task because in update page assertion gives problem i.e. 
+              // On update page some fields become non editable and some remains editable thus we are moving all the assertion from update file and even also from create file 
+              // to only workflow file [However it is still unknown that after publish all fields become non editable]
+                               
         
     }
     
@@ -718,4 +994,7 @@ public class ObligationAuditLog extends TestSuiteBaseExisting{
         return TestUtil.getData(obligation_suite_xls, this.getClass().getSimpleName()) ;
     }
 
+	
+	
+	
 }

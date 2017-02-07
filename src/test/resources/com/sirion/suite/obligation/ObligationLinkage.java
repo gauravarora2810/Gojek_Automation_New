@@ -19,7 +19,7 @@ import org.testng.annotations.Test;
 import test.resources.com.sirion.util.TestUtil;
 
 
-public class ObligationLinkage extends TestSuiteBase
+public class ObligationLinkage extends TestSuiteBaseExisting
 
 
 {
