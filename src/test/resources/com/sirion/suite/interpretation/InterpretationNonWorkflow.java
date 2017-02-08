@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 
 import test.resources.com.sirion.util.TestUtil;
 
-public class InterpretationNonWorkflow extends TestSuiteBase {
+public class InterpretationNonWorkflow extends TestSuiteBaseExisting {
   String runmodes[] = null;
   static int count = -1;
   // static boolean pass=false;

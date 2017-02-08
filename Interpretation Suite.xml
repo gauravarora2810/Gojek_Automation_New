@@ -4,73 +4,73 @@
 
 
 
-<test name="Interpretation Listing Test">
+<!-- <test name="Interpretation Listing Test">
     <classes>
-        <class name="com.sirion.suite.interpretation.InterpretationListing" ></class>  
+        <class name="test.resources.com.sirion.suite.interpretation.InterpretationListing" ></class>  
     </classes>
 </test>
 
 <test name="Open Interpretation from Listing Test">
     <classes>
-        <class name="com.sirion.suite.interpretation.OpenInterpretationFromListing" ></class> 
+        <class name="test.resources.com.sirion.suite.interpretation.OpenInterpretationFromListing" ></class> 
     </classes>
-</test>
+</test> -->
 
 <test name="Interpretation Creation Test">
     <classes>
-        <class name="com.sirion.suite.interpretation.InterpretationCreation" ></class> 
+        <class name="test.resources.com.sirion.suite.interpretation.InterpretationCreation" ></class> 
     </classes>
 </test>
 
 
-
+<!-- 
 <test name="Action Creation Test">
     <classes>
-        <class name="com.sirion.suite.interpretation.ActionCreation" ></class> 
+        <class name="test.resources.com.sirion.suite.interpretation.ActionCreation" ></class> 
     </classes>
 </test>
 
 <test name="Issue Creation Test">
     <classes>
-        <class name="com.sirion.suite.interpretation.IssueCreation" ></class> 
+        <class name="test.resources.com.sirion.suite.interpretation.IssueCreation" ></class> 
     </classes>
 </test>
 
 
 <test name="CR Creation Test">
     <classes>
-        <class name="com.sirion.suite.interpretation.ChangeRequestCreation" ></class> 
+        <class name="test.resources.com.sirion.suite.interpretation.ChangeRequestCreation" ></class> 
     </classes>
 </test>
+ -->
+
+
+
+
+
+<test name="Interpretation Workflow Non workflow Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.interpretation.IPWorkflowNonWorkflow" ></class> 
+    </classes>
+</test>
+
+
+
 
 
 
 
 <test name="Interpretation updation Test">
     <classes>
-        <class name="com.sirion.suite.interpretation.InterpretationUpdate" ></class> 
+        <class name="test.resources.com.sirion.suite.interpretation.InterpretationUpdate" ></class> 
     </classes>
 </test>
 
 
-<test name="Interpretation Workflow Test">
-    <classes>
-        <class name="com.sirion.suite.interpretation.InterpretationWorkflow" ></class> 
-    </classes>
-</test>
-
-
-<test name="Interpretation Non Workflow Test">
-    <classes>
-        <class name="com.sirion.suite.interpretation.InterpretationNonWorkflow" ></class> 
-    </classes>
-</test>
-
-
-
+<!-- 
 <test name="Interpretation Audit Log Test">
     <classes>
-        <class name="com.sirion.suite.interpretation.InterpretationAuditLog" ></class> 
+        <class name="test.resources.com.sirion.suite.interpretation.InterpretationAuditLog" ></class> 
     </classes>
 </test>
 
@@ -78,23 +78,23 @@
 
 <test name="Interpretation Communication Test">
     <classes>
-        <class name="com.sirion.suite.interpretation.InterpretationCommunication" ></class> 
+        <class name="test.resources.com.sirion.suite.interpretation.InterpretationCommunication" ></class> 
     </classes>
 </test>
 
 
 <test name="Interpretation Reference Test">
     <classes>
-        <class name="com.sirion.suite.interpretation.InterpretationReference" ></class> 
+        <class name="test.resources.com.sirion.suite.interpretation.InterpretationReference" ></class> 
     </classes>
 </test>
 
 <test name="Interpretation Deletion Test">
     <classes>
-        <class name="com.sirion.suite.interpretation.InterpretationDeletion" ></class> 
+        <class name="test.resources.com.sirion.suite.interpretation.InterpretationDeletion" ></class> 
     </classes>
 </test>
-
+ -->
 
 </suite>
 

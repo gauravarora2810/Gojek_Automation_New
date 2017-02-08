@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import test.resources.com.sirion.util.TestUtil;
 
-public class OpenInterpretationFromListing extends TestSuiteBase {
+public class OpenInterpretationFromListing extends TestSuiteBaseExisting {
   String runmodes[] = null;
   static int count = -1;
   // static boolean pass=false;

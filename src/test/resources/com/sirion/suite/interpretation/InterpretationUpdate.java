@@ -1,15 +1,11 @@
 package test.resources.com.sirion.suite.interpretation;
 
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-//import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -17,6 +13,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import test.resources.com.sirion.util.DatePicker;
 import test.resources.com.sirion.util.TestUtil;
 
 public class InterpretationUpdate extends TestSuiteBase {
@@ -70,37 +67,83 @@ public class InterpretationUpdate extends TestSuiteBase {
 		}
 
 		APP_LOGS.debug("Executing Test Case Interpretation Creation from Action");
+			openBrowser();
 
-		// Calling method for opening browser from TestBase.java file
-		openBrowser();
+				endUserLogin(CONFIG.getProperty("endUserURL"),CONFIG.getProperty("endUserUsername"),CONFIG.getProperty("endUserPassword"));
+				
+				Thread.sleep(10000);
+			    wait_in_report.until(ExpectedConditions.visibilityOf(getObject("int_quick_link")));
+			    getObject("int_quick_link").click(); // IP Quick Link Clicking
 
-		// Calling a method for login(at different platform) from TestBase.java
-		// file
-		endUserLogin(CONFIG.getProperty("endUserURL"),
-				CONFIG.getProperty("endUserUsername"),
-				CONFIG.getProperty("endUserPassword"));
+			   // driver.findElement(By.xpath("//*[@id='cr']/tbody/tr[@role='row']/td[contains(.,'"+ipTitle+"')]/preceding-sibling::td[1]/a")).click();
+			    
+			    
+			    Thread.sleep(10000);
+				getObject("ip_id_link").click();
+				Thread.sleep(10000);
 
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		WebDriverWait wait=new WebDriverWait(driver, 50);	
-		getObject("analytics_link").click();
-		getObject("int_quick_link").click(); // Interpretation Quick Link
-		Thread.sleep(20000);
-		//wait.until(ExpectedConditions.elementToBeClickable(getObject("int_id_link")));										// Clicking
-		getObject("int_id_link").click(); // Interpretation ID Clicking
-		//wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(".//button[contains(.,'Edit')]"))));	
-		
+				// Clicking the clone button
+				  System.out.println("gaurav");
+				   ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//button[contains(.,'Clone')]")));
+
+					driver.findElement(By.xpath("//button[contains(.,'Clone')]")).click();		
+				//getObject("ac_clone_button").click();
+				System.out.println("clicked the clone button");
+				driver.navigate().refresh();
+				
+				Thread.sleep(10000);
+
+				 ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//button[contains(.,'Clone')]")));
+
+					driver.findElement(By.xpath("//button[contains(.,'Clone')]")).click();		
+				//clicking the create action button after cloning
+				//Assert.assertNotNull(driver.findElement(By.xpath("ac_create_action")));
+				  System.out.println("gaurav");
+				  
+				  Thread.sleep(10000);
+				   ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath(".//button[contains(.,'Submit')][@clientvalidation='true']")));
+				   driver.findElement(By.xpath(".//button[contains(.,'Submit')][@clientvalidation='true']")).click();
+					   System.out.println("arora");
+					Thread.sleep(10000);
+
+				
+			  /*  if(getObject("ob_popup_id")!=null) {
+			    	String ob_id = getObject("ob_popup_id").getText();
+			    	APP_LOGS.debug("Service Level cloned successfully with Service Level id "+ob_id);
+			    	
+			    	getObject("ob_popup_id").click();
+			    	Thread.sleep(5000);
+			    	}*/
+			    
+			    if (getObject("ob_popup_id") != null) {
+
+					String ob_id = getObject("ob_popup_id").getText();
+					APP_LOGS.debug("Action Cloned successfully with Issue id "+ ob_id);
+
+					//Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'OK')]")));
+					driver.findElement(By.xpath("//button[contains(.,'OK')]")).click();
+					Thread.sleep(10000);
+
+					APP_LOGS.debug("Quick Search the created OB with OB id "+ ob_id);
+
+					getObject("quick_search_textbox").sendKeys(ob_id);
+
+					getObject("quick_search_textbox").sendKeys(Keys.ENTER);
+					Thread.sleep(10000);
+
+					String ipIdFromShowPage = getObject("ip_show_id").getText();
+					System.out.println("OB Id " + ipIdFromShowPage);
+
+				}
+		        
+			    
+			    
 		Thread.sleep(10000);
-		driver.findElement(By.xpath(".//button[contains(.,'Edit')]")).click(); 
+		getObject("ip_edit_button").click(); 
 
-		
 		if (!ipTitle.equalsIgnoreCase("")) {
 			getObject("ip_title_textbox").clear();
 			getObject("ip_title_textbox").sendKeys(ipTitle);
-		}
-
-		if (!ipAreaofDisagreement.equalsIgnoreCase("")) {
-			getObject("ip_area_textarea").clear();
-			getObject("ip_area_textarea").sendKeys(ipAreaofDisagreement);
 		}
 
 		if (!ipBackground.equalsIgnoreCase("")) {
@@ -153,62 +196,40 @@ public class InterpretationUpdate extends TestSuiteBase {
 		
 		Thread.sleep(10000);
 		
-		Date date = new Date();
+		
+		if (!ipRequestedDateMonth.equalsIgnoreCase("")) {
+			//Requested Date
+			String RequestedDateMonth = convertDoubleToIntegerInStringForm(ipRequestedDateMonth);
+			int RequesteddateMonth = Integer.parseInt(RequestedDateMonth);
+			String RequestedDateYear = convertDoubleToIntegerInStringForm(ipRequestedDateYear);
+			int RequesteddateYear = Integer.parseInt(RequestedDateYear);
+			String RequestedDateDate = convertDoubleToIntegerInStringForm(ipRequestedDateDate);
+			Integer RequesteddateDate = Integer.parseInt(RequestedDateDate);
+			RequestedDateDate = RequesteddateDate.toString();
 
-	    int current_month = date.getMonth();
-	    new Actions(driver).moveToElement(driver.findElement(By.xpath("//input[contains(@name,'requestDate')]"))).click().perform();
-	   // driver.findElement(By.xpath("//input[contains(@name,'requestDate')]")).click();
-	    Double temp_actionRequestedOnYear_double = Double.parseDouble(ipRequestedDateYear);
-	    int temp_actionRequestedOnYear_int = temp_actionRequestedOnYear_double.intValue();
-	    String actionRequestedOnYear_string = Integer.toString(temp_actionRequestedOnYear_int);
+			DatePicker dp_Interpretation_Requested_Date_date = new DatePicker();
+			dp_Interpretation_Requested_Date_date.expDate = RequestedDateDate;
+			dp_Interpretation_Requested_Date_date.expMonth = RequesteddateMonth;
+			dp_Interpretation_Requested_Date_date.expYear = RequesteddateYear;
+			dp_Interpretation_Requested_Date_date.pickExpDate("requestDate");   
+			}
+		
+		if (!ipPlannedSubmissionDateMonth.equalsIgnoreCase("")){
+		//Planned Submission Date
+				String PlannedSubmissionDateMonth = convertDoubleToIntegerInStringForm(ipPlannedSubmissionDateMonth);
+				int PlannedSubmissiondateMonth = Integer.parseInt(PlannedSubmissionDateMonth);
+				String PlannedSubmissionDateYear = convertDoubleToIntegerInStringForm(ipPlannedSubmissionDateYear);
+				int PlannedSubmissiondateYear = Integer.parseInt(PlannedSubmissionDateYear);
+				String PlannedSubmissionDateDate = convertDoubleToIntegerInStringForm(ipPlannedSubmissionDateDate);
+				Integer PlannedSubmissiondateDate = Integer.parseInt(PlannedSubmissionDateDate);
+				PlannedSubmissionDateDate = PlannedSubmissiondateDate.toString();
 
-	    WebElement datepicker_ui = driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']"));
-	    System.out.println(datepicker_ui.isDisplayed());
-	    if (datepicker_ui.isDisplayed() == true) {
-	      WebElement datepicker_ui_year = driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/div/select"));
-	      new Select(datepicker_ui_year).selectByVisibleText(actionRequestedOnYear_string);
-	    }
-
-	    Double temp_actionRequestedOnMonth_double = Double.parseDouble(ipRequestedDateMonth);
-	    int temp_actionRequestedOnMonth_int = temp_actionRequestedOnMonth_double.intValue();
-	    System.out.println(" ipRequestedDateMonth " + temp_actionRequestedOnMonth_int);
-
-	    int click2 = current_month - temp_actionRequestedOnMonth_int;
-	    System.out.println("click " + click2);
-	    for (; click2 >= 0; click2 = click2 - 1) {
-	      driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/a[1]/span")).click();
-	    }
-	    Double temp_actionRequestedOnDate_double = Double.parseDouble(ipRequestedDateDate);
-	    int temp_actionRequestedOnDate_int = temp_actionRequestedOnDate_double.intValue();
-	    String actionRequestedOnDate_string = Integer.toString(temp_actionRequestedOnDate_int);
-	    driver.findElement(By.linkText(actionRequestedOnDate_string)).click();
-	    new Actions(driver).moveToElement(driver.findElement(By.xpath("//input[@name='plannedSubmissionDate']"))).click().perform();
-	    //driver.findElement(By.xpath("//input[@name='plannedSubmissionDate']")).click();
-
-	    Double temp_actionDueDateYear_double = Double.parseDouble(ipPlannedSubmissionDateYear);
-	    int temp_actionDueDateYear_int = temp_actionDueDateYear_double.intValue();
-	    String actionDueDateYear_string = Integer.toString(temp_actionDueDateYear_int);
-
-	    System.out.println(datepicker_ui.isDisplayed());
-	    if (datepicker_ui.isDisplayed() == true) {
-	      WebElement datepicker_ui_year = driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/div/select"));
-	      new Select(datepicker_ui_year).selectByVisibleText(actionDueDateYear_string);
-	    }
-
-	    Double temp_actionDueDateMonth_double = Double.parseDouble(ipPlannedSubmissionDateMonth);
-	    int temp_actionDueDateMonth_int = temp_actionDueDateMonth_double.intValue();
-	    System.out.println(" actionDueDateMonth " + temp_actionDueDateMonth_int);
-
-	    int click3 = temp_actionDueDateMonth_int - current_month;
-	    System.out.println("click " + click3);
-	    for (; click3 > 0; click3 = click3 - 1) {
-	      driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/a[2]/span")).click();
-	    }
-	    Double temp_actionDueDateDate_double = Double.parseDouble(ipPlannedSubmissionDateDate);
-	    int temp_actionDueDateDate_int = temp_actionDueDateDate_double.intValue();
-	    String actionDueDateDate_string = Integer.toString(temp_actionDueDateDate_int);
-	    driver.findElement(By.linkText(actionDueDateDate_string)).click();
-
+				DatePicker dp_Interpretation_PlannedSubmission_Date_date = new DatePicker();
+				dp_Interpretation_PlannedSubmission_Date_date.expDate = PlannedSubmissionDateDate;
+				dp_Interpretation_PlannedSubmission_Date_date.expMonth = PlannedSubmissiondateMonth;
+				dp_Interpretation_PlannedSubmission_Date_date.expYear = PlannedSubmissiondateYear;
+				dp_Interpretation_PlannedSubmission_Date_date.pickExpDate("plannedSubmissionDate");  
+		}
 		if (!ipComment.equalsIgnoreCase("")) {
 			getObject("ip_Comment_text_area").clear();
 			getObject("ip_Comment_text_area").sendKeys(ipComment);
@@ -222,107 +243,60 @@ public class InterpretationUpdate extends TestSuiteBase {
 			new Select(getObject("ip_change_request_dropdown")).selectByVisibleText(ipChangeRequest);
 		}
 
-		/*if (!ipActualDateYear.equalsIgnoreCase("") && !ipActualDateMonth.equalsIgnoreCase("") && !ipActualDateDate.equalsIgnoreCase("")) {
-			driver.findElement(By.name("actualDate")).click();
-			Double temp_ipActualDateYear_double = Double.parseDouble(ipActualDateYear);
-			int temp_ipActualDateYear_int = temp_ipActualDateYear_double.intValue();
-			String ipActualDateYear_string = Integer.toString(temp_ipActualDateYear_int);
+		/*//Actual Date
+				String ActualDateMonth = convertDoubleToIntegerInStringForm(ipActualDateMonth);
+				int ActualdateMonth = Integer.parseInt(ActualDateMonth);
+				String ActualDateYear = convertDoubleToIntegerInStringForm(ipActualDateYear);
+				int ActualdateYear = Integer.parseInt(ActualDateYear);
+				String ActualDateDate = convertDoubleToIntegerInStringForm(ipActualDateDate);
+				Integer ActualdateDate = Integer.parseInt(ActualDateDate);
+				ActualDateDate = ActualdateDate.toString();
 
-			WebElement datepicker_ui11 = driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']"));
-			System.out.println(datepicker_ui11.isDisplayed());
-			if (datepicker_ui11.isDisplayed() == true) {
-				WebElement datepicker_ui_year = driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/div/select"));
-				new Select(datepicker_ui_year).selectByVisibleText(ipActualDateYear_string);
-			}
-
-			Double temp_ipActualDateMonth_double = Double.parseDouble(ipActualDateMonth);
-			int temp_ipActualDateMonth_int = temp_ipActualDateMonth_double.intValue();
-			System.out.println(" ipActualDateMonth "+ temp_ipActualDateMonth_int);
-
-			int click_ipActualDateMonth = current_month- temp_ipActualDateMonth_int;
-			System.out.println("click " + click_ipActualDateMonth);
-			for (; click_ipActualDateMonth >= 0; click_ipActualDateMonth = click_ipActualDateMonth - 1) {
-				driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/a[1]/span")).click();
-			}
-			Double temp_ipActualDateDate_double = Double.parseDouble(ipActualDateDate);
-			int temp_ipActualDateDate_int = temp_ipActualDateDate_double.intValue();
-			String ipActualDateDate_string = Integer.toString(temp_ipActualDateDate_int);
-			driver.findElement(By.linkText(ipActualDateDate_string)).click();
-
+				DatePicker dp_Interpretation_Actual_Date_date = new DatePicker();
+				dp_Interpretation_Actual_Date_date.expDate = ActualDateDate;
+				dp_Interpretation_Actual_Date_date.expMonth = ActualdateMonth;
+				dp_Interpretation_Actual_Date_date.expYear = ActualdateYear;
+				dp_Interpretation_Actual_Date_date.pickExpDate("actualDate");  
+*/
+		/*if (!ipUploadedFile.equalsIgnoreCase("")) {
+			getObject("ip_browse_button").sendKeys((System.getProperty("user.dir")+ "\\Communication Documents\\Issues\\" + ipUploadedFile));
 		}*/
 
-		if (!ipUploadedFile.equalsIgnoreCase("")) {
-			getObject("ip_browse_button").sendKeys((System.getProperty("user.dir")+ "\\Communication Documents\\Issues\\" + ipUploadedFile));
-		}
-
+		
+Thread.sleep(10000);
+((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath(".//button[contains(.,'Update')]")));
+driver.findElement(By.xpath(".//button[contains(.,'Update')]")).click();
+	  
 		
 
-		driver.findElement(By.xpath(".//button[contains(.,'Update')]")).click();
-
-		Thread.sleep(5000);
-
-		try {
-			if (driver.findElement(By.className("success-icon")).getText().contains("Either you do not have the required permissions or requested page does not exist anymore.")) {
-				driver.findElement(By.xpath(".//button[contains(.,'OK')]")).click();
-				Thread.sleep(40000);
-			}
-
-		} catch (Exception e) {
-
-			String ip_id = getObject("ip_show_id").getText();
-			
-			System.out.println(ip_id);
-
-			getObject("quick_search_textbox").sendKeys(ip_id);
-
-			getObject("quick_search_textbox").sendKeys(Keys.ENTER);
-
-			Thread.sleep(5000);
-
-		}
-
-		try {
-			if (driver.findElement(By.className("success-icon")).getText().contains("Either you do not have the required permissions or requested page does not exist anymore.")) {
-				driver.findElement(By.xpath(".//button[contains(.,'OK')]")).click();
-				Thread.sleep(40000);
-			}
-
-		} catch (Exception e) {
-
-		}
-
+		
 		fail = false; // this executes if assertion passes
 
 		// App Log Commented down
-		
+		Thread.sleep(10000);
 		getObject("analytics_link").click();
 
-	}
-
-	
-
-	
 	// App log commented down and placed here
-	/*
-	 * APP_LOGS.debug(
-	 * "IP open successfully, following parameters have been validated: IP Title-- "
-	 * + ipTitle + ", IP TimeZone -- " + ipTimezone + ", IP Type -- " + ipType +
-	 * ", " + "IP Priority  -- " + ipPriority + ", IP Id-- " + ", IP Status-- "
-	 * + ipStatus + ", IP Supplier Access -- " + ipSupplierAccess + ", " +
-	 * "IP Tier -- " + ipTier + ", IP Depenndent Entity -- " + ipDependentEntity
-	 * + ", IP Function -- " + ipFunction + ", IP Services -- " + ipService +
-	 * ", IP Contract Regions -- " + ipRegion + ", IP Contract Countries -- " +
-	 * ipCountry + ", IP Area of Disagreement -- " + ipAreaofDisagreement +
-	 * ",IP Background -- " + ipBackground + ",IP Include in FAQ -- " +
-	 * ipIncludeInFAQ + ", IP Planned Submission Date Date -- " +
-	 * ipPlannedSubmissionDateDate + " , IP Planned Submission Date Month-- " +
-	 * ipPlannedSubmissionDateMonth + ", IP Planned Submission Date Year  -- " +
-	 * ipPlannedSubmissionDateYear + ", IP Question--" + ipQuestion +
-	 * ", IP Requested Date Date--" + ipRequestedDateDate +
-	 * ", IP Requested Date Month--" + ipRequestedDateMonth +
-	 * ", IP Requested Date Year--" + ipRequestedDateYear);
-	 */
 	
+	  APP_LOGS.debug(
+	  "IP open successfully, following parameters have been validated: IP Title-- "
+	  + ipTitle + ", IP TimeZone -- " + ipTimezone + ", IP Type -- " + ipType +
+	  ", " + "IP Priority  -- " + ipPriority + ", IP Id-- " + ", IP Status-- "
+	  + ipStatus + ", IP Supplier Access -- " + ipSupplierAccess + ", " +
+	  "IP Tier -- " + ipTier + ", IP Depenndent Entity -- " + ipDependentEntity
+	  + ", IP Function -- " + ipFunction + ", IP Services -- " + ipService +
+	  ", IP Contract Regions -- " + ipRegion + ", IP Contract Countries -- " +
+	  ipCountry + ", IP Area of Disagreement -- " + ipAreaofDisagreement +
+	  ",IP Background -- " + ipBackground + ",IP Include in FAQ -- " +
+	  ipIncludeInFAQ + ", IP Planned Submission Date Date -- " +
+	  ipPlannedSubmissionDateDate + " , IP Planned Submission Date Month-- " +
+	  ipPlannedSubmissionDateMonth + ", IP Planned Submission Date Year  -- " +
+	  ipPlannedSubmissionDateYear + ", IP Question--" + ipQuestion +
+	  ", IP Requested Date Date--" + ipRequestedDateDate +
+	  ", IP Requested Date Month--" + ipRequestedDateMonth +
+	  ", IP Requested Date Year--" + ipRequestedDateYear);
+	 
+	}
 	
 	@AfterMethod
 	public void reportDataSetResult() {
