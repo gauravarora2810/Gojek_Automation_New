@@ -222,6 +222,7 @@ System.out.println("Hello contract");
 	        getObject("gb_include_startdate").click(); 
 	      }
 	      if (gbIncludeStartDate.equalsIgnoreCase("Yes")) {
+	    	  wait_in_report.until(ExpectedConditions.elementToBeClickable(getObject("gb_include_enddate")));
 	    	    getObject("gb_include_enddate").click(); 
 	    	  }
 

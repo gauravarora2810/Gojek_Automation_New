@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" parallel="none">
+<suite name="Suite" parallel="false">
   
     
     
@@ -23,8 +23,8 @@
    		
        <suite-file path="Obligation Suite.xml" />
     	<suite-file path="Governance Body Suite.xml" />
-    	<suite-file path="Purchase Order Suite.xml" />
-    	<!--  <suite-file path="Relation Suite.xml" />
+    	<!--	<suite-file path="Purchase Order Suite.xml" />
+      <suite-file path="Relation Suite.xml" />
     	<suite-file path="Supplier Suite.xml" />
     	<suite-file path="Contract Suite.xml" />
     	<suite-file path="SL Suite.xml" />

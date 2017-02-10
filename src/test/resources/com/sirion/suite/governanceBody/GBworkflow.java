@@ -58,7 +58,7 @@ public class GBworkflow extends TestSuiteBase {
 		
 		Thread.sleep(10000);
 		// Click analytics
-		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
+		wait_in_report.until(ExpectedConditions.elementToBeClickable(getObject("analytics_link")));
 		getObject("analytics_link").click();
 		
 		Thread.sleep(10000);

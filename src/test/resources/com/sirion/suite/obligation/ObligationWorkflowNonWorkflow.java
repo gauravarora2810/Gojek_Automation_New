@@ -77,14 +77,14 @@ public class ObligationWorkflowNonWorkflow extends TestSuiteBase {
 			driver.findElement(By.xpath("//button[contains(.,'Clone')]")).click();		
 		//getObject("ac_clone_button").click();
 		System.out.println("clicked the clone button");
-		Thread.sleep(10000);
+		Thread.sleep(20000);
 
 		//clicking the create action button after cloning
 		//Assert.assertNotNull(driver.findElement(By.xpath("ac_create_action")));
 		  System.out.println("gaurav");
-		   ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//button[contains(.,'Save')][@clientvalidation='true']")));
+		   ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath(".//*[@id='angularPopUpHtml']//button[contains(.,'Save')][@clientvalidation='true']")));
 		   System.out.println("kumar");
-			driver.findElement(By.xpath("//button[contains(.,'Save')][@clientvalidation='true']")).click();
+			driver.findElement(By.xpath(".//*[@id='angularPopUpHtml']//button[contains(.,'Save')][@clientvalidation='true']")).click();
 			   System.out.println("arora");
 			Thread.sleep(10000);
 
@@ -115,13 +115,14 @@ public class ObligationWorkflowNonWorkflow extends TestSuiteBase {
 
 			String obIdFromShowPage = getObject("ob_show_id").getText();
 			System.out.println("OB Id " + obIdFromShowPage);
-
+			Thread.sleep(10000);
 		}
         
         
         
         if(!Archive.equalsIgnoreCase(""))
 		{
+        	Thread.sleep(10000);
     	 wait_in_report.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(.,'Archive')]")));
     	 	Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Archive')]")));
     	 	driver.findElement(By.xpath("//button[contains(.,'Archive')]")).click();
