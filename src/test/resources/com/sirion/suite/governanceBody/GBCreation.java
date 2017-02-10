@@ -60,8 +60,13 @@ String gbEffectiveDateMonth, String gbEffectiveDateDate, String gbFunctions, Str
 	openBrowser();
 	System.out.println("Shipra");
 	endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
-    
-    Thread.sleep(5000);
+ 
+	Thread.sleep(10000);
+	// Click analytics
+	wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
+	getObject("analytics_link").click();
+	
+    Thread.sleep(10000);
  
 System.out.println("Hello contract");
     getObject("contract_quick_link").click();

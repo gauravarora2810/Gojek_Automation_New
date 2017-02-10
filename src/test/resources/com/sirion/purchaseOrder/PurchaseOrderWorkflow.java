@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
@@ -62,9 +63,16 @@ public class PurchaseOrderWorkflow extends TestSuiteBase {
 		endUserLogin(CONFIG.getProperty("endUserURL"),
 				CONFIG.getProperty("endUserUsername"),
 				CONFIG.getProperty("endUserPassword"));
-		Thread.sleep(5000);
 		
-			
+		
+		Thread.sleep(10000);
+		// Click analytics
+		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
+		getObject("analytics_link").click();
+
+
+		
+		Thread.sleep(10000);	
 		// Clicking the Purchase Order quick link
 		getObject("po_quick_link").click();
 		System.out.println("Clicked the purchase order quick link");

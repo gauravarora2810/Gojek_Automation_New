@@ -60,15 +60,15 @@ public class InterpretationCreation extends TestSuiteBase {
 		// Calling a method for login(at different platform) from TestBase.java file
 		endUserLogin(CONFIG.getProperty("endUserURL"),CONFIG.getProperty("endUserUsername"),CONFIG.getProperty("endUserPassword"));
 	
-		WebDriverWait wait=new WebDriverWait(driver, 50);
+		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
 		getObject("analytics_link").click();
  getObject("action_quick_link").click(); // IP Quick Link Clicking
  Thread.sleep(20000);
  //wait.until(ExpectedConditions.elementToBeClickable(getObject("ac_id_link")));
  getObject("ac_id_link").click(); 
- wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='mainContainer']/div/div[2]/a")));
+ wait_in_report.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='mainContainer']/div/div[2]/a")));
 	    plus_button("ac_plus_button_link"); // web element for plus button on supplier page
-	    wait.until(ExpectedConditions.elementToBeClickable(getObject("ip_create_link_from_ac")));
+	    wait_in_report.until(ExpectedConditions.elementToBeClickable(getObject("ip_create_link_from_ac")));
  getObject("ip_create_link_from_ac").click(); // click issue create link 
 
 
@@ -205,7 +205,7 @@ public class InterpretationCreation extends TestSuiteBase {
 
     APP_LOGS.debug("Interpretation show page open successfully with action id " + ip_id);
     fail = false; // this executes if assertion passes
-    getObject("analytics_link").click();
+   
     //getObject("supplier_quick_link").click();
 
   }

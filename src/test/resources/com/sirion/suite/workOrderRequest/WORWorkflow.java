@@ -66,28 +66,37 @@ public class WORWorkflow extends TestSuiteBase {
 				Thread.sleep(10000);
 				
 				//Click on analytics
+				wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
 				getObject("analytics_link").click();
 				
+				Thread.sleep(10000);
 				//Click WOR quick link
 				wait_in_report.until(ExpectedConditions.elementToBeClickable(getObject("wor_quick_link"))).click();
 		
 		
-		
+				Thread.sleep(10000);
 		
 	    getObject("wor_id_link").click();
 		
-		
-		//Clone WOR
-	    wait_in_report.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//button[contains(.,'Clone')]"))));
-		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Clone')]")));
-		driver.findElement(By.xpath("//button[contains(.,'Clone')]")).click();
-		
-		
-        
-		 wait_in_report.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//button[contains(.,'Submit')][@clientvalidation='true']"))));
-		 
+	    Thread.sleep(10000);
+		   System.out.println("gaurav");
+		   ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//button[contains(.,'Clone')]")));
+
+			driver.findElement(By.xpath("//button[contains(.,'Clone')]")).click();		
+		//getObject("ac_clone_button").click();
+		System.out.println("clicked the clone button");
+		Thread.sleep(10000);
+
+		//clicking the create action button after cloning
+		//Assert.assertNotNull(driver.findElement(By.xpath("ac_create_action")));
+		  System.out.println("gaurav");
+		   ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath(".//*[@id='angularPopUpHtml']//button[contains(.,'Submit')][@clientvalidation='true']")));
+		   System.out.println("kumar");
+			driver.findElement(By.xpath(".//*[@id='angularPopUpHtml']//button[contains(.,'Submit')][@clientvalidation='true']")).click();
+			   System.out.println("arora");
+			Thread.sleep(10000);
 		 //Add current user as stakeholder
-		 String Stakeholder =driver.findElement(By.xpath(".//*[@id='elem_100014']/div[1]/div/input[1]")).getText();
+/*		 String Stakeholder =driver.findElement(By.xpath(".//*[@id='elem_100014']/div[1]/div/input[1]")).getText();
 		 System.out.println(Stakeholder);
 		 String Username=driver.findElement(By.xpath(".//*[@id='headerNavbar']/div[2]/div[3]")).getText();
 		 System.out.println(Username);
@@ -96,10 +105,10 @@ public class WORWorkflow extends TestSuiteBase {
 			 
 			 WebElement Stakeholder1=driver.findElement(By.xpath(".//*[@id='elem_100014']/div[1]/input[1]"));
 			 Stakeholder1.sendKeys(Username);
-		 }
+		 }*/
 		 
 		 
-		driver.findElement(By.xpath("//button[contains(.,'Submit')][@clientvalidation='true']")).click();
+		//driver.findElement(By.xpath("//button[contains(.,'Submit')][@clientvalidation='true']")).click();
 		
         
         

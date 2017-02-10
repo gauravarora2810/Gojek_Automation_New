@@ -12,6 +12,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import test.resources.com.sirion.util.DatePicker;
 import test.resources.com.sirion.util.TestUtil;
 
@@ -67,6 +68,11 @@ public class InterpretationCreation extends TestSuiteBase {
 
 		// Calling a method for login(at different platform) from TestBase.java file
 		endUserLogin(CONFIG.getProperty("endUserURL"),CONFIG.getProperty("endUserUsername"),CONFIG.getProperty("endUserPassword"));
+		
+		Thread.sleep(10000);
+		// Click analytics
+		wait_in_report.until(ExpectedConditions.visibilityOf(getObject("analytics_link")));
+		getObject("analytics_link").click();
 		
 		Thread.sleep(10000);
 	    wait_in_report.until(ExpectedConditions.visibilityOf(getObject("int_quick_link")));
@@ -284,7 +290,7 @@ public class InterpretationCreation extends TestSuiteBase {
 			  System.out.println("IP Include In Faq is -- " +IPIncludeInFaqShowPage+
 			  " instead of -- " +ipIncludeInFAQ); }
 			  
-			  String IPFunctionsShowPage= getObject("ip_functions_show").getText(); try
+			  /*String IPFunctionsShowPage= getObject("ip_functions_show").getText(); try
 			  { Assert.assertEquals(IPFunctionsShowPage, ipFunction,
 			  "IP Functions are== "+IPFunctionsShowPage +"instead of" + ipFunction); }
 			  catch(Throwable e) {
@@ -310,7 +316,7 @@ public class InterpretationCreation extends TestSuiteBase {
 			  "IP Countries are== "+IPCountriesShowPage +"instead of" + ipCountry); }
 			  catch(Throwable e) {
 			  System.out.println("IP Countries are== "+IPCountriesShowPage
-			  +"instead of" + ipCountry); }
+			  +"instead of" + ipCountry); }*/
 			 
 				// App logs comment shifted down- comment put at its place
 						

@@ -82,10 +82,18 @@ public class ChangeRequestUpdate extends TestSuiteBase {
 		endUserLogin(CONFIG.getProperty("endUserURL"),
 				CONFIG.getProperty("endUserUsername"),
 				CONFIG.getProperty("endUserPassword"));
+		
+		
+		Thread.sleep(10000);
+		// Click analytics
+		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
+		getObject("analytics_link").click();
+		
 		Thread.sleep(10000);
 		// Click analytics
 		//wait_in_report.until(ExpectedConditions.elementToBeClickable(getObject("analytics_link"))).click();
 
+		
 		// Click CR Quick Link
 		getObject("cr_quick_link").click();
 

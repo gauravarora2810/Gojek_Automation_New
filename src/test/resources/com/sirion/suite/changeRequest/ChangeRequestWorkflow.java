@@ -70,7 +70,7 @@ public class ChangeRequestWorkflow extends TestSuiteBase {
 				CONFIG.getProperty("endUserUsername"),
 				CONFIG.getProperty("endUserPassword"));
 
-		// Click analytics link
+		/*// Click analytics link
 		Thread.sleep(10000);
 		//((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", getObject("analytics_link"));
 //wait_in_report.until(ExpectedConditions.elementToBeClickable(getObject("analytics_link"))).click();
@@ -96,9 +96,9 @@ getObject("analytics_link").click();
 		wait_in_report.until(
 				ExpectedConditions
 						.elementToBeClickable(driver.findElement(By.xpath("//button[contains(.,'Save')][@clientvalidation='true']")))).click();
-		/*// Saving cloned CR
+		// Saving cloned CR
 		Assert.assertNotNull(getObject("cr_save_button"));
-		getObject("cr_save_button").click();*/
+		getObject("cr_save_button").click();
 
 		wait_in_report.until(
 				ExpectedConditions
@@ -130,7 +130,97 @@ getObject("analytics_link").click();
 			String crIdFromShowPage = getObject("cr_show_page_id").getText();
 			System.out.println("Action Id " + crIdFromShowPage);
 
+		}*/
+		
+		
+
+		Thread.sleep(10000);
+		// Click analytics
+		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
+		getObject("analytics_link").click();
+
+
+		
+		Thread.sleep(10000);
+		wait_in_report.until(ExpectedConditions.elementToBeClickable(getObject("cr_quick_link")));
+		
+        getObject("cr_quick_link").click();
+        APP_LOGS.debug("Click on Obligations Quick Link");
+        
+		Thread.sleep(10000);
+		getObject("cr_id_link").click();
+		Thread.sleep(10000);
+
+		// Clicking the clone button
+		  System.out.println("gaurav");
+		   ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//button[contains(.,'Clone')]")));
+
+			driver.findElement(By.xpath("//button[contains(.,'Clone')]")).click();		
+		//getObject("ac_clone_button").click();
+		System.out.println("clicked the clone button");
+		Thread.sleep(10000);
+
+		//clicking the create action button after cloning
+		//Assert.assertNotNull(driver.findElement(By.xpath("ac_create_action")));
+		  System.out.println("gaurav");
+		   ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//button[contains(.,'Save')][@clientvalidation='true']")));
+		   System.out.println("kumar");
+			driver.findElement(By.xpath("//button[contains(.,'Save')][@clientvalidation='true']")).click();
+			   System.out.println("arora");
+			Thread.sleep(10000);
+
+		
+	  /*  if(getObject("ob_popup_id")!=null) {
+	    	String ob_id = getObject("ob_popup_id").getText();
+	    	APP_LOGS.debug("Service Level cloned successfully with Service Level id "+ob_id);
+	    	
+	    	getObject("ob_popup_id").click();
+	    	Thread.sleep(5000);
+	    	}*/
+	    
+	    if (getObject("cr_popup_id") != null) {
+
+			String cr_id = getObject("cr_popup_id").getText();
+			APP_LOGS.debug("CR Cloned successfully with Issue id "+ cr_id);
+
+			//Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'OK')]")));
+			driver.findElement(By.xpath("//button[contains(.,'OK')]")).click();
+			Thread.sleep(10000);
+
+			APP_LOGS.debug("Quick Search the created CR with CR id "+ cr_id);
+
+			getObject("quick_search_textbox").sendKeys(cr_id);
+
+			getObject("quick_search_textbox").sendKeys(Keys.ENTER);
+			Thread.sleep(10000);
+
+			String crIdFromShowPage = getObject("cr_show_page_id").getText();
+			System.out.println("CR Id " + crIdFromShowPage);
+
 		}
+        
+        
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		Thread.sleep(10000);
 		// Click on Submit button
 		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Submit')]")));

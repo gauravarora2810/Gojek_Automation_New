@@ -51,6 +51,13 @@ public class WORListing extends TestSuiteBase {
 				
 		openBrowser();
 		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
+		
+		Thread.sleep(10000);
+		// Click analytics
+		getObject("analytics_link").click();
+
+
+		
 		getObject("wor_quick_link").click(); 
 		Thread.sleep(10000);
 		numberOfEntries = getObject("wor_entries_text").getText();

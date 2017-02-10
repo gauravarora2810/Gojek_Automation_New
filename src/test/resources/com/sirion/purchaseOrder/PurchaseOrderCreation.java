@@ -74,6 +74,7 @@ public class PurchaseOrderCreation extends TestSuiteBase  {
 					CONFIG.getProperty("endUserUsername"),
 					CONFIG.getProperty("endUserPassword"));
 			Thread.sleep(10000);
+			wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
 			getObject("analytics_link").click();
 			System.out.println("Clicked the analytics link");
 			Thread.sleep(8000);
@@ -109,6 +110,8 @@ public class PurchaseOrderCreation extends TestSuiteBase  {
 			System.out.println("Plus button is available now ");
 			plus_button("supplier_plus_button_link"); 
 			System.out.println("Clicked on the plus button");
+			
+			wait_in_report.until(ExpectedConditions.visibilityOf(getObject("create_purchase_order")));
 			
 			//clicking the create purchase order from the drop down
 			getObject("create_purchase_order").click();

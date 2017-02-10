@@ -79,6 +79,7 @@ public class WORCreation extends TestSuiteBase {
 
 		Thread.sleep(10000);
 		//Click on analytics
+		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
 		getObject("analytics_link").click();
 		
 		//Click WOR quick link

@@ -1,0 +1,46 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Action Suite">
+
+
+ <test name="CalendarContentControl Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.calenderTodo.CalendarContentControl" ></class> 
+    </classes>
+</test>
+ 
+
+  <test name="TODOApprovalContentControl Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.calenderTodo.TODOApprovalContentControl" ></class> 
+    </classes>
+</test>
+
+   <test name="TODOTasksContentControl Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.calenderTodo.TODOTasksContentControl" ></class> 
+    </classes>
+</test>
+
+   
+    <test name="TODOTaskDueDateContentControl Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.calenderTodo.TODOTaskDueDateContentControl" ></class> 
+    </classes>
+</test>
+
+    
+     <test name="EndUserCalendar Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.calenderTodo.EndUserCalendar" ></class> 
+    </classes>
+</test>
+
+      <test name="EndUserTodoApproval Test">
+    <classes>
+        <class name="test.resources.com.sirion.suite.calenderTodo.EndUserTodoApproval" ></class> 
+    </classes>
+</test>
+      
+
+</suite>
+

@@ -72,6 +72,10 @@ public class InterpretationUpdate extends TestSuiteBase {
 				endUserLogin(CONFIG.getProperty("endUserURL"),CONFIG.getProperty("endUserUsername"),CONFIG.getProperty("endUserPassword"));
 				
 				Thread.sleep(10000);
+				wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
+				getObject("analytics_link").click();
+				
+				Thread.sleep(10000);
 			    wait_in_report.until(ExpectedConditions.visibilityOf(getObject("int_quick_link")));
 			    getObject("int_quick_link").click(); // IP Quick Link Clicking
 
@@ -101,6 +105,7 @@ public class InterpretationUpdate extends TestSuiteBase {
 				  System.out.println("gaurav");
 				  
 				  Thread.sleep(10000);
+				  wait_in_report.until(ExpectedConditions.visibilityOf( driver.findElement(By.xpath(".//*[@id='angularPopUpHtml']//button[contains(.,'Submit')][@clientvalidation='true']"))));
 				   ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath(".//button[contains(.,'Submit')][@clientvalidation='true']")));
 				   driver.findElement(By.xpath(".//button[contains(.,'Submit')][@clientvalidation='true']")).click();
 					   System.out.println("arora");
@@ -263,9 +268,9 @@ public class InterpretationUpdate extends TestSuiteBase {
 		}*/
 
 		
-Thread.sleep(10000);
+Thread.sleep(15000);
 ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath(".//button[contains(.,'Update')]")));
-driver.findElement(By.xpath(".//button[contains(.,'Update')]")).click();
+driver.findElement(By.xpath(" //button[contains(.,'Update')][@clientvalidation='true']")).click();
 	  
 		
 
@@ -274,7 +279,7 @@ driver.findElement(By.xpath(".//button[contains(.,'Update')]")).click();
 
 		// App Log Commented down
 		Thread.sleep(10000);
-		getObject("analytics_link").click();
+		
 
 	// App log commented down and placed here
 	

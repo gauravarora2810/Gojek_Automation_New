@@ -1,13 +1,12 @@
 package test.resources.com.sirion.suite.childObligation;
 
 import org.testng.SkipException;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
 import test.resources.com.sirion.base.TestBase;
 import test.resources.com.sirion.util.TestUtil;
 
-public class TestSuiteBase extends TestBase{
+public class TestSuiteBaseExsiting extends TestBase{
     // check if the suite ex has to be skiped
 	@BeforeSuite
 	public void checkSuiteSkip() throws Exception{
@@ -18,12 +17,5 @@ public class TestSuiteBase extends TestBase{
 			throw new SkipException("Runmode of Child Obligation Suite set to no. So Skipping all tests in Suite");
 		}
 		
-	}
-	
-	
-	@AfterSuite
-	public void checkSuiteClosure()
-	{
-		closeBrowser();
 	}
 }

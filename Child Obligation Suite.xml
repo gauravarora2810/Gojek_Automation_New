@@ -2,38 +2,22 @@
 <suite name="Child Obligation Suite">
 
 
-    
-<!-- <test name="Issue Creation Test">
+    <test name="Child OB Update Test">
     <classes>
-        <class name="test.resources.com.sirion.suite.childObligation.IssueCreation" ></class>  
+        <class name="test.resources.com.sirion.suite.childObligation.ChildDNOUpdate" ></class>  
     </classes>
 </test>
 
-<test name="Action Creation Test">
-    
-     <groups>
-        <run>
-            <include name="linkage" />
-            <include name="ActionCreation" />
-            
-            
-        </run>
-    </groups>
+   
+   <test name="Child OB wf and Non wf Test">
     <classes>
-        <class name="test.resources.com.sirion.suite.childObligation.ActionCreation" >
-        <methods >
-            <include name="ActionCreation"></include>
-            <include name="checkTestSkip"></include>
-            
-        </methods>
-        
-        </class>  
+        <class name="test.resources.com.sirion.suite.childObligation.ChildObligationWFNonWF" ></class>  
     </classes>
-     
-</test> -->
+</test>
+    
+    
 
-
-<test name="Action Creation Test">
+<!-- <test name="Action Creation Test">
     <classes>
         <class name="test.resources.com.sirion.suite.childObligation.ActionCreation" ></class>  
     </classes>
@@ -83,7 +67,7 @@
     <classes>
         <class name="test.resources.com.sirion.suite.childObligation.ChildObligationListing" ></class>  
     </classes>
-</test>
+</test> -->
 
         
 </suite>

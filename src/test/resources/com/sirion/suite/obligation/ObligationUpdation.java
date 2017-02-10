@@ -64,11 +64,11 @@ public class ObligationUpdation extends TestSuiteBase {
 		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
 	
 		
-		
-		wait_in_report.until(ExpectedConditions.elementToBeClickable(getObject("client_user_analytics_tab_link")));
 		Thread.sleep(10000);
-		// Click on Analytics
-		getObject("client_user_analytics_tab_link").click();
+		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
+		
+		// Click analytics
+		getObject("analytics_link").click();
 		wait_in_report.until(ExpectedConditions.elementToBeClickable(getObject("obligation_quick_link")));
 		
 		// Click on Obligations Quick Link

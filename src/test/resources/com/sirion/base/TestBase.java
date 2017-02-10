@@ -95,11 +95,11 @@ public class TestBase{
 	public static Xls_Reader suite_productDisplay_xls = null;
 	public static Xls_Reader rc1_11_suite_xls = null;
 	public static Xls_Reader governance_body_suite_xls=null;
-
+	public static Xls_Reader calendar_suite_xls=null;
 	public static Hashtable<String, String> sessionData = new Hashtable<String, String>();
 
 	public static WebDriver driver = null;
-	public static WebDriverWait wait_in_report = null;
+	public WebDriverWait wait_in_report = null;
 
 	File path = new File("C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
 
@@ -130,7 +130,8 @@ public class TestBase{
 			user_admin_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Sirion User Admin Suite.xlsx");
 
 			client_admin_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Client Admin Suite.xlsx");
-
+			calendar_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Calendar Todo Suite.xlsx");
+			
 			relation_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Relation Suite.xlsx");
 			supplier_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Supplier Suite.xlsx");
 			contract_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Contract Suite.xlsx");
@@ -195,7 +196,13 @@ public class TestBase{
 	// Closing a Browser
 	public void closeBrowser() {
 		driver.quit();
+		isInitialized = false;
 		isBrowserOpened = false;
+		isSirionAdminLogin=false;
+		isClientSetupAdminLogin=false;
+		isClientAdminLogin=false;
+		isEndUserLogin=false;
+		isSirionUserAdminLogin=false;
 		}
 
 	// Returns Element Presence

@@ -65,6 +65,11 @@ public class ObligationCreation extends TestSuiteBase {
 		APP_LOGS.debug("Go to " + CONFIG.getProperty("endUserURL"));
 		APP_LOGS.debug("Login as Client User ("+ CONFIG.getProperty("endUserUsername") + "/"+ CONFIG.getProperty("endUserPassword") + ")");
 
+		Thread.sleep(10000);
+		// Click analytics
+		wait_in_report.until(ExpectedConditions.visibilityOf(getObject("analytics_link")));
+		getObject("analytics_link").click();
+		
 				// Condition Check for Global Creation
 		if (obGlobalCreation.equalsIgnoreCase("Yes")) {
 			wait_in_report.until(ExpectedConditions.visibilityOf(getObject("obligation_quick_link")));

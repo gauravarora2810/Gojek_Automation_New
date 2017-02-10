@@ -3,31 +3,69 @@
 <suite name="Suite" parallel="none">
   
     
-    <suite-files>
+    
+     <suite-files>
         <!-- <suite-file path="Sirion Admin Suite.xml" />  
          <suite-file path="Client Setup Admin Suite.xml" />
         <suite-file path="Sirion User Admin Suite.xml" />
         <suite-file path="Client Admin Suite.xml" /> 
-        <suite-file path="Dashboard Suite.xml" />-->
+        <suite-file path="Dashboard Suite.xml" /> 
+        
+        
+         <suite-file path="Action Suite.xml" />-->
+        
+         <suite-file path="Work Order Request Suite.xml" />
+         <suite-file path="Change Request Suite.xml" />
+       <suite-file path="Interpretation Suite.xml" />
+   		
        
-    	<suite-file path="Interpretation Suite.xml" />
-    	<!-- <suite-file path="Relation Suite.xml" />
+    	
+   		
+       <suite-file path="Obligation Suite.xml" />
+    	<suite-file path="Governance Body Suite.xml" />
+    	<suite-file path="Purchase Order Suite.xml" />
+    	<!--  <suite-file path="Relation Suite.xml" />
     	<suite-file path="Supplier Suite.xml" />
     	<suite-file path="Contract Suite.xml" />
-    	<suite-file path="Obligation Suite.xml" />-->
-    	<!--<suite-file path="SL Suite.xml" />
-    	<suite-file path="Action Suite.xml" />-->
-    	<!--<suite-file path="Issue Suite.xml" />
+    	<suite-file path="SL Suite.xml" />
     	
-    	<suite-file path="Change Request Suite.xml" />
+    	<suite-file path="Issue Suite.xml" />
+    	
+    	
     	
     	<suite-file path="Invoice Suite.xml" />
     	<suite-file path="Child Obligation Suite.xml" />
     	<suite-file path="Child SL Suite.xml" />
     	<suite-file path="Child SL Suite.xml" /> 
+    	 -->
+</suite-files>
+    
+   <!--  <suite-files>
+        <suite-file path="Sirion Admin Suite.xml" />  
+         <suite-file path="Client Setup Admin Suite.xml" />
+        <suite-file path="Sirion User Admin Suite.xml" />
+        <suite-file path="Client Admin Suite.xml" />
+        <suite-file path="Dashboard Suite.xml" /> 
+        <suite-file path="Calender Todo Suite.xml" />
+      
+    	<suite-file path="Interpretation Suite.xml" />
+    	<suite-file path="Relation Suite.xml" />
+    	<suite-file path="Supplier Suite.xml" />
+    	<suite-file path="Contract Suite.xml" />
+    	<suite-file path="Obligation Suite.xml" />
+    	 <suite-file path="Child Obligation Suite.xml" />
+    	<suite-file path="SL Suite.xml" />
+    	<suite-file path="Action Suite.xml" />
+    	<suite-file path="Issue Suite.xml" />
+    	
+    	<suite-file path="Change Request Suite.xml" />
+    	
+    	<suite-file path="Invoice Suite.xml" />
+    	<suite-file path="Child SL Suite.xml" />
+    	<suite-file path="Child SL Suite.xml" /> 
     	<suite-file path="Purchase Order Suite.xml" />
    		<suite-file path="Governance Body Suite.xml" />
-   		<suite-file path="Work Order Request Suite.xml" />-->
-</suite-files>
+   		<suite-file path="Work Order Request Suite.xml" />
+</suite-files> -->
     
 </suite> <!-- Suite -->

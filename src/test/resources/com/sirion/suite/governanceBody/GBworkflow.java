@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.SkipException;
@@ -40,7 +41,7 @@ public class GBworkflow extends TestSuiteBase {
     runmodes = TestUtil.getDataSetRunmodes(governance_body_suite_xls, this.getClass().getSimpleName());
   }
 
-  @Test 
+  @Test (dataProvider = "getTestData")
 	public void ContractListing() throws InterruptedException, ClassNotFoundException, SQLException
 			 {
 		// test the runmode of current dataset
@@ -54,6 +55,12 @@ public class GBworkflow extends TestSuiteBase {
 				
 		openBrowser();
 		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
+		
+		Thread.sleep(10000);
+		// Click analytics
+		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
+		getObject("analytics_link").click();
+		
 		Thread.sleep(10000);
 		getObject("gb_quick_link").click(); 
 		Thread.sleep(10000);
@@ -70,9 +77,9 @@ public class GBworkflow extends TestSuiteBase {
 		driver.findElement(By.xpath("//button[contains(.,'Clone')]")).click();
 		Thread.sleep(10000);
         
-		//Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Save')]")));
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//button[contains(.,'Save')][@clientvalidation='true']")));
-		driver.findElement(By.xpath("//button[contains(.,'Save')][@clientvalidation='true']")).click();
+		
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath(".//*[@id='angularPopUpHtml']//button[contains(.,'Save')][@clientvalidation='true']")));
+		driver.findElement(By.xpath(".//*[@id='angularPopUpHtml']//button[contains(.,'Save')][@clientvalidation='true']")).click();
 		Thread.sleep(10000);
 	    if(getObject("gb_popup_id")!=null){
 			
@@ -145,6 +152,8 @@ public class GBworkflow extends TestSuiteBase {
 	    	System.out.println("Governance Body " + gbIdFromShowPage);
 		
 		}
+	    
+	    fail=false;
 			 }
 		/*Thread.sleep(10000);
 		driver.findElement(By.xpath("//textarea[@name='processAreaImpacted']")).clear();

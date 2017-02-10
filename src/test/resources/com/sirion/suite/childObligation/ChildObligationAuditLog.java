@@ -17,7 +17,7 @@ import test.resources.com.sirion.util.TestUtil;
 
 
 
-public class ChildObligationAuditLog extends TestSuiteBase{
+public class ChildObligationAuditLog extends TestSuiteBaseExsiting{
     String runmodes[]=null;
     static int count=-1;
     //static boolean pass=false;
