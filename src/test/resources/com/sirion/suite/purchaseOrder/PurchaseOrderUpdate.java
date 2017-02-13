@@ -1,4 +1,4 @@
-package test.resources.com.sirion.purchaseOrder;
+package test.resources.com.sirion.suite.purchaseOrder;
 
 import java.util.Date;
 

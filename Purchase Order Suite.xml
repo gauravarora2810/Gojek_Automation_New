@@ -4,19 +4,19 @@
 
  <test name="Purchase Order Creation">
     <classes>
-        <class name="test.resources.com.sirion.purchaseOrder.PurchaseOrderCreation" ></class> 
+        <class name="test.resources.com.sirion.suite.purchaseOrder.PurchaseOrderCreation" ></class> 
     </classes>
 </test>
 
 <test name="Purchase Order Update">
     <classes>
-        <class name="test.resources.com.sirion.purchaseOrder.PurchaseOrderUpdate" ></class>  
+        <class name="test.resources.com.sirion.suite.purchaseOrder.PurchaseOrderUpdate" ></class>  
     </classes>
 </test>
 
 <test name="Purchase Order Workflow">
     <classes>
-        <class name="test.resources.com.sirion.purchaseOrder.PurchaseOrderWorkflow" ></class>  
+        <class name="test.resources.com.sirion.suite.purchaseOrder.PurchaseOrderWorkflow" ></class>  
     </classes>
 </test>
 

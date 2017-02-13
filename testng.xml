@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="false">
-  
+
     
+    
+    <listeners>
+      <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+      <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+     
+  </listeners>
     
      <suite-files>
         <!-- <suite-file path="Sirion Admin Suite.xml" />  
@@ -15,14 +21,14 @@
          <suite-file path="Action Suite.xml" />-->
         
          <suite-file path="Work Order Request Suite.xml" />
-         <suite-file path="Change Request Suite.xml" />
+         <!-- <suite-file path="Change Request Suite.xml" />
        <suite-file path="Interpretation Suite.xml" />
    		
        
     	
    		
        <suite-file path="Obligation Suite.xml" />
-    	<suite-file path="Governance Body Suite.xml" />
+    	<suite-file path="Governance Body Suite.xml" /> -->
     	<!--	<suite-file path="Purchase Order Suite.xml" />
       <suite-file path="Relation Suite.xml" />
     	<suite-file path="Supplier Suite.xml" />

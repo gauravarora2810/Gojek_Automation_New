@@ -22,6 +22,27 @@
 			<version>6.8.8</version>
 		</dependency>
 		
+	<dependency>
+        <groupId>org.uncommons</groupId>
+        <artifactId>reportng</artifactId>
+        <version>1.1.2</version>
+        <scope>test</scope>
+        <exclusions>
+            <exclusion>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>	
+		
+		
+		<dependency>
+    <groupId>com.google.inject</groupId>
+    <artifactId>guice</artifactId>
+    <version>3.0</version>
+    <scope>test</scope>
+</dependency>
+		
  <dependency>
  
   <groupId>log4j</groupId>
@@ -83,6 +104,14 @@
 
 
  </dependencies>
+ 
+ <repositories>
+    <repository>
+        <id>java-net</id>
+        <url>http://download.java.net/maven/2</url>
+    </repository>
+    
+</repositories>
  
  <build>
     <sourceDirectory>${basedir}/src</sourceDirectory>
