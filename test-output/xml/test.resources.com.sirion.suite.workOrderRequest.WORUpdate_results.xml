@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="WOR Update Test"
+           tests="4"
+           failures="0"
+           errors="0"
+           skipped="4"
+           time="0.001">
+  <properties />
+  
+            <testcase name="reportDataSetResult" time="0.0" classname="test.resources.com.sirion.suite.workOrderRequest.WORUpdate">
+          <skipped />
+    </testcase>
+            <testcase name="checkTestSkip" time="0.0" classname="test.resources.com.sirion.suite.workOrderRequest.WORUpdate">
+          <skipped />
+    </testcase>
+            <testcase name="reportTestResult" time="0.0" classname="test.resources.com.sirion.suite.workOrderRequest.WORUpdate">
+          <skipped />
+    </testcase>
+            <testcase name="WORUpdateTest" time="0.0" classname="test.resources.com.sirion.suite.workOrderRequest.WORUpdate">
+          <skipped />
+    </testcase>
+  
+  
+</testsuite>

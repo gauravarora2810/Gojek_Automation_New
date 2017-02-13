@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Action Suite]">
+  <test name="Purchase Order Update(failed)">
+    <classes>
+      <class name="test.resources.com.sirion.purchaseOrder.PurchaseOrderWorkflow">
+        <methods>
+          <include name="checkSuiteSkip"/>
+          <include name="checkTestSkip"/>
+        </methods>
+      </class> <!-- test.resources.com.sirion.purchaseOrder.PurchaseOrderWorkflow -->
+      <class name="test.resources.com.sirion.purchaseOrder.PurchaseOrderUpdate">
+        <methods>
+          <include name="checkTestSkip"/>
+          <include name="reportTestResult"/>
+          <include name="PurchaseOrderTest"/>
+        </methods>
+      </class> <!-- test.resources.com.sirion.purchaseOrder.PurchaseOrderUpdate -->
+      <class name="test.resources.com.sirion.purchaseOrder.PurchaseOrderCreation">
+        <methods>
+          <include name="reportTestResult"/>
+          <include name="checkTestSkip"/>
+        </methods>
+      </class> <!-- test.resources.com.sirion.purchaseOrder.PurchaseOrderCreation -->
+    </classes>
+  </test> <!-- Purchase Order Update(failed) -->
+  <test name="Purchase Order Workflow(failed)">
+    <classes>
+      <class name="test.resources.com.sirion.purchaseOrder.PurchaseOrderWorkflow">
+        <methods>
+          <include name="PurchaseOrderWorkflowTest"/>
+          <include name="checkSuiteSkip"/>
+          <include name="checkTestSkip"/>
+        </methods>
+      </class> <!-- test.resources.com.sirion.purchaseOrder.PurchaseOrderWorkflow -->
+      <class name="test.resources.com.sirion.purchaseOrder.PurchaseOrderUpdate">
+        <methods>
+          <include name="checkTestSkip"/>
+          <include name="reportTestResult"/>
+        </methods>
+      </class> <!-- test.resources.com.sirion.purchaseOrder.PurchaseOrderUpdate -->
+      <class name="test.resources.com.sirion.purchaseOrder.PurchaseOrderCreation">
+        <methods>
+          <include name="reportTestResult"/>
+          <include name="checkTestSkip"/>
+        </methods>
+      </class> <!-- test.resources.com.sirion.purchaseOrder.PurchaseOrderCreation -->
+    </classes>
+  </test> <!-- Purchase Order Workflow(failed) -->
+</suite> <!-- Failed suite [Action Suite] -->

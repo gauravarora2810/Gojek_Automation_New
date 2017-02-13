@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
+    <classes>
+      <class name="test.resources.com.sirion.suite.action.ActionWorkflow">
+        <methods>
+          <include name="ContractListing" invocation-numbers="0"/>
+          <include name="checkTestSkip"/>
+          <include name="checkSuiteClosure"/>
+          <include name="checkSuiteSkip"/>
+          <include name="reportDataSetResult"/>
+          <include name="reportTestResult"/>
+        </methods>
+      </class> <!-- test.resources.com.sirion.suite.action.ActionWorkflow -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
