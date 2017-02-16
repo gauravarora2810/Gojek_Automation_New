@@ -74,8 +74,8 @@ public class UpdateContractService extends TestSuiteBase {
 			APP_LOGS.debug("Contract Service already exists with Name -- " +contractServiceOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -90,8 +90,8 @@ public class UpdateContractService extends TestSuiteBase {
         
         APP_LOGS.debug("Contract Service updated successfully, and following parameters have been validated: Contract Service Name -- " +contractServiceOpUpdate +", Contract Service Active Status -- "+contractServiceActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

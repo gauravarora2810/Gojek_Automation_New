@@ -37,7 +37,6 @@ public class OBCategory extends TestSuiteBase {
 			}
 		
 		openBrowser();
-		driver.manage().window().maximize();
 		
 		sirionAdminLogin(CONFIG.getProperty("sirionAdminURL"), CONFIG.getProperty("sirionAdminUsername"), CONFIG.getProperty("sirionAdminPassword"));
 		
@@ -64,10 +63,11 @@ public class OBCategory extends TestSuiteBase {
 			
 			getObject("sa_ob_category_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("OB Category already exists with Name -- " +obCategory);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -83,8 +83,8 @@ public class OBCategory extends TestSuiteBase {
         
         APP_LOGS.debug("OB Category opened successfully, and following parameters have been validated: OB Category Name -- " +obCategory +", OB Category Active Status -- "+obCategoryActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

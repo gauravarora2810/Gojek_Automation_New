@@ -74,8 +74,8 @@ public class UpdateActionType extends TestSuiteBase {
 			APP_LOGS.debug("Action Type already exists with Name -- " +actionTypeOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
         
@@ -90,8 +90,8 @@ public class UpdateActionType extends TestSuiteBase {
         
         APP_LOGS.debug("Action Type updated successfully, and following parameters have been validated: Action Type Name -- " +actionTypeOpUpdate +", Action Type Active Status -- "+actionTypeActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 
 	@AfterMethod

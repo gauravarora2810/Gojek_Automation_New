@@ -63,10 +63,11 @@ public class SLItem extends TestSuiteBase {
 			
 			getObject("sa_sl_item_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("SL Item already exists with Name -- " +slItem);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -82,8 +83,8 @@ public class SLItem extends TestSuiteBase {
         
         APP_LOGS.debug("SL Item opened successfully, and following parameters have been validated: SL Item Name -- " +slItem +", SL Item Active Status -- "+slItemActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

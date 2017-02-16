@@ -74,8 +74,8 @@ public class UpdateBusinessUnit extends TestSuiteBase {
 			APP_LOGS.debug("Business Unit already exists with Name -- " +businessUnitOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -90,8 +90,8 @@ public class UpdateBusinessUnit extends TestSuiteBase {
         
         APP_LOGS.debug("Business Unit updated successfully, and following parameters have been validated: Business Unit Name -- " +businessUnitOpUpdate +", Business Unit Active Status -- "+businessUnitActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

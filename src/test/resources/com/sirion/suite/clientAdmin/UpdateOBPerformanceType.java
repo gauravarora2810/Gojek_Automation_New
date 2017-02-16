@@ -75,8 +75,8 @@ public class UpdateOBPerformanceType extends TestSuiteBase {
 			APP_LOGS.debug("OB Performance Type already exists with Name -- " +obPerformanceTypeOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-			fail=false;
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -91,8 +91,8 @@ public class UpdateOBPerformanceType extends TestSuiteBase {
         
         APP_LOGS.debug("OB Performance Type Updated successfully, and following parameters have been validated: OB Performance Type Name -- " +obPerformanceType +", OB Performance Type Active Status -- "+obPerformanceTypeActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

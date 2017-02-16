@@ -63,10 +63,11 @@ public class AgreementType extends TestSuiteBase {
 			
 			getObject("sa_agreement_type_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Agreement Type already exists with name -- " +agreementType);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -82,8 +83,8 @@ public class AgreementType extends TestSuiteBase {
         
         APP_LOGS.debug("Agreement Type opened successfully, and following parameters have been validated: Agreement Type Name -- " +agreementType +", Agreement Type Active Status -- "+agreementTypeActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

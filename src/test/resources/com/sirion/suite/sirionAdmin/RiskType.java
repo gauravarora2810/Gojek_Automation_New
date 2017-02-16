@@ -63,10 +63,11 @@ public class RiskType extends TestSuiteBase {
 			
 			getObject("sa_risk_type_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Risk Type already exists with name -- " +riskType);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -82,8 +83,8 @@ public class RiskType extends TestSuiteBase {
         
         APP_LOGS.debug("Risk Type opened successfully, and following parameters have been validated: Risk Type Name -- " +riskType +", Risk Type Active Status -- "+riskTypeActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

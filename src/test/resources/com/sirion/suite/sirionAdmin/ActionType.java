@@ -63,10 +63,11 @@ public class ActionType extends TestSuiteBase {
 			
 			getObject("sa_action_type_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Action Type already exists with Name -- " +actionType);
 			APP_LOGS.debug("Errors: "+errors_create_page);
-			
+
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -82,8 +83,8 @@ public class ActionType extends TestSuiteBase {
         
         APP_LOGS.debug("Action Type opened successfully, and following parameters have been validated: Action Type Name -- " +actionType +", Action Type Active Status -- "+actionTypeActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

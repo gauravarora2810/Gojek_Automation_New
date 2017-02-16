@@ -63,10 +63,11 @@ public class TermType extends TestSuiteBase {
 			
 			getObject("sa_term_type_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Term Type already exists with Name -- " +termType);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -82,8 +83,8 @@ public class TermType extends TestSuiteBase {
         
         APP_LOGS.debug("Term Type opened successfully, and following parameters have been validated: Term Type Name -- " +termType +", Term Type Active Status -- "+termTypeActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

@@ -52,8 +52,9 @@ public class WorkflowCreation extends TestSuiteBase {
 		getObject("ca_workflow_creation_name_textbox").sendKeys(workflowName);
 
 		new Select (getObject("ca_workflow_creation_entity_dropdown")).selectByVisibleText(entityType);
-
-		getObject("ca_workflow_creation_browse_button").sendKeys(System.getProperty("user.dir")+"//workflows//"+filePath);
+		
+		String str = System.getProperty("user.dir");
+		getObject("ca_workflow_creation_browse_button").sendKeys(str+"\\workflows\\"+filePath);
 		Thread.sleep(5000);
 
 		if(!workflowSupplier.equalsIgnoreCase("")) {
@@ -63,8 +64,8 @@ public class WorkflowCreation extends TestSuiteBase {
 		getObject("ca_workflow_creation_upload_button").click();
 		Thread.sleep(5000);
 
-		fail=false;
-		getObject("client_admin_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 
 	@AfterMethod

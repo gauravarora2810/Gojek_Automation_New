@@ -57,8 +57,8 @@ public class State extends TestSuiteBase {
 		
 		getObject("ca_state_save_button").click();
 
-		fail=false;
-		getObject("client_admin_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 
 	@AfterMethod

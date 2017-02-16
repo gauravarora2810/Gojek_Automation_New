@@ -37,7 +37,6 @@ public class OBPhase extends TestSuiteBase {
 			}
 		
 		openBrowser();
-		driver.manage().window().maximize();
 		
 		sirionAdminLogin(CONFIG.getProperty("sirionAdminURL"), CONFIG.getProperty("sirionAdminUsername"), CONFIG.getProperty("sirionAdminPassword"));
 		
@@ -64,10 +63,11 @@ public class OBPhase extends TestSuiteBase {
 			
 			getObject("sa_ob_phase_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("OB Phase already exists with Name -- " +obPhase);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -83,8 +83,8 @@ public class OBPhase extends TestSuiteBase {
         
         APP_LOGS.debug("OB Phase opened successfully, and following parameters have been validated: OB Phase Name -- " +obPhase +", OB Phase Active Status -- "+obPhaseActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 
 import test.resources.com.sirion.util.TestUtil;
 
-public class ChildObligationWorkflow extends TestSuiteBaseExsiting {
+public class ChildObligationWorkflow extends TestSuiteBase {
   String runmodes[] = null;
   static int count = -1;
   // static boolean pass=false;

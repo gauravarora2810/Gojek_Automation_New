@@ -74,8 +74,8 @@ public class UpdateOBCategory extends TestSuiteBase {
 			APP_LOGS.debug("OB Category already exists with Name -- " +obCategoryOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-			fail=false;
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -91,7 +91,7 @@ public class UpdateOBCategory extends TestSuiteBase {
         APP_LOGS.debug("OB Category Updated successfully, and following parameters have been validated: OB Category Name -- " +obCategory +", OB Category Active Status -- "+obCategoryActiveUpdate);
         
         fail = false;
-		getObject("ca_administration_tab_link").click();
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

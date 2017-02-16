@@ -76,8 +76,8 @@ public class UpdateCostCenter extends TestSuiteBase {
 			APP_LOGS.debug("Cost Center already exists with Name -- " +costCenterNameUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -87,8 +87,8 @@ public class UpdateCostCenter extends TestSuiteBase {
         String entityTypeActiveShowPage = getObject("ca_cost_center_show_page_active").getText();
         Assert.assertEquals(entityTypeActiveShowPage, costCenterActive, "Cost Center Active at show page is -- " +entityTypeActiveShowPage+ " instead of -- " +costCenterActive);
 
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 
 	@AfterMethod

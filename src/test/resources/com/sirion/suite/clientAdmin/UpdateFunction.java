@@ -74,10 +74,11 @@ public class UpdateFunction extends TestSuiteBase {
 			
 			getObject("ca_function_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Function already exists with Name -- " +functionOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -95,8 +96,8 @@ public class UpdateFunction extends TestSuiteBase {
         
         APP_LOGS.debug("Function opened successfully, and following parameters have been validated: Function Name -- " +functionOpUpdate +", Function Active Status -- "+functionActive);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

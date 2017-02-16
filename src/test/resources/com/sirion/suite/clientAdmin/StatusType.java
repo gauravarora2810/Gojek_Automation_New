@@ -52,8 +52,8 @@ public class StatusType extends TestSuiteBase {
 		
 		getObject("ca_status_type_save_button").click();
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 
 	@AfterMethod

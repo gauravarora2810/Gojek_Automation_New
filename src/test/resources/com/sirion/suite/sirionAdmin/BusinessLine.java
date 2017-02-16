@@ -63,10 +63,11 @@ public class BusinessLine extends TestSuiteBase {
 			
 			getObject("sa_business_line_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Business Line already exists with name -- " +businessLine);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -82,8 +83,8 @@ public class BusinessLine extends TestSuiteBase {
         
         APP_LOGS.debug("Business Line opened successfully, and following parameters have been validated: Business Line Name -- " +businessLine +", Business Line Active Status -- "+businessLineActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

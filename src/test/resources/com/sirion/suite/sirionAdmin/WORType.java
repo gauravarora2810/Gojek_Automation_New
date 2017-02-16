@@ -63,16 +63,17 @@ public class WORType extends TestSuiteBase {
 			
 			getObject("sa_wor_type_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("WOR Type already exists with Name -- " +worType);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
         new Select(getObject("sa_wor_type_listing_page_display_dropdown")).selectByIndex(3);
         
-        driver.findElement(By.xpath(".//*[@id='l_com_sirionlabs_model_WorType']/tbody/tr[@role='row']/td[contains(.,'"+ worType +"')]")).click();
+        driver.findElement(By.xpath(".//*[@id='l_com_sirionlabs_model_MasterGroup']/tbody/tr[@role='row']/td[contains(.,'"+ worType +"')]/div/a")).click();
 
         String entityTypeShowPage = getObject("sa_wor_type_show_page_name").getText();
         Assert.assertEquals(entityTypeShowPage, worType, "WOR Type Name at show page is -- " +entityTypeShowPage+ " instead of -- " +worType);
@@ -82,8 +83,8 @@ public class WORType extends TestSuiteBase {
         
         APP_LOGS.debug("WOR Type opened successfully, and following parameters have been validated: WOR Type Name -- " +worType +", WOR Type Active Status -- "+worTypeActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

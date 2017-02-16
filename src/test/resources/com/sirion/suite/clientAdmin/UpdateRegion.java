@@ -94,8 +94,8 @@ public class UpdateRegion extends TestSuiteBase {
 			APP_LOGS.debug("Region already exists with Name -- " +regionNameUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 		
@@ -113,8 +113,8 @@ public class UpdateRegion extends TestSuiteBase {
         
         APP_LOGS.debug("Region updated successfully, and following parameters have been validated: Region Name -- " +regionName +", Region Active Status -- "+regionActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

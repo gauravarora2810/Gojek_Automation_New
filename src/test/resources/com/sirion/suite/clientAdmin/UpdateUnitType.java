@@ -74,8 +74,8 @@ public class UpdateUnitType extends TestSuiteBase {
 			APP_LOGS.debug("Unit Type already exists with Name -- " +unitTypeOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -90,8 +90,8 @@ public class UpdateUnitType extends TestSuiteBase {
         
         APP_LOGS.debug("Unit Type updated successfully, and following parameters have been validated: Unit Type Name -- " +unitTypeOpUpdate +", Unit Type Active Status -- "+unitTypeActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

@@ -74,8 +74,8 @@ public class UpdateAgreementType extends TestSuiteBase {
 			APP_LOGS.debug("Agreement Type already exists with Name -- " +agreementTypeOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
         
@@ -90,8 +90,8 @@ public class UpdateAgreementType extends TestSuiteBase {
         
         APP_LOGS.debug("Agreement Type updated successfully, and following parameters have been validated: Agreement Type Name -- " +agreementTypeOpUpdate +", Agreement Type Active Status -- "+agreementTypeActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

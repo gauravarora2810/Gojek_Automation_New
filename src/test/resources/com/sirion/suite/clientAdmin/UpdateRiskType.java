@@ -74,8 +74,8 @@ public class UpdateRiskType extends TestSuiteBase {
 			APP_LOGS.debug("Risk Type already exists with Name -- " +riskTypeOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -90,8 +90,8 @@ public class UpdateRiskType extends TestSuiteBase {
         
         APP_LOGS.debug("Risk Type updated successfully, and following parameters have been validated: Risk Type Name -- " +riskTypeOpUpdate +", Risk Type Active Status -- "+riskTypeActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

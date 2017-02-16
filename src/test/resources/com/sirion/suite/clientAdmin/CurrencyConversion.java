@@ -56,8 +56,8 @@ public class CurrencyConversion extends TestSuiteBase {
 		
 		getObject("ca_conversion_matrix_notification_popup_ok_button").click();
 		
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	

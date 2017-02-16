@@ -63,10 +63,11 @@ public class BusinessUnit extends TestSuiteBase {
 			
 			getObject("sa_business_unit_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Business Unit already exists with name -- " +businessUnit);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -82,8 +83,8 @@ public class BusinessUnit extends TestSuiteBase {
         
         APP_LOGS.debug("Business Unit opened successfully, and following parameters have been validated: Business Unit Name -- " +businessUnit +", Business Unit Active Status -- "+businessUnitActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

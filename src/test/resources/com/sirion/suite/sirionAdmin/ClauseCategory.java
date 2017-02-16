@@ -63,10 +63,11 @@ public class ClauseCategory extends TestSuiteBase {
 			
 			getObject("sa_clause_category_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Clause Category already exists with name -- " +clauseCategory);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -82,8 +83,8 @@ public class ClauseCategory extends TestSuiteBase {
 
         APP_LOGS.debug("Clause Category opened successfully, and following parameters have been validated: Clause Category Name -- " +clauseCategory +", Clause Category Active Status -- "+clauseCategoryActive);
 
-        fail = false;       
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

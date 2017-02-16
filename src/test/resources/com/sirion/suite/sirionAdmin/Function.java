@@ -65,10 +65,11 @@ public class Function extends TestSuiteBase {
 			
 			getObject("sa_function_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Function already exists with Name -- " +function+" Or Function already exists with the alias -- "+functionAlias);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 		
@@ -87,8 +88,8 @@ public class Function extends TestSuiteBase {
         
         APP_LOGS.debug("Function opened successfully, and following parameters have been validated: Function Name -- " +function +", Function Alias -- "+functionAlias+", Function Active Status -- "+functionActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

@@ -74,8 +74,8 @@ public class UpdateFrequency extends TestSuiteBase {
 			APP_LOGS.debug("Frequency already exists with Name -- " +frequencyOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -87,8 +87,8 @@ public class UpdateFrequency extends TestSuiteBase {
         
         APP_LOGS.debug("Frequency updated successfully, and following parameters have been validated: Frequency Name -- " +frequencyOpUpdate +", Frequency Active Status -- "+frequencyActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

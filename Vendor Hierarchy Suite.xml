@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Vendor Hierarchy Suite">
+
+	<test name="Vendor Hierarchy - Creation Test">
+		<classes>
+			<class name="test.resources.com.sirion.suite.vendorHierarchy.VendorHierarchyCreation"></class>
+		</classes>
+	</test>
+
+</suite>

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="WOR Creation Test"
-           tests="1"
+<testsuite name="WOR - Creation"
+           tests="2"
            failures="0"
            errors="0"
-           skipped="0"
-           time="63.775">
+           skipped="1"
+           time="60.041">
   <properties />
   
+            <testcase name="WorkOrderCreationTest" time="0.0" classname="test.resources.com.sirion.suite.workOrderRequest.WORCreation">
+          <skipped />
+    </testcase>
   
-            <testcase name="WorkOrderCreationTest" time="63.775" classname="test.resources.com.sirion.suite.workOrderRequest.WORCreation" />
+            <testcase name="WorkOrderCreationTest" time="60.038" classname="test.resources.com.sirion.suite.workOrderRequest.WORCreation" />
       
 </testsuite>

@@ -74,8 +74,8 @@ public class UpdateCRClass extends TestSuiteBase {
 			APP_LOGS.debug("CR Class already exists with Name -- " +crClassOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -90,8 +90,8 @@ public class UpdateCRClass extends TestSuiteBase {
         
         APP_LOGS.debug("CR Class opened successfully, and following parameters have been validated: CR Class Name -- " +crClassOpUpdate +", CR Class Active Status -- "+crClassActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

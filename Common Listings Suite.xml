@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Common Listings Suite">
+
+	<test name="Common Listings - Open">
+		<classes>
+			<class name="test.resources.com.sirion.suite.common.listings.ListingOpen"></class>
+		</classes>
+	</test>
+
+</suite>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<suite name="Interpretation Suite">
+<suite name="Dashboard Suite">
 
 
 
 
-<test name="Interpretation Listing Test">
+<test name="Dashboard - Test">
     <classes>
         <class name="test.resources.com.sirion.suite.dashboard.Dashboard" ></class>  
     </classes>

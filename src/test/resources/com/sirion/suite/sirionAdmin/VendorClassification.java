@@ -63,16 +63,16 @@ public class VendorClassification extends TestSuiteBase {
 			
 			getObject("sa_vendor_classification_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Vendor Classification already exists with Name -- " +vendorClassification);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
         new Select(getObject("sa_vendor_classification_listing_page_display_dropdown")).selectByIndex(3);
-        
-        driver.findElement(By.xpath(".//*[@id='l_com_sirionlabs_model_VendorClassification']/tbody/tr[@role='row']/td[contains(.,'"+ vendorClassification +"')]")).click();
+        driver.findElement(By.xpath(".//*[@id='l_com_sirionlabs_model_VendorClassification']/tbody/tr[@role='row']/td[contains(.,'"+ vendorClassification +"')]/a/div")).click();
 
         String entityTypeShowPage = getObject("sa_vendor_classification_show_page_name").getText();
         Assert.assertEquals(entityTypeShowPage, vendorClassification, "Vendor Classification Name at show page is -- " +entityTypeShowPage+ " instead of -- " +vendorClassification);
@@ -82,8 +82,8 @@ public class VendorClassification extends TestSuiteBase {
         
         APP_LOGS.debug("Vendor Classification opened successfully, and following parameters have been validated: Vendor Classification Name -- " +vendorClassification +", Vendor Classification Active Status -- "+vendorClassificationActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

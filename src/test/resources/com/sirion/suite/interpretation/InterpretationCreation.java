@@ -199,7 +199,7 @@ public class InterpretationCreation extends TestSuiteBase {
 		}
 
 		
-
+		Thread.sleep(10000);
 		
 	
 			  //Assertion code shifted down- comment put at its place String

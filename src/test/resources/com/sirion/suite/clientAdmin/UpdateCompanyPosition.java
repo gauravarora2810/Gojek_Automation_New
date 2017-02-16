@@ -74,8 +74,8 @@ public class UpdateCompanyPosition extends TestSuiteBase {
 			APP_LOGS.debug("Company Position already exists with Name -- " +companyPositionOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -90,8 +90,8 @@ public class UpdateCompanyPosition extends TestSuiteBase {
         
         APP_LOGS.debug("Company Position updated successfully, and following parameters have been validated: Company Position Name -- " +companyPositionOpUpdate +", Company Position Active Status -- "+companyPositionActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

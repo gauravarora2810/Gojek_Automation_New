@@ -115,8 +115,8 @@ public class UpdateProject extends TestSuiteBase {
 			APP_LOGS.debug("Project already exists with Name -- " +projectNameUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -128,8 +128,8 @@ public class UpdateProject extends TestSuiteBase {
         
         APP_LOGS.debug("Project updated successfully, and following parameters have been validated: Project Name -- " +projectNameUpdate +", Project Active Status -- "+projectActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

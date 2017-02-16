@@ -1,17 +1,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="User Admin Suite">
+<suite name="Sirion User Admin Suite">
 
-<test name="User Admin Test - Client Admin Creation">
-    <classes>
-        <class name="test.resources.com.sirion.suite.sirionUserAdmin.ClientAdminCreation" ></class> 
-    </classes>
-</test>
-
-<test name="User Admin Test - Logout">
-    <classes>
-        <class name="test.resources.com.sirion.suite.sirionUserAdmin.Logout" ></class> 
-    </classes>
-</test>
+	<test name="Sirion User Admin - Client Admin Creation">
+		<classes>
+			<class
+				name="test.resources.com.sirion.suite.sirionUserAdmin.ClientAdminCreation"></class>
+		</classes>
+	</test>
 
 </suite>
-

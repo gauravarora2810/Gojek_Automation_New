@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Clause Suite">
+
+	<test name="Clause - Creation">
+		<classes>
+			<class name="test.resources.com.sirion.suite.clause.ClauseCreation"></class>
+		</classes>
+	</test>
+
+	<test name="Clause - Workflow">
+		<classes>
+			<class name="test.resources.com.sirion.suite.clause.ClauseWorkflow"></class>
+		</classes>
+	</test>
+
+</suite>

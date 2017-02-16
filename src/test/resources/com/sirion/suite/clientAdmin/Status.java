@@ -35,7 +35,7 @@ public class Status extends TestSuiteBase {
 			}
 		
 		APP_LOGS.debug("Executing Client Admin Status Creation Test -- " +statusName);
-				
+
 		openBrowser();
 		
 		clientAdminLogin(CONFIG.getProperty("clientAdminURL"), CONFIG.getProperty("clientAdminUsername"), CONFIG.getProperty("clientAdminPassword"));
@@ -44,6 +44,7 @@ public class Status extends TestSuiteBase {
 		Thread.sleep(2000);
 				
 		getObject("ca_status_link").click();
+		Thread.sleep(5000);
 		
 		getObject("ca_status_plus_button").click();
 		
@@ -59,8 +60,8 @@ public class Status extends TestSuiteBase {
 		
 		getObject("ca_status_save_button").click();
 
-		fail=false;
-		getObject("client_admin_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 
 	@AfterMethod

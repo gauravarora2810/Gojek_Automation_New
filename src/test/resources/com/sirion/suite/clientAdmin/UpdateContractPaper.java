@@ -74,8 +74,8 @@ public class UpdateContractPaper extends TestSuiteBase {
 			APP_LOGS.debug("Contract Paper already exists with Name -- " +contractPaperOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-			fail=false;
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -90,8 +90,8 @@ public class UpdateContractPaper extends TestSuiteBase {
         
         APP_LOGS.debug("Contract Paper Updated successfully, and following parameters have been validated: Contract Paper Name -- " +contractPaperOpUpdate +", Contract Paper Active Status -- "+contractPaperActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

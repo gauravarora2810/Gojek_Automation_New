@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="GB Suite">
+
+	<test name="GB - Creation">
+		<classes>
+			<class name="test.resources.com.sirion.suite.governanceBody.GBCreation"></class>
+		</classes>
+	</test>
+
+	<test name="GB - Workflow Non workflow">
+		<classes>
+			<class name="test.resources.com.sirion.suite.governanceBody.GBworkflow"></class>
+		</classes>
+	</test>
+
+</suite>

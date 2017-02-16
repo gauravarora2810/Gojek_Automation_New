@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -25,16 +26,18 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import test.resources.com.sirion.suite.clientAdmin.Database_Password_Change_Query;
 import test.resources.com.sirion.util.ErrorUtil;
 import test.resources.com.sirion.util.Xls_Reader;
 
-public class TestBase{
+public class TestBase {
 	
-//gaurav
+	private static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
 	public static boolean isInitialized = false;
 	public static boolean isBrowserOpened = false;
 	public static boolean isSirionAdminLogin = false;
@@ -55,7 +58,7 @@ public class TestBase{
 	public static Xls_Reader user_admin_suite_xls = null;
 	public static Xls_Reader client_admin_suite_xls = null;
 
-	public static Xls_Reader relation_suite_xls = null;
+	public static Xls_Reader vendor_hierarchy_suite_xls = null;
 	public static Xls_Reader supplier_suite_xls = null;
 	public static Xls_Reader contract_suite_xls = null;
 	public static Xls_Reader sl_suite_xls = null;
@@ -70,9 +73,10 @@ public class TestBase{
 	public static Xls_Reader wor_suite_xls = null;
 	public static Xls_Reader clause_suite_xls = null;
 	public static Xls_Reader contract_template_suite_xls = null;
-	public static Xls_Reader contract_draft_request_suite_xls = null;
-	public static Xls_Reader purchaseorder_suite_xls=null;
+	public static Xls_Reader cdr_suite_xls = null;
+	public static Xls_Reader po_suite_xls=null;
 
+	public static Xls_Reader common_listing_suite_xls = null;
 	public static Xls_Reader supplier_listing_suite_xls = null;
 	public static Xls_Reader supplier_report_suite_xls = null;
 	public static Xls_Reader contract_report_suite_xls = null;
@@ -103,8 +107,8 @@ public class TestBase{
 
 	File path = new File("C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
 
-	FirefoxBinary ffbinary = new FirefoxBinary(path);
-	FirefoxProfile ffprofile = new FirefoxProfile();
+	FirefoxBinary ffbinary;
+	FirefoxProfile ffprofile;
 
 	public static void initialize() throws Exception {
 		System.out.println("Calling Test Base");
@@ -132,7 +136,7 @@ public class TestBase{
 			client_admin_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Client Admin Suite.xlsx");
 			calendar_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Calendar Todo Suite.xlsx");
 			
-			relation_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Relation Suite.xlsx");
+			vendor_hierarchy_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Vendor Hierarchy Suite.xlsx");
 			supplier_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Supplier Suite.xlsx");
 			contract_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Contract Suite.xlsx");
 			sl_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//SL Suite.xlsx");
@@ -149,9 +153,13 @@ public class TestBase{
 			governance_body_suite_xls=new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Governance Body Suite.xlsx");
 			clause_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Clause Suite.xlsx");
 			contract_template_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Contract Template Suite.xlsx");
-			contract_draft_request_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Contract Draft Request Suite.xlsx");
-			purchaseorder_suite_xls= new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//PurchaseOrder Suite.xlsx");
-			supplier_report_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Supplier Report Suite.xlsx");
+			cdr_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//CDR Suite.xlsx");
+			
+			common_listing_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Common Listing Suite.xlsx");
+			common_report_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Common Report Suite.xlsx");
+		
+
+/*			supplier_report_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Supplier Report Suite.xlsx");
 			contract_report_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Contract Report Suite.xlsx");
 			sl_report_suite_xls = new Xls_Reader(System.getProperty("user.dir")	+ "//src//test//resources//com//sirion//xls//ServiceLevel Report Suite.xlsx");
 			child_sl_report_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//ChildServiceLevel Report Suite.xlsx");
@@ -167,6 +175,7 @@ public class TestBase{
 
 			dashboard_suite_xls = new Xls_Reader(System.getProperty("user.dir")	+ "//src//test//resources//com//sirion//xls//Dashboard Suite.xlsx");
 			rc1_11_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//RC1_11 Suite.xlsx");
+*/
 			APP_LOGS.debug("Loaded XLS Files Successfully");
 			isInitialized = true;
 			System.out.println("at last oof function intiallized");
@@ -176,7 +185,12 @@ public class TestBase{
 	// Opening a Browser
 	public void openBrowser() {
 		if (!isBrowserOpened) {
+			
+			
 			if (CONFIG.getProperty("browserType").equals("MOZILLA")) {
+				ffbinary = new FirefoxBinary(path);
+				ffprofile = new FirefoxProfile();
+				
 				driver = new FirefoxDriver(ffbinary, ffprofile);
 			} else if (CONFIG.getProperty("browserType").equals("IE")) {
 				System.setProperty("webdriver.ie.driver", System.getProperty("user.dir") + "\\IEDriverServer.exe");
@@ -364,12 +378,38 @@ public class TestBase{
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir") + "\\screenshots\\" + filename + ".jpg"));
 		}
-// By Naveen	
 	public String convertDoubleToIntegerInStringForm(String data) {
         data = Integer.valueOf((Double.valueOf(Double.parseDouble(data))).intValue()).toString();
         return data;
  }
 
-	}
+public static String randomAlphaNumeric(int count) {
+		StringBuilder builder = new StringBuilder();
+		while (count-- != 0) {
+		int character = (int)(Math.random()*ALPHA_NUMERIC_STRING.length());
+		builder.append(ALPHA_NUMERIC_STRING.charAt(character));
+		}
+		return builder.toString();
+		}
 
-// Added sample comment
+
+/*public WebElement fluentWait(final By locator) {
+    Wait<WebDriver> webelement_waiting = new FluentWait<WebDriver>(driver)
+            .withTimeout(30, TimeUnit.SECONDS)
+            .pollingEvery(5, TimeUnit.SECONDS)
+            .ignoring(NoSuchElementException.class);
+
+    WebElement foo = webelement_waiting.until(new Function<WebDriver, WebElement>() 
+    		{
+        public WebElement apply(WebDriver driver) 
+        
+        {
+            return driver.findElement(locator);
+        }
+    });
+
+    return  foo;
+};
+*/
+
+}

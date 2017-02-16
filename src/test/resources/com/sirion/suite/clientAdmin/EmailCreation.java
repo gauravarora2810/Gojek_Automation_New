@@ -53,8 +53,8 @@ public class EmailCreation extends TestSuiteBase {
 		
 		getObject("ca_email_save_button").click();
 		
-		fail =false;
-		getObject("client_admin_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

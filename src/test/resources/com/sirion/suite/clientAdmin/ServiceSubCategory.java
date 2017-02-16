@@ -78,8 +78,8 @@ public class ServiceSubCategory extends TestSuiteBase {
 			APP_LOGS.debug("Service Sub-Category already exists with Name -- " +serviceSubCategoryOp);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 		
@@ -100,8 +100,8 @@ public class ServiceSubCategory extends TestSuiteBase {
         
         APP_LOGS.debug("Service Sub-Category opened successfully, and following parameters have been validated: Service Sub-Category Name -- " +serviceSubCategoryOp +", Service Sub-Category Active Status -- "+serviceSubCategoryActive);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

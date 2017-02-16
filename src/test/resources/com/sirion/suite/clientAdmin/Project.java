@@ -53,16 +53,18 @@ public class Project extends TestSuiteBase {
 		getObject("ca_project_name_textbox").clear();
 		getObject("ca_project_name_textbox").sendKeys(projectName);
 		Thread.sleep(2000);
-		
+
 		new Select(driver.findElement(By.name("currency.id"))).selectByVisibleText(projectCurrency);
         
         if (!projectStartDate.equalsIgnoreCase("")) {
           driver.findElement(By.name("startDate")).click();
+          Thread.sleep(2000);
           String[] projectDate = projectStartDate.split("-");
 
           String projectMonth = driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/div/span")).getText();
           while (!projectMonth.equalsIgnoreCase(projectDate[0])) {
         	  	driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/a[2]/span")).click();
+        	  	Thread.sleep(2000);
         	  	projectMonth = driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/div/span")).getText();
           		}
 
@@ -74,11 +76,13 @@ public class Project extends TestSuiteBase {
 
         if (!projectEndDate.equalsIgnoreCase("")) {
             driver.findElement(By.name("endDate")).click();
+            Thread.sleep(2000);
             String[] projectDate = projectEndDate.split("-");
 
             String projectMonth = driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/div/span")).getText();
             while (!projectMonth.equalsIgnoreCase(projectDate[0])) {
           	  		driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/a[2]/span")).click();
+                    Thread.sleep(2000);
           	  		projectMonth = driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/div/span")).getText();
             		}
 
@@ -111,8 +115,8 @@ public class Project extends TestSuiteBase {
 			APP_LOGS.debug("Project already exists with Name -- " +projectName);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -120,16 +124,16 @@ public class Project extends TestSuiteBase {
         
         driver.findElement(By.xpath(".//*[@id='l_com_sirionlabs_model_MasterProject']/tbody/tr[@role='row']/td[contains(.,'"+ projectName +"')]/a/div")).click();
         
-        String entityTypeOrgPreferenceShowPage = getObject("ca_project_show_page_org_preference").getText();
-        Assert.assertEquals(entityTypeOrgPreferenceShowPage, projectName, "Frequency Org. Preference at show page is -- " +entityTypeOrgPreferenceShowPage+ " instead of -- " +projectName);
+        String entityTypeNameShowPage = getObject("ca_project_show_page_name").getText();
+        Assert.assertEquals(entityTypeNameShowPage, projectName, "Project Name at show page is -- " +entityTypeNameShowPage+ " instead of -- " +projectName);
 
         String entityTypeActiveShowPage = getObject("ca_project_show_page_active").getText();
-        Assert.assertEquals(entityTypeActiveShowPage, projectActive, "Frequency Active Status at show page is -- " +entityTypeActiveShowPage+ " instead of -- " +projectActive);
+        Assert.assertEquals(entityTypeActiveShowPage, projectActive, "Project Active Status at show page is -- " +entityTypeActiveShowPage+ " instead of -- " +projectActive);
         
-        APP_LOGS.debug("Frequency opened successfully, and following parameters have been validated: Frequency Name -- " +projectName +", Frequency Active Status -- "+projectActive);
+        APP_LOGS.debug("Project opened successfully, and following parameters have been validated: Project Name -- " +projectName +", Project Active Status -- "+projectActive);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

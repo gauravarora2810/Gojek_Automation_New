@@ -63,10 +63,11 @@ public class PaperType extends TestSuiteBase {
 			
 			getObject("sa_paper_type_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Paper Type already exists with name -- " +paperType);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -82,8 +83,8 @@ public class PaperType extends TestSuiteBase {
         
         APP_LOGS.debug("Paper Type opened successfully, and following parameters have been validated: Paper Type Name -- " +paperType +", Paper Type Active Status -- "+paperTypeActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

@@ -75,10 +75,11 @@ public class Service extends TestSuiteBase {
 			
 			getObject("ca_service_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Service already exists with Name -- " +serviceOp);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
         driver.findElement(By.id("ui-id-3")).click();
@@ -98,8 +99,8 @@ public class Service extends TestSuiteBase {
         
         APP_LOGS.debug("Service opened successfully, and following parameters have been validated: Service Name -- " +serviceOp +", Service Active Status -- "+serviceActive);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

@@ -74,8 +74,8 @@ public class UpdateInterpretationType extends TestSuiteBase {
 			APP_LOGS.debug("Interpretation Type already exists with Name -- " +interpretationTypeOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -90,8 +90,8 @@ public class UpdateInterpretationType extends TestSuiteBase {
         
         APP_LOGS.debug("Interpretation Type updated successfully, and following parameters have been validated: Interpretation Type Name -- " +interpretationTypeOpUpdate +", Interpretation Type Active Status -- "+interpretationTypeActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

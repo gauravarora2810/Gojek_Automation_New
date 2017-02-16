@@ -1,3 +1,4 @@
+
 package test.resources.com.sirion.suite.sirionAdmin;
 
 import org.openqa.selenium.By;
@@ -63,10 +64,11 @@ public class ContractService extends TestSuiteBase {
 			
 			getObject("sa_contract_service_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Contract Service already exists with Name -- " +contractService);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -82,8 +84,8 @@ public class ContractService extends TestSuiteBase {
         
         APP_LOGS.debug("Contract Service opened successfully, and following parameters have been validated: Contract Service Name -- " +contractService +", Contract Service Active Status -- "+contractServiceActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

@@ -63,10 +63,11 @@ public class ServiceSubCategory extends TestSuiteBase {
 			
 			getObject("sa_service_sub_category_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Service Sub-Category already exists with Name -- " +serviceSubCategory);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -82,8 +83,8 @@ public class ServiceSubCategory extends TestSuiteBase {
         
         APP_LOGS.debug("Service Sub-Category opened successfully, and following parameters have been validated: Service Sub-Category Name -- " +serviceSubCategory +", Service Sub-Category Active Status -- "+serviceSubCategoryActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

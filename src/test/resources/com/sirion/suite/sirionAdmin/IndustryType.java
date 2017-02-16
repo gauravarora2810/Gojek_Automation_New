@@ -63,10 +63,11 @@ public class IndustryType extends TestSuiteBase {
 			
 			getObject("sa_industry_type_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Industry Type already exists with name -- " +industryType);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -82,8 +83,8 @@ public class IndustryType extends TestSuiteBase {
         
         APP_LOGS.debug("Industry Type opened successfully, and following parameters have been validated: Industry Type Name -- " +industryType +", Industry Type Active Status -- "+industryTypeActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

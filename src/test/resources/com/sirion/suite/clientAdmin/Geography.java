@@ -78,8 +78,8 @@ public class Geography extends TestSuiteBase {
 			APP_LOGS.debug("Geography already exists with Name -- " +geographyName);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -104,8 +104,8 @@ public class Geography extends TestSuiteBase {
         
         APP_LOGS.debug("Geography opened successfully, and following parameters have been validated: Geography Name -- " +geographyName +", Geography Active Status -- "+geographyActive);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

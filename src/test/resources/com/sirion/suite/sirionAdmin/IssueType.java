@@ -63,10 +63,11 @@ public class IssueType extends TestSuiteBase {
 			
 			getObject("sa_issue_type_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Issue Type already exists with Name -- " +issueType);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -82,8 +83,8 @@ public class IssueType extends TestSuiteBase {
         
         APP_LOGS.debug("Issue Type opened successfully, and following parameters have been validated: Issue Type Name -- " +issueType +", Issue Type Active Status -- "+issueTypeActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

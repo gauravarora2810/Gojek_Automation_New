@@ -74,8 +74,8 @@ public class UpdateServiceCategory extends TestSuiteBase {
 			APP_LOGS.debug("Service Category already exists with Name -- " +serviceCategoryOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -90,8 +90,8 @@ public class UpdateServiceCategory extends TestSuiteBase {
         
         APP_LOGS.debug("Service Category opened successfully, and following parameters have been validated: Service Category Name -- " +serviceCategoryOpUpdate +", Service Category Active Status -- "+serviceCategoryActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

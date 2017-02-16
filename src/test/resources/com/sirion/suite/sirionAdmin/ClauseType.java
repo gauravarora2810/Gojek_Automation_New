@@ -63,10 +63,11 @@ public class ClauseType extends TestSuiteBase {
 			
 			getObject("sa_clause_type_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Clause Type already exists with name -- " +clauseType);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -82,8 +83,8 @@ public class ClauseType extends TestSuiteBase {
 
         APP_LOGS.debug("Clause Type opened successfully, and following parameters have been validated: Clause Type Name -- " +clauseType +", Clause Type Active Status -- "+clauseTypeActive);
 
-        fail = false;       
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

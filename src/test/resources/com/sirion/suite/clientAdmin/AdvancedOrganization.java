@@ -168,10 +168,9 @@ public class AdvancedOrganization extends TestSuiteBase {
 		
 		getObject("ca_advanced_organization_comments_submit_button").click();
 		Thread.sleep(5000);
-		
-		
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	

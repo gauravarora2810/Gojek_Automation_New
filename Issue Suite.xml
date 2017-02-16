@@ -1,89 +1,16 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Issue Suite">
 
+	<test name="Issue - Creation">
+		<classes>
+			<class name="test.resources.com.sirion.suite.issue.IssueCreation"></class>
+		</classes>
+	</test>
 
-<test name="Issue Listing Test">
-    <classes>
-        <class name="com.sirion.suite.issue.IssueListing" ></class> 
-    </classes>
-</test>
-
-
-<test name="Issue Creation Test">
-    <classes>
-        <class name="com.sirion.suite.issue.IssueCreation" ></class> 
-    </classes>
-</test>
-
-<test name="Action Creation Test">
-    <classes>
-        <class name="com.sirion.suite.issue.ActionCreation" ></class> 
-    </classes>
-</test>
-
-
-
-<test name="CR Creation Test">
-    <classes>
-        <class name="com.sirion.suite.issue.ChangeRequestCreation" ></class> 
-    </classes>
-</test>
-
-<test name="Interpretation Creation Test">
-    <classes>
-        <class name="com.sirion.suite.issue.InterpretationCreation" ></class> 
-    </classes>
-</test>
-
-
-
-
-<test name="Issue Update Test">
-    <classes>
-        <class name="com.sirion.suite.issue.IssueUpdate" ></class> 
-    </classes>
-</test>
-
-<test name="Issue Workflow Test">
-    <classes>
-        <class name="com.sirion.suite.issue.IssueWorkflow" ></class> 
-    </classes>
-</test>
-
-<test name="Issue Non Workflow Test">
-    <classes>
-        <class name="com.sirion.suite.issue.IssueNonWorkflow" ></class> 
-    </classes>
-</test>
-
-
-<test name="Issue Audit Log Test">
-    <classes>
-        <class name="com.sirion.suite.issue.IssueAuditLog" ></class> 
-    </classes>
-</test>
-
-
-<test name="Issue Communication Test">
-    <classes>
-        <class name="com.sirion.suite.issue.IssueCommunication" ></class> 
-    </classes>
-</test>
-
-
-
-<test name="Issue Reference Test">
-    <classes>
-        <class name="com.sirion.suite.issue.IssueReference" ></class> 
-    </classes>
-</test>
-
-
-<test name="Issue Deletion Test">
-    <classes>
-        <class name="com.sirion.suite.issue.IssueDeletion" ></class> 
-    </classes>
-</test>
+	<test name="Issue - Workflow">
+		<classes>
+			<class name="test.resources.com.sirion.suite.issue.IssueWorkflow"></class>
+		</classes>
+	</test>
 
 </suite>
-

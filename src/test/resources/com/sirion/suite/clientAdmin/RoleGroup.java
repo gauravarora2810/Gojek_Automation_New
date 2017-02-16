@@ -113,8 +113,8 @@ public class RoleGroup extends TestSuiteBase {
 
 		getObject("ca_role_group_save_button").click();
 
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 
 	@AfterMethod

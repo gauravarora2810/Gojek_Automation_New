@@ -94,7 +94,7 @@ System.out.println("In check test skip function");
 		  System.out.println("gaurav");
 		  
 		  Thread.sleep(10000);
-		  wait_in_report.until(ExpectedConditions.visibilityOf( driver.findElement(By.xpath(".//*[@id='angularPopUpHtml']//button[contains(.,'Submit')][@clientvalidation='true']"))));
+		  wait_in_report.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(".//*[@id='angularPopUpHtml']//button[contains(.,'Submit')][@clientvalidation='true']"))));
 		  ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath(".//*[@id='angularPopUpHtml']//button[contains(.,'Submit')][@clientvalidation='true']")));
 		   driver.findElement(By.xpath(".//*[@id='angularPopUpHtml']//button[contains(.,'Submit')][@clientvalidation='true']")).click();
 			   System.out.println("arora");

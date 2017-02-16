@@ -72,10 +72,11 @@ public class Function extends TestSuiteBase {
 			
 			getObject("ca_function_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Function already exists with Name -- " +functionOp);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -97,8 +98,8 @@ public class Function extends TestSuiteBase {
         
         APP_LOGS.debug("Function opened successfully, and following parameters have been validated: Function Name -- " +functionOp +", Function Active Status -- "+functionActive);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

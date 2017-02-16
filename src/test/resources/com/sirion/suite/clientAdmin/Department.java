@@ -72,8 +72,8 @@ public class Department extends TestSuiteBase {
 			APP_LOGS.debug("Department already exists with Name -- " +departmentName);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -86,8 +86,8 @@ public class Department extends TestSuiteBase {
 
         APP_LOGS.debug("Department opened successfully, and following parameters have been validated: Department Name -- " +departmentName);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

@@ -62,10 +62,11 @@ public class CompanyPosition extends TestSuiteBase {
 			
 			getObject("sa_company_position_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Company Position already exists with name -- " +companyPosition);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -81,8 +82,8 @@ public class CompanyPosition extends TestSuiteBase {
 
         APP_LOGS.debug("Company Position opened successfully, and following parameters have been validated: Company Position Name -- " +companyPosition +", Company Position Active Status -- "+companyPositionActive);
 
-        fail = false;       
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterTest

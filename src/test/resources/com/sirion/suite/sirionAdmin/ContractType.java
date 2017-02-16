@@ -63,10 +63,11 @@ public class ContractType extends TestSuiteBase {
 			
 			getObject("sa_contract_type_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Contract Type already exists with Name -- " +contractType);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -82,8 +83,8 @@ public class ContractType extends TestSuiteBase {
         
         APP_LOGS.debug("Contract Type opened successfully, and following parameters have been validated: Contract Type Name -- " +contractType +", Contract Type Active Status -- "+contractTypeActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="WOR Suite">
+
+	<test name="WOR - Creation">
+		<classes>
+			<class name="test.resources.com.sirion.suite.workOrderRequest.WORCreation"></class>
+		</classes>
+	</test>
+
+	<test name="WOR - Workflow Non workflow">
+		<classes>
+			<class name="test.resources.com.sirion.suite.workOrderRequest.WORWorkflow"></class>
+		</classes>
+	</test>
+
+</suite>

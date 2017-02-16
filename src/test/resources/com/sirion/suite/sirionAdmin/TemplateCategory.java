@@ -37,7 +37,6 @@ public class TemplateCategory extends TestSuiteBase {
 			}
 		
 		openBrowser();
-		driver.manage().window().maximize();
 		
 		sirionAdminLogin(CONFIG.getProperty("sirionAdminURL"), CONFIG.getProperty("sirionAdminUsername"), CONFIG.getProperty("sirionAdminPassword"));
 		
@@ -64,10 +63,11 @@ public class TemplateCategory extends TestSuiteBase {
 			
 			getObject("sa_template_category_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Template Category already exists with name -- " +templateCategory);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -83,8 +83,8 @@ public class TemplateCategory extends TestSuiteBase {
 
         APP_LOGS.debug("Template Category opened successfully, and following parameters have been validated: Template Category Name -- " +templateCategory +", Template Category Active Status -- "+templateCategoryActive);
 
-        fail = false;       
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

@@ -63,10 +63,11 @@ public class ContractPaper extends TestSuiteBase {
 			
 			getObject("sa_contract_paper_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Contract Paper already exists with Name -- " +contractPaper);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -82,8 +83,8 @@ public class ContractPaper extends TestSuiteBase {
         
         APP_LOGS.debug("Contract Paper opened successfully, and following parameters have been validated: Contract Paper Name -- " +contractPaper +", Contract Paper Active Status -- "+contractPaperActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

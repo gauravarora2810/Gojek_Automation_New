@@ -74,8 +74,8 @@ public class UpdateSLCategory extends TestSuiteBase {
 			APP_LOGS.debug("SL Category already exists with Name -- " +slCategoryOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-			fail=false;
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -90,8 +90,8 @@ public class UpdateSLCategory extends TestSuiteBase {
         
         APP_LOGS.debug("SL Category Updated successfully, and following parameters have been validated: SL Category Name -- " +slCategoryOpUpdate +", SL Category Active Status -- "+slCategoryActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

@@ -1,26 +1,25 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Client Setup Admin Suite">
 
+	<test name="Client Setup Admin - Client/Supplier Creation">
+		<classes>
+			<class
+				name="test.resources.com.sirion.suite.clientSetupAdmin.ClientSupplierCreation"></class>
+		</classes>
+	</test>
 
-<test name="Client Setup Admin Test - Create Client">
-    <classes>
-        <class name="test.resources.com.sirion.suite.clientSetupAdmin.ClientSupplierCreation" ></class> 
-    </classes>
-</test>
+	<test name="Client Setup Admin - Application Provisioning">
+		<classes>
+			<class
+				name="test.resources.com.sirion.suite.clientSetupAdmin.ApplicationProvisioning"></class>
+		</classes>
+	</test>
 
-
-<test name="Client Setup Admin Test - Application Provisioning Setup">
-    <classes>
-        <class name="test.resources.com.sirion.suite.clientSetupAdmin.ApplicationProvisioning" ></class> 
-    </classes>
-</test>
-
-
-<test name="Client Setup Admin Test - Logout">
-    <classes>
-        <class name="test.resources.com.sirion.suite.clientSetupAdmin.Logout" ></class> 
-    </classes>
-</test>
+	<test name="Client Setup Admin - Dashboard Setup">
+		<classes>
+			<class name="test.resources.com.sirion.suite.clientSetupAdmin.DashboardSetup"></class>
+		</classes>
+	</test>
 
 </suite>
 

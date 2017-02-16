@@ -63,10 +63,11 @@ public class Service extends TestSuiteBase {
 			
 			getObject("sa_service_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Service already exists with Name -- " +service);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -82,8 +83,8 @@ public class Service extends TestSuiteBase {
         
         APP_LOGS.debug("Service opened successfully, and following parameters have been validated: Service Name -- " +service +", Service Active Status -- "+serviceActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

@@ -63,10 +63,11 @@ public class CRType extends TestSuiteBase {
 			
 			getObject("sa_cr_type_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("CR Type already exists with Name -- " +crType);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -82,8 +83,8 @@ public class CRType extends TestSuiteBase {
         
         APP_LOGS.debug("CR Type opened successfully, and following parameters have been validated: CR Type Name -- " +crType +", CR Type Active Status -- "+crTypeActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

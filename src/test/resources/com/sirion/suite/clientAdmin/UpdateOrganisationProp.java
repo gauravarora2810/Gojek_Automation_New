@@ -117,12 +117,12 @@ public class UpdateOrganisationProp extends TestSuiteBase{
 		getObject("ca_confirmation_box_button").click();	
 		getObject("admin_tab_link").click();
 	}
-	
-	public String convertDoubleToIntegerInStringForm(String data){
+/*	
+	private String convertDoubleToIntegerInStringForm(String data){
 		data = Integer.valueOf((Double.valueOf(Double.parseDouble(data))).intValue()).toString();
 		return data;
 	}
-	
+*/	
 	@AfterMethod
 	public void reportDataSetResult(){
 		if(skip)

@@ -74,8 +74,8 @@ public class UpdateBusinessLine extends TestSuiteBase {
 			APP_LOGS.debug("Business Line already exists with Name -- " +businessLineOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -90,8 +90,8 @@ public class UpdateBusinessLine extends TestSuiteBase {
         
         APP_LOGS.debug("Business Line updated successfully, and following parameters have been validated: Business Line Name -- " +businessLineOpUpdate +", Business Line Active Status -- "+businessLineActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

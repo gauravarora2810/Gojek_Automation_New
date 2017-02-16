@@ -74,8 +74,8 @@ public class UpdateGovernanceBodyType extends TestSuiteBase {
 			APP_LOGS.debug("Governance Body Type already exists with Name -- " +governanceBodyTypeOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -90,8 +90,8 @@ public class UpdateGovernanceBodyType extends TestSuiteBase {
         
         APP_LOGS.debug("Governance Body Type updated successfully, and following parameters have been validated: Governance Body Type Name -- " +governanceBodyTypeOpUpdate +", Governance Body Type Active Status -- "+governanceBodyTypeActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

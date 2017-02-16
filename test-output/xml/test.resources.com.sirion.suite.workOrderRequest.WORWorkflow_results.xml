@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="WOR Workflow Test"
+<testsuite name="WOR - Workflow Non workflow"
            tests="1"
            failures="0"
            errors="0"
            skipped="0"
-           time="141.935">
+           time="130.437">
   <properties />
   
   
-            <testcase name="worListing" time="141.935" classname="test.resources.com.sirion.suite.workOrderRequest.WORWorkflow" />
+            <testcase name="worListing" time="130.437" classname="test.resources.com.sirion.suite.workOrderRequest.WORWorkflow" />
       
 </testsuite>

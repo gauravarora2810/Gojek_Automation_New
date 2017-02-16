@@ -74,8 +74,8 @@ public class UpdatePaperType extends TestSuiteBase {
 			APP_LOGS.debug("Paper Type already exists with Name -- " +paperTypeOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -90,8 +90,8 @@ public class UpdatePaperType extends TestSuiteBase {
         
         APP_LOGS.debug("Paper Type updated successfully, and following parameters have been validated: Paper Type Name -- " +paperTypeOpUpdate +", Paper Type Active Status -- "+paperTypeActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

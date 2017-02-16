@@ -74,8 +74,8 @@ public class UpdateClauseType extends TestSuiteBase {
 			APP_LOGS.debug("Clause Type already exists with Name -- " +clauseTypeOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -90,8 +90,8 @@ public class UpdateClauseType extends TestSuiteBase {
         
         APP_LOGS.debug("Clause Type updated successfully, and following parameters have been validated: Clause Type Name -- " +clauseTypeOpUpdate +", Clause Type Active Status -- "+clauseTypeActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

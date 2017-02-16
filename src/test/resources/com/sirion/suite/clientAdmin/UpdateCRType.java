@@ -74,8 +74,8 @@ public class UpdateCRType extends TestSuiteBase {
 			APP_LOGS.debug("CR Type already exists with Name -- " +crTypeOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -90,8 +90,8 @@ public class UpdateCRType extends TestSuiteBase {
         
         APP_LOGS.debug("CR Type updated successfully, and following parameters have been validated: CR Type Name -- " +crTypeOpUpdate +", CR Type Active Status -- "+crTypeActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

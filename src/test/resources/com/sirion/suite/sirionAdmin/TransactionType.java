@@ -63,10 +63,11 @@ public class TransactionType extends TestSuiteBase {
 			
 			getObject("sa_transaction_type_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Transaction Type already exists with name -- " +transactionType);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -82,8 +83,8 @@ public class TransactionType extends TestSuiteBase {
         
         APP_LOGS.debug("Transaction Type opened successfully, and following parameters have been validated: Transaction Type Name -- " +transactionType +", Transaction Type Active Status -- "+transactionTypeActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

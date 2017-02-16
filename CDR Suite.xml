@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="CDR Suite">
+
+	<test name="CDR - Creation">
+		<classes>
+			<class name="test.resources.com.sirion.suite.cdr.CDRCreation"></class>
+		</classes>
+	</test>
+
+	<test name="CDR - Workflow">
+		<classes>
+			<class name="test.resources.com.sirion.suite.cdr.CDRWorkflow"></class>
+		</classes>
+	</test>
+
+</suite>

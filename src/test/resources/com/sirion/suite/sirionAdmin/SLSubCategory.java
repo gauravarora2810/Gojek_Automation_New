@@ -63,10 +63,11 @@ public class SLSubCategory extends TestSuiteBase {
 			
 			getObject("sa_sl_sub_category_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("SL Sub-Category already exists with Name -- " +slSubCategory);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
@@ -82,8 +83,8 @@ public class SLSubCategory extends TestSuiteBase {
         
         APP_LOGS.debug("SL Sub-Category opened successfully, and following parameters have been validated: SL Sub-Category Name -- " +slSubCategory +", SL Sub-Category Active Status -- "+slSubCategoryActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

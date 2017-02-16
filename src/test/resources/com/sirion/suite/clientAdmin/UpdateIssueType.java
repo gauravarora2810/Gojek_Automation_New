@@ -74,8 +74,8 @@ public class UpdateIssueType extends TestSuiteBase {
 			APP_LOGS.debug("Issue Type already exists with Name -- " +issueTypeOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
         
@@ -90,8 +90,8 @@ public class UpdateIssueType extends TestSuiteBase {
         
         APP_LOGS.debug("Issue Type opened successfully, and following parameters have been validated: Issue Type Name -- " +issueTypeOpUpdate +", Issue Type Active Status -- "+issueTypeActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

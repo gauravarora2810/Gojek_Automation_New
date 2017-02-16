@@ -63,16 +63,17 @@ public class GovernanceBodyType extends TestSuiteBase {
 			
 			getObject("sa_governance_body_type_confirmation_popup_yes_button").click();
 			
-			fail=false;
 			APP_LOGS.debug("Governance Body Type already exists with name -- " +governanceBodyType);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 			
+			fail=false;
+			driver.get(CONFIG.getProperty("sirionAdminURL"));
 			return;
 			}
 
         new Select(getObject("sa_governance_body_type_listing_page_display_dropdown")).selectByIndex(3);
         
-        driver.findElement(By.xpath(".//*[@id='l_com_sirionlabs_model_GovernanceBodyType']/tbody/tr[@role='row']/td[contains(.,'"+ governanceBodyType +"')]/div/a")).click();
+        driver.findElement(By.xpath(".//*[@id='l_com_sirionlabs_model_GovernanceBodyType']/tbody/tr[@role='row']/td[contains(.,'"+ governanceBodyType +"')]/a/div")).click();
         
         String governanceBodyTypeShowPage = getObject("sa_governance_body_type_show_page_name").getText();
         Assert.assertEquals(governanceBodyTypeShowPage, governanceBodyType, "Governance Body Type Name at show page is -- " +governanceBodyTypeShowPage+ " instead of -- " +governanceBodyType);
@@ -82,8 +83,8 @@ public class GovernanceBodyType extends TestSuiteBase {
         
         APP_LOGS.debug("Governance Body Type opened successfully, and following parameters have been validated: Governance Body Type Name -- " +governanceBodyType +", Governance Body Type Active Status -- "+governanceBodyTypeActive);
         
-        fail = false;        
-		getObject("sirion_admin_administration_tab_link").click();
+		fail=false;
+		driver.get(CONFIG.getProperty("sirionAdminURL"));
 		}
 	
 	@AfterMethod

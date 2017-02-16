@@ -138,7 +138,7 @@
 				<version>3.1</version>
 				<configuration>
 					<fork>true</fork>
-					<executable>C:\Program Files\Java\jdk1.7.0_55\bin\javac.exe</executable>
+					<executable>${JAVA_HOME}\bin\javac.exe</executable>
 				</configuration>
 			</plugin>
 
@@ -159,6 +159,7 @@
 				<version>2.19.1</version>
 
 				<configuration>
+					<reportsDirectory>${basedir}\test-output</reportsDirectory>
 					<arguements>
 						<argument>${env}</argument>
 					</arguements>

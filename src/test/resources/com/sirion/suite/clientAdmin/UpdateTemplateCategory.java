@@ -74,8 +74,8 @@ public class UpdateTemplateCategory extends TestSuiteBase {
 			APP_LOGS.debug("Template Category already exists with Name -- " +templateCategoryOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
         
@@ -90,8 +90,8 @@ public class UpdateTemplateCategory extends TestSuiteBase {
         
         APP_LOGS.debug("Template Category opened successfully, and following parameters have been validated: Template Category Name -- " +templateCategoryOpUpdate +", Template Category Active Status -- "+templateCategoryActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod

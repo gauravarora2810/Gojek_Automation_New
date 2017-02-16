@@ -74,8 +74,8 @@ public class UpdateIndustryType extends TestSuiteBase {
 			APP_LOGS.debug("Industry Type already exists with Name -- " +industryTypeOpUpdate);
 			APP_LOGS.debug("Errors: "+errors_create_page);
 
-	        fail = false;        
-			getObject("ca_administration_tab_link").click();
+	        fail = false;
+	        driver.get(CONFIG.getProperty("clientAdminURL"));
 			return;
 			}
 
@@ -90,8 +90,8 @@ public class UpdateIndustryType extends TestSuiteBase {
         
         APP_LOGS.debug("Industry Type updated successfully, and following parameters have been validated: Industry Type Name -- " +industryTypeOpUpdate +", Industry Type Active Status -- "+industryTypeActiveUpdate);
         
-        fail = false;        
-		getObject("ca_administration_tab_link").click();
+        fail = false;
+        driver.get(CONFIG.getProperty("clientAdminURL"));
 		}
 	
 	@AfterMethod
