@@ -93,6 +93,12 @@ public class ActionCreation extends TestSuiteBase implements ITestListener {
 
 		if (!actionTimeZone.equalsIgnoreCase("")) {
 			new Select(getObject("ac_timezone_dropdown")).selectByVisibleText(actionTimeZone);
+			try {
+	      		if (driver.findElement(By.className("success-icon")).getText().contains("Current Date is different for the selected Time Zone"))
+	      			driver.findElement(By.xpath(".//button[contains(.,'OK')]")).click();
+	      	} catch (Exception e) {
+	      		
+	      	}
 			}
 		Thread.sleep(5000);
 

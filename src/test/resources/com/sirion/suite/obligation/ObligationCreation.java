@@ -14,6 +14,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import test.resources.com.sirion.util.DatePicker;
 import test.resources.com.sirion.util.TestUtil;
 import testlink.api.java.client.TestLinkAPIException;
 
@@ -38,7 +39,9 @@ public class ObligationCreation extends TestSuiteBase {
 	public void ObligationCreationTest(String obTitle, String obDescription, String obPerformanceType, String obCategory,
 			String obTimezone, String obDeliveryCountries, String obCurrency, String obSupplierAccess, String obTier,
 			String obPriority, String obPhase,String obReferences, String obClause,
-			String obPageNumber, String obFrequencyType, String obFrequency, String obWeekType,String obStartDate, String obEndDate,
+			String obPageNumber, String obFrequencyType, String obFrequency, String obWeekType,String obStartDateMonth,String obStartDateDate, String obStartDateYear,String obEndDateMonth,String obEndDateDate,
+			String obEndDateYear,String obPatternDateMonth, String obPatternDateDate, String obPatternDateYear, String obEffectiveDateMonth, String	obEffectiveDateDate, String obEffectiveDateYear, 
+			String obStartDate, String obEndDate,
 			String obPatternDate, String obEffectiveDate, String obFunctions, String obServices, String obServiceCategory, String obManagementRegions,
 			String obManagementCountries, String obContractRegions, String obContractCountries, String obStakeholder, String obResponsibility,
 			String obFinancialImpactApplicable, String obFinancialImpactValue, String obFinancialImpactClause, String obImpactDays, String obImpactType,
@@ -199,6 +202,12 @@ public class ObligationCreation extends TestSuiteBase {
 		// Select ob Timezone
 		if (!obTimezone.equalsIgnoreCase("")) {
 			new Select(getObject("ob_timezone_dropdown")).selectByVisibleText(obTimezone);
+			try {
+	      		if (driver.findElement(By.className("success-icon")).getText().contains("Current Date is different for the selected Time Zone"))
+	      			driver.findElement(By.xpath(".//button[contains(.,'OK')]")).click();
+	      	} catch (Exception e) {
+	      		
+	      	}
 			}
 
 		// Select ob Delivery Countries
@@ -290,7 +299,7 @@ System.out.println("Gaurav");
 			new Select(getObject("ob_week_type_dropdown")).selectByVisibleText(obWeekType);
 			}
 		System.out.println("Arora");
-		
+		/*
 		// Select ob Start Date
 		((JavascriptExecutor)driver).executeScript("arguments[0].click();", driver.findElement(By.name("startDate")));
 		if (!obStartDate.equalsIgnoreCase("")) {
@@ -312,7 +321,7 @@ System.out.println("Gaurav");
 			}
 
 		// Select ob End Date
-		((JavascriptExecutor)driver).executeScript("arguments[0].click();", driver.findElement(By.name("expDate")));
+		//((JavascriptExecutor)driver).executeScript("arguments[0].click();", driver.findElement(By.name("expDate")));
 		if (!obEndDate.equalsIgnoreCase("")) {
 			driver.findElement(By.name("expDate")).click();
 			String[] obDate = obEndDate.split("-");
@@ -324,12 +333,11 @@ System.out.println("Gaurav");
 				}
 
 			new Select(driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/div/select"))).selectByVisibleText(obDate[2]);
-
 			driver.findElement(By.linkText(obDate[1])).click();
 			}
 
 		// Select ob Pattern Date
-		((JavascriptExecutor)driver).executeScript("arguments[0].click();", driver.findElement(By.name("patternDate")));
+		//((JavascriptExecutor)driver).executeScript("arguments[0].click();", driver.findElement(By.name("patternDate")));
 		if (!obPatternDate.equalsIgnoreCase("")) {
 			driver.findElement(By.name("patternDate")).click();
 			String[] obDate = obPatternDate.split("-");
@@ -346,7 +354,7 @@ System.out.println("Gaurav");
 			}
 
 		// Select ob Effective Date
-		((JavascriptExecutor)driver).executeScript("arguments[0].click();", driver.findElement(By.name("effectiveDate")));
+	//	((JavascriptExecutor)driver).executeScript("arguments[0].click();", driver.findElement(By.name("effectiveDate")));
 		if (!obEffectiveDate.equalsIgnoreCase("")) {
 			driver.findElement(By.name("effectiveDate")).click();
 			String[] obDate = obEffectiveDate.split("-");
@@ -361,7 +369,90 @@ System.out.println("Gaurav");
 
 			driver.findElement(By.linkText(obDate[1])).click();
 			}
+*/
+		
+		
+		
+		System.out.println("Naveen Date Code Start");
+		
+		
+		
+		// Date picker
+				// Enter value in CR Date field
+				String ob_DateMonth = convertDoubleToIntegerInStringForm(obStartDateMonth);
+				int ob_dateMonth = Integer.parseInt(ob_DateMonth);
+				String ob_DateYear = convertDoubleToIntegerInStringForm(obStartDateYear);
+				int ob_dateYear = Integer.parseInt(ob_DateYear);
+				String ob_DateDate = convertDoubleToIntegerInStringForm(obStartDateDate);
+				Integer ob_dateDate = Integer.parseInt(ob_DateDate);
+				ob_DateDate = ob_dateDate.toString();
 
+				DatePicker dp_cr_Date_date = new DatePicker();
+				dp_cr_Date_date.expDate = ob_DateDate;
+				dp_cr_Date_date.expMonth = ob_dateMonth;
+				dp_cr_Date_date.expYear = ob_dateYear;
+				dp_cr_Date_date.pickExpDate("startDate");
+
+				
+				// Enter value in End Date field
+				String ob_end_DateMonth = convertDoubleToIntegerInStringForm(obEndDateDate);
+				int ob_end_dateMonth = Integer.parseInt(ob_end_DateMonth);
+				String ob_end_DateYear = convertDoubleToIntegerInStringForm(obEndDateYear);
+				int ob_end_dateYear = Integer.parseInt(ob_end_DateYear);
+				String ob_end_DateDate = convertDoubleToIntegerInStringForm(obEndDateMonth);
+				Integer ob_end_dateDate = Integer.parseInt(ob_end_DateDate);
+				ob_end_DateDate = ob_end_dateDate.toString();
+
+				DatePicker dp_ob_end_Date_date = new DatePicker();
+				dp_ob_end_Date_date.expDate = ob_end_DateDate;
+				dp_ob_end_Date_date.expMonth = ob_end_dateMonth;
+				dp_ob_end_Date_date.expYear = ob_end_dateYear;
+				dp_ob_end_Date_date.pickExpDate("expDate");
+				
+				
+				// Enter value in patternDate Date field
+				String ob_pattern_DateMonth = convertDoubleToIntegerInStringForm(obPatternDateDate);
+				int ob_pattern_dateMonth = Integer.parseInt(ob_pattern_DateMonth);
+				String ob_pattern_DateYear = convertDoubleToIntegerInStringForm(obPatternDateYear);
+				int ob_pattern_dateYear = Integer.parseInt(ob_pattern_DateYear);
+				String ob_pattern_DateDate = convertDoubleToIntegerInStringForm(obPatternDateMonth);
+				Integer ob_pattern_dateDate = Integer.parseInt(ob_pattern_DateDate);
+				ob_pattern_DateDate = ob_pattern_dateDate.toString();
+
+				DatePicker dp_ob_pattern_Date_date = new DatePicker();
+				dp_ob_pattern_Date_date.expDate = ob_pattern_DateDate;
+				dp_ob_pattern_Date_date.expMonth = ob_pattern_dateMonth;
+				dp_ob_pattern_Date_date.expYear = ob_pattern_dateYear;
+				dp_ob_pattern_Date_date.pickExpDate("patternDate");
+				
+				
+				// Enter value in Effective Date field
+				String ob_effective_DateMonth = convertDoubleToIntegerInStringForm(obEffectiveDateDate);
+				int ob_effective_dateMonth = Integer.parseInt(ob_effective_DateMonth);
+				String ob_effective_DateYear = convertDoubleToIntegerInStringForm(obEffectiveDateYear);
+				int ob_effective_dateYear = Integer.parseInt(ob_effective_DateYear);
+				String ob_effective_DateDate = convertDoubleToIntegerInStringForm(obEffectiveDateMonth);
+				Integer ob_effective_dateDate = Integer.parseInt(ob_effective_DateDate);
+				ob_effective_DateDate = ob_effective_dateDate.toString();
+
+				DatePicker dp_ob_effective_Date_date = new DatePicker();
+				dp_ob_effective_Date_date.expDate = ob_effective_DateDate;
+				dp_ob_effective_Date_date.expMonth = ob_effective_dateMonth;
+				dp_ob_effective_Date_date.expYear = ob_effective_dateYear;
+				dp_ob_effective_Date_date.pickExpDate("effectiveDate");
+		
+		
+				
+				
+		
+		
+				System.out.println("Naveen Date Code End");
+		
+		
+		
+		
+		
+		
 		// Select ob Functions and Services
 		if (!obFunctions.equalsIgnoreCase("")) {
 			for (String obData : obFunctions.split(";")) {
@@ -434,9 +525,12 @@ System.out.println("Gaurav");
 					}
 				}
 			}
-
-		
-		getObject("ob_savebutton").click();
+		Thread.sleep(5000);
+		System.out.println("before save button");
+		//((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//button[contains(.,'Save')][@clientvalidation='true']")));
+		driver.findElement(By.xpath(".//button[contains(.,'Save')][@clientvalidation='true']")).click();
+		System.out.println("after save button");
+		//getObject("ob_savebutton").click();
 		Thread.sleep(5000);
 
 		if (obTitle.equalsIgnoreCase("")) {

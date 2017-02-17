@@ -1,7 +1,10 @@
 package test.resources.com.sirion.suite.sl;
 
+import java.util.Date;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -12,6 +15,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import test.resources.com.sirion.util.DatePicker;
 import test.resources.com.sirion.util.TestUtil;
 import testlink.api.java.client.TestLinkAPIException;
 
@@ -42,12 +46,15 @@ public class SLCreation extends TestSuiteBase {
 			String slSLCreditSubCategory, String slSLCreditLineItem, String slCreditFrequency, String slEarnbackApplicableDate, String slEarnbackClause,
 			String slEarnbackCategory, String slEarnbackSubCategory, String slEarnbackLineItem, String slEarnbackFrequency, String slSubjectTo,
 			String slContinuousImprovementClause, String slFrequencyType, String slComputationFrequency, String slFrequency, String slStartDate, String slEndDate,
-			String slPatternDate, String slEffectiveDate, String slFunctions, String slServices, String slServiceCategory, String slManagementRegions,
+			String slPatternDate, String slEffectiveDate, String slStartDateMonth,String slStartDateDate, String slStartDateYear,String slEndDateMonth,String slEndDateDate,
+			String slEndDateYear,String slPatternDateMonth, String slPatternDateDate, String slPatternDateYear, String slEffectiveDateMonth, String	slEffectiveDateDate, String slEffectiveDateYear, 
+			String slFunctions, String slServices, String slServiceCategory, String slManagementRegions,
 			String slManagementCountries, String slContractRegions, String slContractCountries, String slStakeholder, String slResponsibility,
 			String slFinancialImpactApplicable, String slFinancialImpactValue, String slFinancialImpactClause, String slImpactDays, String slImpactType,
 			String slCreditImpactApplicable, String slCreditImpactValue, String slCreditImpactClause, String slComments, String slActualDate, String slRequestedBy,
 			String slChangeRequest, String slUploadFile, String slSupplier, String slSource, String slSourceName, String slGlobalCreation)
 			throws InterruptedException, TestLinkAPIException {
+		System.out.println("gaurav Arpra");
 
 		count++;
 		if (!runmodes[count].equalsIgnoreCase("Y")) {
@@ -62,6 +69,7 @@ public class SLCreation extends TestSuiteBase {
 		Thread.sleep(5000);
 
 		// Click on Analytics
+		wait_in_report.until(ExpectedConditions.elementToBeClickable(getObject("analytics_link")));
 		driver.findElement(By.linkText("Analytics")).click();
 
 		// Condition Check for Global Creation
@@ -183,6 +191,13 @@ public class SLCreation extends TestSuiteBase {
 		// Select SL Timezone
 		if (!slTimezone.equalsIgnoreCase("")) {
 			new Select(getObject("sl_timezone_dropdown")).selectByVisibleText(slTimezone);
+			
+			try {
+	      		if (driver.findElement(By.className("success-icon")).getText().contains("Current Date is different for the selected Time Zone"))
+	      			driver.findElement(By.xpath(".//button[contains(.,'OK')]")).click();
+	      	} catch (Exception e) {
+	      		
+	      	}
 			}
 
 		// Select SL Delivery Countries
@@ -424,7 +439,7 @@ public class SLCreation extends TestSuiteBase {
 		if (!slFrequency.equalsIgnoreCase("")) {
 			new Select(getObject("sl_frequency_dropdown")).selectByVisibleText(slFrequency);
 			}
-
+/*
 		// Select SL Start Date
 		if (!slStartDate.equalsIgnoreCase("")) {
 			driver.findElement(By.name("startDate")).click();
@@ -487,8 +502,87 @@ public class SLCreation extends TestSuiteBase {
 			new Select(driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/div/select"))).selectByVisibleText(slDate[2]);
 
 			driver.findElement(By.linkText(slDate[1])).click();
-			}
+			}*/
+		
+		
+		
+System.out.println("Naveen Date Code Start");
+		
+		
+		
+		/*// Date picker
+				// Enter value in CR Date field
+				String sl_DateMonth = convertDoubleToIntegerInStringForm(slStartDateMonth);
+				int sl_dateMonth = Integer.parseInt(sl_DateMonth);
+				String sl_DateYear = convertDoubleToIntegerInStringForm(slStartDateYear);
+				int sl_dateYear = Integer.parseInt(sl_DateYear);
+				String sl_DateDate = convertDoubleToIntegerInStringForm(slStartDateDate);
+				Integer sl_dateDate = Integer.parseInt(sl_DateDate);
+				sl_DateDate = sl_dateDate.toString();
 
+				DatePicker dp_sl_Date_date = new DatePicker();
+				dp_sl_Date_date.expDate = sl_DateDate;
+				dp_sl_Date_date.expMonth = sl_dateMonth;
+				dp_sl_Date_date.expYear = sl_dateYear;
+				dp_sl_Date_date.pickExpDate("startDate");
+
+				
+				// Enter value in End Date field
+				String sl_end_DateMonth = convertDoubleToIntegerInStringForm(slEndDateDate);
+				int sl_end_dateMonth = Integer.parseInt(sl_end_DateMonth);
+				String sl_end_DateYear = convertDoubleToIntegerInStringForm(slEndDateYear);
+				int sl_end_dateYear = Integer.parseInt(sl_end_DateYear);
+				String sl_end_DateDate = convertDoubleToIntegerInStringForm(slEndDateMonth);
+				Integer sl_end_dateDate = Integer.parseInt(sl_end_DateDate);
+				sl_end_DateDate = sl_end_dateDate.toString();
+
+				DatePicker dp_sl_end_Date_date = new DatePicker();
+				dp_sl_end_Date_date.expDate = sl_end_DateDate;
+				dp_sl_end_Date_date.expMonth = sl_end_dateMonth;
+				dp_sl_end_Date_date.expYear = sl_end_dateYear;
+				dp_sl_end_Date_date.pickExpDate("expDate");
+				
+				
+				// Enter value in patternDate Date field
+				String sl_pattern_DateMonth = convertDoubleToIntegerInStringForm(slPatternDateDate);
+				int sl_pattern_dateMonth = Integer.parseInt(sl_pattern_DateMonth);
+				String sl_pattern_DateYear = convertDoubleToIntegerInStringForm(slPatternDateYear);
+				int sl_pattern_dateYear = Integer.parseInt(sl_pattern_DateYear);
+				String sl_pattern_DateDate = convertDoubleToIntegerInStringForm(slPatternDateMonth);
+				Integer sl_pattern_dateDate = Integer.parseInt(sl_pattern_DateDate);
+				sl_pattern_DateDate = sl_pattern_dateDate.toString();
+
+				DatePicker dp_sl_pattern_Date_date = new DatePicker();
+				dp_sl_pattern_Date_date.expDate = sl_pattern_DateDate;
+				dp_sl_pattern_Date_date.expMonth = sl_pattern_dateMonth;
+				dp_sl_pattern_Date_date.expYear = sl_pattern_dateYear;
+				dp_sl_pattern_Date_date.pickExpDate("patternDate");
+				
+				
+				// Enter value in Effective Date field
+				String sl_effective_DateMonth = convertDoubleToIntegerInStringForm(slEffectiveDateDate);
+				int sl_effective_dateMonth = Integer.parseInt(sl_effective_DateMonth);
+				String sl_effective_DateYear = convertDoubleToIntegerInStringForm(slEffectiveDateYear);
+				int sl_effective_dateYear = Integer.parseInt(sl_effective_DateYear);
+				String sl_effective_DateDate = convertDoubleToIntegerInStringForm(slEffectiveDateMonth);
+				Integer sl_effective_dateDate = Integer.parseInt(sl_effective_DateDate);
+				sl_effective_DateDate = sl_effective_dateDate.toString();
+
+				DatePicker dp_sl_effective_Date_date = new DatePicker();
+				dp_sl_effective_Date_date.expDate = sl_effective_DateDate;
+				dp_sl_effective_Date_date.expMonth = sl_effective_dateMonth;
+				dp_sl_effective_Date_date.expYear = sl_effective_dateYear;
+				dp_sl_effective_Date_date.pickExpDate("effectiveDate");*/
+		
+		
+				
+				
+		
+		
+				System.out.println("Naveen Date Code End");
+
+				
+				
 		// Select SL Functions and Services
 		if (!slFunctions.equalsIgnoreCase("")) {
 			for (String slData : slFunctions.split(";")) {

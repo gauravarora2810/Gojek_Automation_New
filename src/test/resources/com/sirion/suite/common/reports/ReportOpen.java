@@ -49,6 +49,7 @@ public class ReportOpen extends TestSuiteBase {
 		wait = new WebDriverWait(driver, 60);
 
 		Thread.sleep(10000);
+		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
 		driver.findElement(By.linkText("Analytics")).click();
 		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.linkText("Reports"))));
 

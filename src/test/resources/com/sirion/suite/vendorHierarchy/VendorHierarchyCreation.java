@@ -1,6 +1,7 @@
 package test.resources.com.sirion.suite.vendorHierarchy;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.SkipException;
@@ -49,6 +50,7 @@ public class VendorHierarchyCreation extends TestSuiteBase {
 		Thread.sleep(10000);
 
 		// Click on Analytics
+		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
 		driver.findElement(By.linkText("Analytics")).click();
 		Thread.sleep(10000);
 		

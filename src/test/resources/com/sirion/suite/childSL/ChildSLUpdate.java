@@ -3,6 +3,7 @@ package test.resources.com.sirion.suite.childSL;
 import java.sql.SQLException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
@@ -46,7 +47,7 @@ public class ChildSLUpdate extends TestSuiteBase {
 		openBrowser();
 		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
 		Thread.sleep(5000);
-
+		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
 		// Click on Analytics
 		driver.findElement(By.linkText("Analytics")).click();
 		Thread.sleep(5000);

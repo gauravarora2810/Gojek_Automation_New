@@ -138,7 +138,7 @@
 				<version>3.1</version>
 				<configuration>
 					<fork>true</fork>
-					<executable>${JAVA_HOME}\bin\javac.exe</executable>
+					<executable>C:\Program Files\Java\jdk1.7.0_79\bin\javac.exe</executable>
 				</configuration>
 			</plugin>
 
@@ -164,11 +164,11 @@
 						<argument>${env}</argument>
 					</arguements>
 					<properties>
-						<!-- <property>
+						<property>
 							<name>usedefaultlisteners</name>
 							<value>false</value>
 						</property>
-						 --><!-- Setting ReportNG listeners -->
+						
 						<property>
 							<name>listener</name>
 							<value>org.uncommons.reportng.HTMLReporter,

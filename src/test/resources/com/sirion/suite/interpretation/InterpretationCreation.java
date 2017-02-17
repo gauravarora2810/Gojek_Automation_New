@@ -115,6 +115,12 @@ public class InterpretationCreation extends TestSuiteBase {
 		
 		if (!ipTimezone.equalsIgnoreCase("")) {
 			new Select(getObject("ip_timezone_dropdown")).selectByVisibleText(ipTimezone);
+			try {
+	      		if (driver.findElement(By.className("success-icon")).getText().contains("Current Date is different for the selected Time Zone"))
+	      			driver.findElement(By.xpath(".//button[contains(.,'OK')]")).click();
+	      	} catch (Exception e) {
+	      		
+	      	}
 		}
 		
 		if (!ipTier.equalsIgnoreCase("")) {

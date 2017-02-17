@@ -3,6 +3,8 @@ package test.resources.com.sirion.suite.sl;
 import java.sql.SQLException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
@@ -50,13 +52,14 @@ public class SLWorkflow extends TestSuiteBase {
 		Thread.sleep(5000);
 
 		// Click on Analytics
+		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
 		driver.findElement(By.linkText("Analytics")).click();
 
         getObject("service_levels_quick_link").click();
 		Thread.sleep(10000);
         
         driver.findElement(By.xpath(".//*[@id='cr']/tbody/tr[1]/td[1]/a")).click();
-		Thread.sleep(10000);
+		Thread.sleep(20000);
         
 		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Clone')]")));
 		driver.findElement(By.xpath("//button[contains(.,'Clone')]")).click();
@@ -73,30 +76,37 @@ public class SLWorkflow extends TestSuiteBase {
 	    	getObject("sl_notification_popup_id").click();
 			Thread.sleep(10000);
 	    	}
-
-		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Send For Peer Review')]")));
+	    
+	    
+	    Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Send For Peer Review')]")));
+	    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//button[contains(.,'Send For Peer Review')]")));
 		driver.findElement(By.xpath("//button[contains(.,'Send For Peer Review')]")).click();
 		Thread.sleep(10000);
 		
 		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Peer Review Complete')]")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//button[contains(.,'Peer Review Complete')]")));
 		driver.findElement(By.xpath("//button[contains(.,'Peer Review Complete')]")).click();
 		Thread.sleep(10000);
         
 		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Send For Internal Review')]")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//button[contains(.,'Send For Internal Review')]")));
 		driver.findElement(By.xpath("//button[contains(.,'Send For Internal Review')]")).click();
 		Thread.sleep(10000);
         
 		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Internal Review Complete')]")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//button[contains(.,'Internal Review Complete')]")));
 		driver.findElement(By.xpath("//button[contains(.,'Internal Review Complete')]")).click();
 		Thread.sleep(10000);
 		
 		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Send For Client Review')]")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//button[contains(.,'Send For Client Review')]")));
 		driver.findElement(By.xpath("//button[contains(.,'Send For Client Review')]")).click();
 		Thread.sleep(10000);
-        
+      /*  
 		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
 		driver.findElement(By.xpath("//button[contains(.,'Approve')]")).click();
-		Thread.sleep(10000);
+		Thread.sleep(10000);*/
 /*		
 		// Select SL Category
 	    if((getObject("sl_show_page_sl_category_dropdown_errors"))!=null) {
@@ -299,12 +309,12 @@ public class SLWorkflow extends TestSuiteBase {
 		driver.findElement(By.xpath("//button[contains(.,'Approve')]")).click();
 		Thread.sleep(10000);
 */
-		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Publish')]")));
+		/*Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Publish')]")));
 		driver.findElement(By.xpath("//button[contains(.,'Publish')]")).click();
-		Thread.sleep(10000);
+		Thread.sleep(10000);*/
 	    
 		fail = false;
-		driver.get(CONFIG.getProperty("endUserURL"));
+		
 		}
 
   @AfterMethod

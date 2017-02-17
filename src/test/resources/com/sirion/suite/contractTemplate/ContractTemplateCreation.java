@@ -6,6 +6,7 @@ import java.util.Date;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.SkipException;
@@ -50,7 +51,7 @@ public class ContractTemplateCreation extends TestSuiteBase {
 		openBrowser();
 		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
 		Thread.sleep(10000);
-		
+		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
 		driver.findElement(By.linkText("Analytics")).click();
 		Thread.sleep(10000);
 		

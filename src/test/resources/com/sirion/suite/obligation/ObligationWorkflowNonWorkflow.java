@@ -52,7 +52,7 @@ public class ObligationWorkflowNonWorkflow extends TestSuiteBase {
 		openBrowser();
 		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
 		
-		Thread.sleep(10000);
+		Thread.sleep(20000);
 		// Click analytics
 		wait_in_report.until(ExpectedConditions.visibilityOf(getObject("analytics_link")));
 		getObject("analytics_link").click();

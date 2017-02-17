@@ -2,6 +2,7 @@ package test.resources.com.sirion.suite.supplier;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.SkipException;
@@ -52,6 +53,7 @@ public class SupplierCreation extends TestSuiteBase {
 		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
 
 		// Click on Analytics
+		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
 		driver.findElement(By.linkText("Analytics")).click();
 		
 		getObject("vh_quick_link").click();

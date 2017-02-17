@@ -1,6 +1,8 @@
 package test.resources.com.sirion.suite.cdr;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.SkipException;
@@ -46,7 +48,7 @@ public class CDRCreation extends TestSuiteBase {
         openBrowser();
         endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
 		Thread.sleep(10000);
-        
+		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
 		driver.findElement(By.linkText("Analytics")).click();
 		Thread.sleep(10000);
 		
@@ -177,6 +179,7 @@ public class CDRCreation extends TestSuiteBase {
 
 			String cdrMonth = driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/div/span")).getText();
 			while (!cdrMonth.equalsIgnoreCase(cdrDate[0])) {
+				 ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView()", driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/a[2]/span")));    
 				driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/a[2]/span")).click();
 				cdrMonth = driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/div/span")).getText();
 				}

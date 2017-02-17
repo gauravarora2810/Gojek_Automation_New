@@ -8,6 +8,7 @@ import java.util.Date;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.SkipException;
@@ -63,6 +64,7 @@ public class ContractCreation extends TestSuiteBase {
 		Thread.sleep(10000);
 
 		// Click on Analytics
+		wait_in_report.until(ExpectedConditions.elementToBeClickable(getObject("analytics_link")));
 		driver.findElement(By.linkText("Analytics")).click();
 		Thread.sleep(10000);
 		
@@ -122,13 +124,19 @@ public class ContractCreation extends TestSuiteBase {
 			getObject("co_create_page_contract_no_textbox").sendKeys(date1);
 			}
 		
-		if (!coBrief.equalsIgnoreCase("")) {
+	/*	if (!coBrief.equalsIgnoreCase("")) {
 			getObject("co_create_page_brief_textarea").clear();
 			getObject("co_create_page_brief_textarea").sendKeys(coBrief);
-			}
-		
+			}*/
+		System.out.println("On time zone");
 		if (!coTimezone.equalsIgnoreCase("")) {
 			new Select(getObject("co_create_page_timezone_dropdown")).selectByVisibleText(coTimezone);
+			try {
+	      		if (driver.findElement(By.className("success-icon")).getText().contains("Current Date is different for the selected Time Zone"))
+	      			driver.findElement(By.xpath(".//button[contains(.,'OK')]")).click();
+	      	} catch (Exception e) {
+	      		
+	      	}
 			}
 		
 		if (!coContractingEntity.equalsIgnoreCase("")) {

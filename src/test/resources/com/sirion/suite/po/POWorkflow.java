@@ -2,6 +2,10 @@ package test.resources.com.sirion.suite.po;
 
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -39,13 +43,11 @@ public class POWorkflow extends TestSuiteBase {
 		// load the runmodes off the tests
 		
 		runmodes = TestUtil.getDataSetRunmodes(po_suite_xls, this.getClass().getSimpleName());
-		System.out.println("at last chektestskip");
 	}
 
 	@Test(dataProvider ="getTestData")
 		public void PurchaseOrderWorkflowTest(String poPONumber,String poName,
 				String poRequisitionNumber,String poTrackingNumber) throws Exception {
-			System.out.println("In @Test Annotation");
 			// test the runmode of current dataset
 			count++;
 			
@@ -56,7 +58,6 @@ public class POWorkflow extends TestSuiteBase {
 			}
 
 		
-		System.out.println("In middle contract Listing");
 		APP_LOGS.debug("Executing Test Case PurchaseOrder Workflow");
 
 		openBrowser();
@@ -75,13 +76,11 @@ public class POWorkflow extends TestSuiteBase {
 		Thread.sleep(10000);	
 		// Clicking the Purchase Order quick link
 		getObject("po_quick_link").click();
-		System.out.println("Clicked the purchase order quick link");
 		Thread.sleep(10000);
 
 		
 		// Clicking the first record of the Purchase Order listing
 		getObject("po_id_link").click();
-		System.out.println("clicked the first record");
 		Thread.sleep(10000);
 
 		// Clicking the clone button
@@ -90,33 +89,35 @@ public class POWorkflow extends TestSuiteBase {
 		executor.executeScript("arguments[0].click();", element);
 		
 		
-		System.out.println("clicked the clone button");
 		Thread.sleep(10000);
 		
-		if (!poPONumber.equalsIgnoreCase("")) 
-		{
+		if (!poPONumber.equalsIgnoreCase("")) {
 			getObject("po_number_textbox").clear();
-			getObject("po_number_textbox").sendKeys(poPONumber); // name
-			Thread.sleep(10000);
-		}
-		if (!poName.equalsIgnoreCase("")) 
-		{
+			getObject("po_number_textbox").sendKeys(poPONumber);
+
+			DateFormat dateFormat = new SimpleDateFormat("MMddyyyyHHmmss");
+			Date date = new Date();
+			String date1 = dateFormat.format(date);
+
+			getObject("po_number_textbox").sendKeys(date1);
+			}
+
+		if (!poName.equalsIgnoreCase("")) {
 			getObject("po_name_textbox").clear();
-			getObject("po_name_textbox").sendKeys(poName); // name
-			Thread.sleep(10000);
-		}
+			getObject("po_name_textbox").sendKeys(poName);
+
+			DateFormat dateFormat = new SimpleDateFormat("MMddyyyyHHmmss");
+			Date date = new Date();
+			String date1 = dateFormat.format(date);
+
+			getObject("po_name_textbox").sendKeys(date1);
+			}
 		
 		//Assert.assertNotNull(getObject("po_create"));
 		//Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Submit')]")));
 		getObject("po_create").click();
 		//driver.findElement(By.xpath("//button[contains(.,'Submit')]")).click();
-		System.out.println("clicked the submit button");
-		Thread.sleep(10000);
-
-		
-
-		
-		
+		Thread.sleep(10000);		
 		
 	 	if (getObject("po_popup_id") != null) {
 
@@ -133,11 +134,7 @@ public class POWorkflow extends TestSuiteBase {
 
 			getObject("quick_search_textbox").sendKeys(Keys.ENTER);
 			Thread.sleep(10000);
-
-			String acnIdFromShowPage = getObject("po_show_id").getText();
-			System.out.println("PO Id " + acnIdFromShowPage);
-
-		}
+			}
 
 		Thread.sleep(10000);
 		
@@ -145,12 +142,7 @@ public class POWorkflow extends TestSuiteBase {
 
 		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Submit')]")));
 		driver.findElement(By.xpath("//button[contains(.,'Submit')]")).click();
-		System.out.println("clicked the submit button");
-		Thread.sleep(10000);
-
-		
-		
-		
+		Thread.sleep(10000);	
 		
 		if (!poRequisitionNumber.equalsIgnoreCase("")) 
 		{
@@ -165,8 +157,10 @@ public class POWorkflow extends TestSuiteBase {
 			Thread.sleep(10000);
 		}
 		getObject("po_submit").click(); 
-fail=false;
-	}
+		
+		fail = false;
+		driver.get(CONFIG.getProperty("endUserURL"));
+		}
 
 	@AfterMethod
 	public void reportDataSetResult() {

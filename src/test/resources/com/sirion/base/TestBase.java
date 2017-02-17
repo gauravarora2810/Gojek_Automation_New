@@ -150,6 +150,7 @@ public class TestBase {
 			int_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Interpretation Suite.xlsx");
 			inv_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Invoice Suite.xlsx");
 			wor_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//WOR Suite.xlsx");
+			po_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//PO Suite.xlsx");
 			governance_body_suite_xls=new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Governance Body Suite.xlsx");
 			clause_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Clause Suite.xlsx");
 			contract_template_suite_xls = new Xls_Reader(System.getProperty("user.dir") + "//src//test//resources//com//sirion//xls//Contract Template Suite.xlsx");
@@ -202,9 +203,9 @@ public class TestBase {
 			isBrowserOpened = true;
 			driver.manage().window().maximize();
 			}
-		wait_in_report = new WebDriverWait(driver, 100);
+		wait_in_report = new WebDriverWait(driver, 30);
 		System.out.println("Implicitly again wait applied for 1 seconds for check test waiting");
-		driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		}
 
 	// Closing a Browser

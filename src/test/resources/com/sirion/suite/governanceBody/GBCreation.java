@@ -4,6 +4,7 @@ package test.resources.com.sirion.suite.governanceBody;
 import java.util.Date;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -132,7 +133,13 @@ System.out.println("Hello contract");
     Thread.sleep(5000);
     if (gbTimeZone.equalsIgnoreCase("")){
         new Select(getObject("gb_time_zone")).selectByIndex(1); // gb Time zone
-        }
+        try {
+      		if (driver.findElement(By.className("success-icon")).getText().contains("Current Date is different for the selected Time Zone"))
+      			driver.findElement(By.xpath(".//button[contains(.,'OK')]")).click();
+      	} catch (Exception e) {
+      		
+      	}    
+    }
  /*  Thread.sleep(5000);
     if (!gbLocation.equalsIgnoreCase("")){
         getObject("gb_location_textarea").sendKeys(gbLocation); // gb Location
@@ -223,7 +230,8 @@ System.out.println("Hello contract");
 	      }
 	      if (gbIncludeStartDate.equalsIgnoreCase("Yes")) {
 	    	  wait_in_report.until(ExpectedConditions.elementToBeClickable(getObject("gb_include_enddate")));
-	    	    getObject("gb_include_enddate").click(); 
+	    	  ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView()", getObject("gb_include_enddate"));    
+	    	  getObject("gb_include_enddate").click(); 
 	    	  }
 
 	 

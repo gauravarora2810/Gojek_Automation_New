@@ -13,7 +13,7 @@ public class TestSuiteBase extends TestBase{
 	public void checkSuiteSkip() throws Exception{
 		initialize();
 		APP_LOGS.debug("Checking Runmode of Action Suite");
-				if(!TestUtil.isSuiteRunnable(suiteXls, "PurchaseOrder Suite")){
+				if(!TestUtil.isSuiteRunnable(suiteXls, "PO Suite")){
 			System.out.println("in suite runnable function");
 			APP_LOGS.debug("Skipped Action Suite Suite as the runmode was set to NO");
 			throw new SkipException("Runmode of Action Suite set to no. So Skipping all tests in Action Suite");
