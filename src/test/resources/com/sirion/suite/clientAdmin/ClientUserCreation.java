@@ -3,6 +3,7 @@ package test.resources.com.sirion.suite.clientAdmin;
 import java.sql.SQLException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.SkipException;
@@ -50,6 +51,7 @@ public class ClientUserCreation extends TestSuiteBase {
 		
 		APP_LOGS.debug("Executing Client Admin User Creation Test -- "+userLoginId);
 		
+		wait_in_report.until(ExpectedConditions.elementToBeClickable(getObject("ca_administration_tab_link")));
 		getObject("ca_user_administration_tab_link").click();
 		Thread.sleep(2000);
 		
@@ -114,9 +116,9 @@ public class ClientUserCreation extends TestSuiteBase {
 		
 		driver.findElement(By.className("globaltoggleall")).click();
 		
-		driver.findElement(By.id("1009_read")).click();
+		driver.findElement(By.id("9683_read")).click();
 		
-		driver.findElement(By.id("1009_write")).click();
+		driver.findElement(By.id("9683_write")).click();
 
 		getObject("ca_user_configuration_save_button").click();
 		Thread.sleep(10000);

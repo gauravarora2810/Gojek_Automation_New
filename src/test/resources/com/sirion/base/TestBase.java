@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -26,8 +25,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -202,9 +199,9 @@ public class TestBase {
 			isBrowserOpened = true;
 			driver.manage().window().maximize();
 			}
-		wait_in_report = new WebDriverWait(driver, 100);
+		wait_in_report = new WebDriverWait(driver, 30);
 		System.out.println("Implicitly again wait applied for 1 seconds for check test waiting");
-		driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		}
 
 	// Closing a Browser

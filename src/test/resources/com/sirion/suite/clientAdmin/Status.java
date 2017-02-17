@@ -1,5 +1,6 @@
 package test.resources.com.sirion.suite.clientAdmin;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
@@ -40,6 +41,7 @@ public class Status extends TestSuiteBase {
 		
 		clientAdminLogin(CONFIG.getProperty("clientAdminURL"), CONFIG.getProperty("clientAdminUsername"), CONFIG.getProperty("clientAdminPassword"));
 
+		wait_in_report.until(ExpectedConditions.elementToBeClickable(getObject("ca_administration_tab_link")));
 		getObject("ca_administration_tab_link").click();
 		Thread.sleep(2000);
 				

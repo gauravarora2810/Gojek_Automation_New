@@ -1,6 +1,7 @@
 package test.resources.com.sirion.suite.clientAdmin;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -40,6 +41,7 @@ public class StateType extends TestSuiteBase {
 		
 		APP_LOGS.debug("Executing Client Admin State Type Creation Test -- "+stateType);
 		
+		wait_in_report.until(ExpectedConditions.elementToBeClickable(getObject("ca_administration_tab_link")));
 		getObject("ca_administration_tab_link").click();
 		Thread.sleep(2000);
 		
