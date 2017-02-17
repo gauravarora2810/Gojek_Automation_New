@@ -9,20 +9,38 @@
 	</listeners>
 
 	<suite-files>
+<<<<<<< HEAD
 	
 <!-- 	    
 	    <suite-file path="Sirion Admin Suite.xml" />
+=======
+	    
+	    
+	   <suite-file path="Sirion Admin Suite.xml" />
+>>>>>>> refs/remotes/origin/merged_code_project
 		<suite-file path="Client Setup Admin Suite.xml" />
 		<suite-file path="Sirion User Admin Suite.xml" />
+<<<<<<< HEAD
 	    <suite-file path="Client Admin Suite.xml" />
  -->	    
 	    <suite-file path="Vendor Hierarchy Suite.xml" />
+=======
+		<suite-file path="Client Admin Suite.xml" />
+	    
+	    <!-- <suite-file path="Vendor Hierarchy Suite.xml" />
+>>>>>>> refs/remotes/origin/merged_code_project
 		<suite-file path="Supplier Suite.xml" />
 		<suite-file path="Contract Suite.xml" />
 	    <suite-file path="Action Suite.xml" />
+<<<<<<< HEAD
 	    <suite-file path="Issue Suite.xml" />		
 		<suite-file path="Interpretation Suite.xml" />
 		<suite-file path="WOR Suite.xml" />
+=======
+	    <suite-file path="Issue Suite.xml" /> 		
+		<suite-file path="Interpretation Suite.xml" />-->
+		<!-- <suite-file path="WOR Suite.xml" />
+>>>>>>> refs/remotes/origin/merged_code_project
 		<suite-file path="GB Suite.xml" />
 		<suite-file path="PO Suite.xml" />
 		<suite-file path="Obligation Suite.xml" />
