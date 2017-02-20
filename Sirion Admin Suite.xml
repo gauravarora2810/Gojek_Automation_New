@@ -222,30 +222,4 @@
 		</classes>
 	</test>
 	
- <!-- 
-	<test name="Sirion Admin - Composite Rating">
-		<classes>
-			<class name="test.resources.com.sirion.suite.sirionAdmin.CompositeRating"></class>
-		</classes>
-	</test>
-
-	<test name="Sirion Admin - Custom Groups">
-		<classes>
-			<class name="test.resources.com.sirion.suite.sirionAdmin.CustomGroups"></class>
-		</classes>
-	</test>
-
-	<test name="Sirion Admin - Custom Fields">
-		<classes>
-			<class name="test.resources.com.sirion.suite.sirionAdmin.CustomFields"></class>
-		</classes>
-	</test>
-
-	<test name="Sirion Admin - Blacklisted Emails">
-		<classes>
-			<class
-				name="test.resources.com.sirion.suite.sirionAdmin.BlacklistedEmails"></class>
-		</classes>
-	</test>
- -->
 </suite>

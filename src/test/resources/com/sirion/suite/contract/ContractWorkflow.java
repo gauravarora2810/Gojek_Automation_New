@@ -51,11 +51,10 @@ public class ContractWorkflow extends TestSuiteBase {
 		// Launch The Browser
 		openBrowser();
 		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
-		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.linkText("Analytics"))));
+		Thread.sleep(10000);
 
-		// Click on Analytics
-		driver.findElement(By.linkText("Analytics")).click();
-		wait.until(ExpectedConditions.elementToBeClickable(getObject("contract_quick_link")));
+		driver.navigate().refresh();
+		Thread.sleep(10000);
 		
 		getObject("contract_quick_link").click();
 		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath(".//*[@id='cr']/tbody/tr[1]/td[1]/a"))));
