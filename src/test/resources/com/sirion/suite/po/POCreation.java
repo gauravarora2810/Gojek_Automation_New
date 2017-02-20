@@ -45,12 +45,12 @@ public class POCreation extends TestSuiteBase {
 
 		APP_LOGS.debug("Executing Test Case PO Creation with Name --- "+poName);
 
+		// Launch The Browser
 		openBrowser();
 		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
 		Thread.sleep(10000);
 
-		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
-		getObject("analytics_link").click();
+		driver.get(CONFIG.getProperty("endUserURL"));
 		Thread.sleep(10000);
 
 		if (!poSupplier.equalsIgnoreCase("")) {

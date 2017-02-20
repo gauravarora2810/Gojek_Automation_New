@@ -1,16 +1,10 @@
 package test.resources.com.sirion.suite.workOrderRequest;
 
-import java.util.Date;
-
-
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
@@ -19,7 +13,6 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import test.resources.com.sirion.base.TestBase;
 import test.resources.com.sirion.util.DatePicker;
 import test.resources.com.sirion.util.TestUtil;
 
@@ -69,18 +62,13 @@ public class WORCreation extends TestSuiteBase {
 
 		APP_LOGS.debug("Executing Test Case WOR Creation");
 
-		// Calling method to open browser
+		// Launch The Browser
 		openBrowser();
-
-		// Calling a method for login(at different platform) from TestBase.java file
-		endUserLogin(CONFIG.getProperty("endUserURL"),
-				CONFIG.getProperty("endUserUsername"),
-				CONFIG.getProperty("endUserPassword"));
-
+		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
 		Thread.sleep(10000);
-		//Click on analytics
-		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
-		getObject("analytics_link").click();
+
+		driver.get(CONFIG.getProperty("endUserURL"));
+		Thread.sleep(10000);
 		
 		//Click WOR quick link
 		wait_in_report.until(ExpectedConditions.elementToBeClickable(getObject("wor_quick_link"))).click();

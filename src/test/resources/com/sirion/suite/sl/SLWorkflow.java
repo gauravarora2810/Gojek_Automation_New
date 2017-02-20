@@ -4,7 +4,6 @@ import java.sql.SQLException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
@@ -47,13 +46,13 @@ public class SLWorkflow extends TestSuiteBase {
 		
 		APP_LOGS.debug("Executing Test Case of Service Level Workflow");
 
+		// Launch The Browser
 		openBrowser();
 		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 
-		// Click on Analytics
-		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
-		driver.findElement(By.linkText("Analytics")).click();
+		driver.get(CONFIG.getProperty("endUserURL"));
+		Thread.sleep(10000);
 
         getObject("service_levels_quick_link").click();
 		Thread.sleep(10000);

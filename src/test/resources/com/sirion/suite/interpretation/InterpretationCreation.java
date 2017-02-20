@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
@@ -63,19 +62,15 @@ public class InterpretationCreation extends TestSuiteBase {
 
 		APP_LOGS.debug("Executing Test Case Interpretation Creation from Action");
 
-		// Calling method for opening browser from TestBase.java file
+		// Launch The Browser
 		openBrowser();
+		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
+		Thread.sleep(10000);
 
-		// Calling a method for login(at different platform) from TestBase.java file
-		endUserLogin(CONFIG.getProperty("endUserURL"),CONFIG.getProperty("endUserUsername"),CONFIG.getProperty("endUserPassword"));
-		
+		driver.get(CONFIG.getProperty("endUserURL"));
 		Thread.sleep(10000);
-		// Click analytics
-		wait_in_report.until(ExpectedConditions.visibilityOf(getObject("analytics_link")));
-		getObject("analytics_link").click();
-		
-		Thread.sleep(10000);
-	    wait_in_report.until(ExpectedConditions.visibilityOf(getObject("int_quick_link")));
+
+		wait_in_report.until(ExpectedConditions.visibilityOf(getObject("int_quick_link")));
 	    getObject("int_quick_link").click(); // IP Quick Link Clicking
 	    
 	    wait_in_report.until(ExpectedConditions.visibilityOf(getObject("ip_plus_icon")));

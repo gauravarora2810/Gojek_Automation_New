@@ -5,9 +5,7 @@ import java.sql.SQLException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
@@ -54,23 +52,15 @@ public class WORWorkflow extends TestSuiteBase {
 		
 		APP_LOGS.debug("Executing Test Case WOR Workflow");
 				
-		//Opening Browser
-		// Calling method to open browser
-				openBrowser();
+		// Launch The Browser
+		openBrowser();
+		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
+		Thread.sleep(10000);
 
-				// Calling a method for login(at different platform) from TestBase.java file
-				endUserLogin(CONFIG.getProperty("endUserURL"),
-						CONFIG.getProperty("endUserUsername"),
-						CONFIG.getProperty("endUserPassword"));
+		driver.get(CONFIG.getProperty("endUserURL"));
+		Thread.sleep(10000);
 
-				Thread.sleep(10000);
-				
-				//Click on analytics
-				wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
-				getObject("analytics_link").click();
-				
-				Thread.sleep(10000);
-				//Click WOR quick link
+		//Click WOR quick link
 				wait_in_report.until(ExpectedConditions.elementToBeClickable(getObject("wor_quick_link"))).click();
 		
 		

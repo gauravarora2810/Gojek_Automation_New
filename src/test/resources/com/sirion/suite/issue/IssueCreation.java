@@ -1,7 +1,6 @@
 package test.resources.com.sirion.suite.issue;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.SkipException;
@@ -51,9 +50,8 @@ public class IssueCreation extends TestSuiteBase {
 		openBrowser();
 		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
 		Thread.sleep(10000);
-		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
-		// Click on Analytics
-		driver.findElement(By.linkText("Analytics")).click();
+
+		driver.get(CONFIG.getProperty("endUserURL"));
 		Thread.sleep(10000);
 		
 		getObject("issues_quick_link").click();

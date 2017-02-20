@@ -57,8 +57,12 @@ public class ActionWorkflow extends TestSuiteBase {
 
 		APP_LOGS.debug("Executing Test Case Action Workflow");
 
+		// Launch The Browser
 		openBrowser();
 		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
+		Thread.sleep(10000);
+
+		driver.get(CONFIG.getProperty("endUserURL"));
 		Thread.sleep(10000);
 
 		getObject("action_quick_link").click();

@@ -7,7 +7,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
@@ -58,15 +57,13 @@ System.out.println("In check test skip function");
 		
 		APP_LOGS.debug("Executing Test Case Interpretaion Workflow");
 		System.out.println("before open browser");		
+		// Launch The Browser
 		openBrowser();
-		
 		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
-		//WebDriverWait wait=new WebDriverWait(driver, 50);
-
 		Thread.sleep(10000);
-		// Click analytics
-		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
-		getObject("analytics_link").click();
+
+		driver.get(CONFIG.getProperty("endUserURL"));
+		Thread.sleep(10000);
 		
 		wait_in_report.until(ExpectedConditions.visibilityOf(getObject("int_quick_link")));
 		Thread.sleep(10000);

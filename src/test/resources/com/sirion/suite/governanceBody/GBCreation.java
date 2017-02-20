@@ -9,7 +9,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -58,16 +57,13 @@ String gbEffectiveDateMonth, String gbEffectiveDateDate, String gbFunctions, Str
     APP_LOGS.debug("Executing Test Case Governance Body Creation with Governance Body name --- " +gbTitle+ " under supplier --- "+gbSupplier);
 
     
+	// Launch The Browser
 	openBrowser();
-	System.out.println("Shipra");
 	endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
- 
 	Thread.sleep(10000);
-	// Click analytics
-	wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
-	getObject("analytics_link").click();
-	
-    Thread.sleep(10000);
+
+	driver.get(CONFIG.getProperty("endUserURL"));
+	Thread.sleep(10000);
  
 System.out.println("Hello contract");
     getObject("contract_quick_link").click();

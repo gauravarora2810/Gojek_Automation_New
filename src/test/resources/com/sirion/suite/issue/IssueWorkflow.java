@@ -4,7 +4,6 @@ import java.net.MalformedURLException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
@@ -48,9 +47,7 @@ public class IssueWorkflow extends TestSuiteBase {
 		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
 		Thread.sleep(10000);
 
-		// Click on Analytics
-		wait_in_report.until(ExpectedConditions.elementToBeClickable(getObject("analytics_link")));
-		driver.findElement(By.linkText("Analytics")).click();
+		driver.get(CONFIG.getProperty("endUserURL"));
 		Thread.sleep(10000);
 		
 		getObject("issues_quick_link").click();

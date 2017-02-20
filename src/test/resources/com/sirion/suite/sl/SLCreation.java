@@ -1,10 +1,7 @@
 package test.resources.com.sirion.suite.sl;
 
-import java.util.Date;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -15,7 +12,6 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import test.resources.com.sirion.util.DatePicker;
 import test.resources.com.sirion.util.TestUtil;
 import testlink.api.java.client.TestLinkAPIException;
 
@@ -64,13 +60,13 @@ public class SLCreation extends TestSuiteBase {
 
 		APP_LOGS.debug("Executing Test Case Service Level Creation with Title ---- "+ slTitle + " under Contract ---- " + slSourceName);
 
+		// Launch The Browser
 		openBrowser();
 		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 
-		// Click on Analytics
-		wait_in_report.until(ExpectedConditions.elementToBeClickable(getObject("analytics_link")));
-		driver.findElement(By.linkText("Analytics")).click();
+		driver.get(CONFIG.getProperty("endUserURL"));
+		Thread.sleep(10000);
 
 		// Condition Check for Global Creation
 		if (slGlobalCreation.equalsIgnoreCase("Yes")) {

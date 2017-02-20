@@ -2,7 +2,6 @@ package test.resources.com.sirion.suite.cdr;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.SkipException;
@@ -45,11 +44,12 @@ public class CDRCreation extends TestSuiteBase {
         
         APP_LOGS.debug("Executing Test Case CDR Creation");
         
-        openBrowser();
-        endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
+		// Launch The Browser
+		openBrowser();
+		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
 		Thread.sleep(10000);
-		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
-		driver.findElement(By.linkText("Analytics")).click();
+
+		driver.get(CONFIG.getProperty("endUserURL"));
 		Thread.sleep(10000);
 		
 		getObject("cdr_quick_link").click();

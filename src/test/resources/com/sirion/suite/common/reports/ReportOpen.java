@@ -42,15 +42,16 @@ public class ReportOpen extends TestSuiteBase {
 			throw new SkipException("Runmode for Test Data -- " +entityName +" set to NO " +count);
 			}
 		
+		// Launch The Browser
 		openBrowser();
-		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));		
-		APP_LOGS.debug("Executing Common Listing Open Test -- "+entityName);
+		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
+		Thread.sleep(10000);
+
+		driver.get(CONFIG.getProperty("endUserURL"));
+		Thread.sleep(10000);
 
 		wait = new WebDriverWait(driver, 60);
-
-		Thread.sleep(10000);
-		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
-		driver.findElement(By.linkText("Analytics")).click();
+		
 		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.linkText("Reports"))));
 
 		driver.findElement(By.linkText("Reports")).click();

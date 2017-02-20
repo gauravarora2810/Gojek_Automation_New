@@ -7,7 +7,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
@@ -49,17 +48,14 @@ public class ObligationWorkflowNonWorkflow extends TestSuiteBase {
 		
 		APP_LOGS.debug("Executing Test Case of Service Level Workflow");
 
+		// Launch The Browser
 		openBrowser();
 		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
-		
-		Thread.sleep(20000);
-		// Click analytics
-		wait_in_report.until(ExpectedConditions.visibilityOf(getObject("analytics_link")));
-		getObject("analytics_link").click();
-
-
-		
 		Thread.sleep(10000);
+
+		driver.get(CONFIG.getProperty("endUserURL"));
+		Thread.sleep(10000);
+
 		wait_in_report.until(ExpectedConditions.elementToBeClickable(getObject("obligation_quick_link")));
 		
         getObject("obligation_quick_link").click();

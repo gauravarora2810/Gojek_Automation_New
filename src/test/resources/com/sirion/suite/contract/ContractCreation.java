@@ -62,7 +62,7 @@ public class ContractCreation extends TestSuiteBase {
 		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
 		Thread.sleep(10000);
 
-		driver.navigate().refresh();
+		driver.get(CONFIG.getProperty("endUserURL"));
 		Thread.sleep(10000);
 		
 		if(coParentType.equalsIgnoreCase("Supplier")) {

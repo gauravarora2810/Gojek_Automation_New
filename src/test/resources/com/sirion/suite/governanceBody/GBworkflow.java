@@ -53,15 +53,14 @@ public class GBworkflow extends TestSuiteBase {
 		
 		APP_LOGS.debug("Executing Test Case Governance Body Workflow");
 				
+		// Launch The Browser
 		openBrowser();
 		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
-		
 		Thread.sleep(10000);
-		// Click analytics
-		wait_in_report.until(ExpectedConditions.elementToBeClickable(getObject("analytics_link")));
-		getObject("analytics_link").click();
-		
+
+		driver.get(CONFIG.getProperty("endUserURL"));
 		Thread.sleep(10000);
+
 		getObject("gb_quick_link").click(); 
 		Thread.sleep(10000);
 		getObject("gb_listing_link").click(); 

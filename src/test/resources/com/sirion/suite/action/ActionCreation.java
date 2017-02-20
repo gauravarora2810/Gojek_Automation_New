@@ -47,11 +47,12 @@ public class ActionCreation extends TestSuiteBase implements ITestListener {
 
 		APP_LOGS.debug("Executing Test Case Action Creation from Service Level");
 
+		// Launch The Browser
 		openBrowser();
 		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
 		Thread.sleep(10000);
 
-		getObject("analytics_link").click();
+		driver.get(CONFIG.getProperty("endUserURL"));
 		Thread.sleep(10000);
 
 		getObject("contract_quick_link").click();

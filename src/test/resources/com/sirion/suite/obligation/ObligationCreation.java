@@ -1,11 +1,9 @@
 package test.resources.com.sirion.suite.obligation;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
@@ -59,19 +57,11 @@ public class ObligationCreation extends TestSuiteBase {
 
 		// Launch The Browser
 		openBrowser();
-
-		// Login as Client user
 		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
-		
-		
-		
-		APP_LOGS.debug("Go to " + CONFIG.getProperty("endUserURL"));
-		APP_LOGS.debug("Login as Client User ("+ CONFIG.getProperty("endUserUsername") + "/"+ CONFIG.getProperty("endUserPassword") + ")");
-
 		Thread.sleep(10000);
-		// Click analytics
-		wait_in_report.until(ExpectedConditions.visibilityOf(getObject("analytics_link")));
-		getObject("analytics_link").click();
+
+		driver.get(CONFIG.getProperty("endUserURL"));
+		Thread.sleep(10000);
 		
 				// Condition Check for Global Creation
 		if (obGlobalCreation.equalsIgnoreCase("Yes")) {

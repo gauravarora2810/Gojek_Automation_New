@@ -6,7 +6,6 @@ import java.util.Date;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.SkipException;
@@ -50,12 +49,13 @@ public class ClauseCreation extends TestSuiteBase {
 
 		APP_LOGS.debug("Executing Clause Creation Test --- " + clauseName);
 
+		// Launch The Browser
 		openBrowser();
 		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
-		Thread.sleep(5000);
-		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
-		driver.findElement(By.linkText("Analytics")).click();
-		Thread.sleep(5000);
+		Thread.sleep(10000);
+
+		driver.get(CONFIG.getProperty("endUserURL"));
+		Thread.sleep(10000);
 		
 		getObject("cdr_quick_link").click();
 		Thread.sleep(10000);

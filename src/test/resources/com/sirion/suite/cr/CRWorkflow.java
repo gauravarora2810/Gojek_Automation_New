@@ -1,15 +1,11 @@
 package test.resources.com.sirion.suite.cr;
 
-import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
-
 import java.sql.SQLException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
@@ -61,14 +57,13 @@ public class CRWorkflow extends TestSuiteBase {
 
 		APP_LOGS.debug("Executing Test Case Invoice Workflow");
 
-		// Opening Browser
+		// Launch The Browser
 		openBrowser();
+		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
+		Thread.sleep(10000);
 
-		// Calling a method for login(at different platform) from TestBase.java file
-		
-		endUserLogin(CONFIG.getProperty("endUserURL"),
-				CONFIG.getProperty("endUserUsername"),
-				CONFIG.getProperty("endUserPassword"));
+		driver.get(CONFIG.getProperty("endUserURL"));
+		Thread.sleep(10000);
 
 		/*// Click analytics link
 		Thread.sleep(10000);
@@ -134,14 +129,6 @@ getObject("analytics_link").click();
 		
 		
 
-		Thread.sleep(10000);
-		// Click analytics
-		wait_in_report.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='h-analytics']/a")));
-		getObject("analytics_link").click();
-
-
-		
-		Thread.sleep(10000);
 		wait_in_report.until(ExpectedConditions.elementToBeClickable(getObject("cr_quick_link")));
 		
         getObject("cr_quick_link").click();

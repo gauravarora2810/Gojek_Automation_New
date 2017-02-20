@@ -40,15 +40,15 @@ public class ListingOpen extends TestSuiteBase {
 			throw new SkipException("Runmode for Test Data -- " +entityName +" set to NO " +count);
 			}
 
+		// Launch The Browser
 		openBrowser();
-		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));		
-		APP_LOGS.debug("Executing Common Listing Open Test -- "+entityName);
+		endUserLogin(CONFIG.getProperty("endUserURL"), CONFIG.getProperty("endUserUsername"), CONFIG.getProperty("endUserPassword"));
+		Thread.sleep(10000);
+
+		driver.get(CONFIG.getProperty("endUserURL"));
+		Thread.sleep(10000);
+
 		wait = new WebDriverWait(driver, 60);
-
-		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.linkText("Analytics"))));
-
-		driver.findElement(By.linkText("Analytics")).click();
-		Thread.sleep(5000);
 
 		if (entityName.equalsIgnoreCase("Vendor Hierarchy")) {
 			wait.until(ExpectedConditions.elementToBeClickable(getObject("vh_quick_link")));
