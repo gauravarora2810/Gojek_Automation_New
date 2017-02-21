@@ -348,7 +348,7 @@ System.out.println("Hello contract");
                   + gbGBType+", Governance Body Supplier Name-- " + gbSupplier+ ",Governance Body Contract Name -- " + gbContract); 
    
   
-   getObject("analytics_link").click();
+  driver.get(CONFIG.getProperty("endUserURL"));
   
      }
   
