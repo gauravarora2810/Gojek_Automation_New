@@ -3,6 +3,8 @@ package test.resources.com.sirion.suite.childSL;
 import java.sql.SQLException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
@@ -57,6 +59,27 @@ public class ChildSLWorkflow extends TestSuiteBase {
         driver.findElement(By.xpath(".//*[@id='cr']/tbody/tr[1]/td[1]/a")).click();
 		Thread.sleep(10000);
         
+		 
+	    	 wait_in_report.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(.,'Archive')]")));
+	    	 	Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Archive')]")));
+	    	 	driver.findElement(By.xpath("//button[contains(.,'Archive')]")).click();
+	    	 	wait_in_report.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(.,'Restore')]")));
+	     	 	Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Restore')]")));
+	     	 	driver.findElement(By.xpath("//button[contains(.,'Restore')]")).click();
+		
+	     
+	     
+	     
+	
+	    	 wait_in_report.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(.,'On Hold')]")));
+	    	 	Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'On Hold')]")));
+	    	 	driver.findElement(By.xpath("//button[contains(.,'On Hold')]")).click();
+	    	 	wait_in_report.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(.,'Activate')]")));
+	    	 	Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Activate')]")));
+	    	 	driver.findElement(By.xpath("//button[contains(.,'Activate')]")).click();
+	    	 	
+	
+	    Thread.sleep(20000);
 		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Start Computation')]")));
 		driver.findElement(By.xpath("//button[contains(.,'Start Computation')]")).click();
 		Thread.sleep(20000);
@@ -79,11 +102,30 @@ public class ChildSLWorkflow extends TestSuiteBase {
 
 		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Approve')]")));
 		driver.findElement(By.xpath("//button[contains(.,'Approve')]")).click();
-		Thread.sleep(20000);
+		//Thread.sleep(20000);
 		
-    	String cslStatus = getObject("csl_show_page_status").getText();	        
-        Assert.assertEquals(cslStatus, "Active");
+    	/*String cslStatus = getObject("csl_show_page_status").getText();	        
+        Assert.assertEquals(cslStatus, "Active");*/
         
+		
+    	 Thread.sleep(10000);	 
+ 	 wait_in_report.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(.,'Delete')]")));
+ 	 ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//button[contains(.,'Delete')]")));
+ 	 driver.findElement(By.xpath("//button[contains(.,'Delete')]")).click();
+ 	 Thread.sleep(10000);
+
+      if (driver.getPageSource().contains("Are you sure you would like to delete this entity?")) {
+      	APP_LOGS.debug("Are you sure you would like to delete this entity?");
+
+  		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Yes')]")));
+  		driver.findElement(By.xpath("//button[contains(.,'Yes')]")).click();
+  		Thread.sleep(10000);
+  		
+      	
+      	}
+		
+		
+		
         fail = false;
 		driver.get(CONFIG.getProperty("endUserURL"));
 		}

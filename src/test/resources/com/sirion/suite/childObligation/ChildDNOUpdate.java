@@ -55,49 +55,22 @@ public class ChildDNOUpdate extends TestSuiteBase {
         getObject("obligation_quick_link").click();
         APP_LOGS.debug("Click on Obligation Quick Link");
         
-        getObject("cob_id_link").click();
-		Thread.sleep(10000);
-        /*
-        driver.findElement(By.xpath("//a[contains(.,'"+COBTitle+"')]")).click();
-        Thread.sleep(25000);*/
+        Thread.sleep(15000);
+        
+        driver.findElement(By.xpath(".//*[@id='cr']/tbody/tr[1]/td[1]/a")).click();
+		Thread.sleep(15000);
         
 		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Edit')]")));
 		driver.findElement(By.xpath("//button[contains(.,'Edit')]")).click();
-		Thread.sleep(10000);
+		Thread.sleep(15000);
 		
-		driver.findElement(By.xpath("//p[contains(.,'BASIC INFORMATION')]")).click();
 		
-		Robot robot = new Robot();
-		robot.keyPress(KeyEvent.VK_PAGE_DOWN);
-		robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
 		
-		if (!cobComment.equalsIgnoreCase("")) {
-			getObject("cob_comment_box").sendKeys(cobComment);
-			Thread.sleep(5000);
-			driver.findElement(By.xpath("//p[contains(.,'BASIC INFORMATION')]")).click();
-			
-			}
 		
-		if (!cobActualDate.equalsIgnoreCase("")) {
-			driver.findElement(By.name("actualDate")).click();
-			String[] obDate = cobActualDate.split("-");
-
-			String obMonth = driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/div/span")).getText();
-			while (!obMonth.equalsIgnoreCase(obDate[0])) {
-				driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/a[2]/span")).click();
-				obMonth = driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/div/span")).getText();
-				}
-
-			new Select(driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/div/div/select"))).selectByVisibleText(obDate[2]);
-
-			driver.findElement(By.linkText(obDate[1])).click();
-			}
-		if (!cobRequestedBy.equalsIgnoreCase("")) {
-			new Select(getObject("cob_requested_by_drop_down")).selectByVisibleText(cobRequestedBy);
-			}
-		if (!cobChangeRequest.equalsIgnoreCase("")) {
-			new Select(getObject("cob_change_request_drop_down")).selectByVisibleText(cobChangeRequest);
-			}
+	
+		
+		
+		
 		
 		
 		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Update')]")));

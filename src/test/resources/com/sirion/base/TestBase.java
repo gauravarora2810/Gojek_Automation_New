@@ -25,6 +25,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -100,7 +101,9 @@ public class TestBase {
 	public static Hashtable<String, String> sessionData = new Hashtable<String, String>();
 
 	public static WebDriver driver = null;
-	public WebDriverWait wait_in_report = null;
+	//public WebDriverWait wait_in_report = null;
+	public static FluentWait<WebDriver> wait_in_report=null;
+    
 
 	File path = new File("C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
 
@@ -200,9 +203,10 @@ public class TestBase {
 			isBrowserOpened = true;
 			driver.manage().window().maximize();
 			}
-		wait_in_report = new WebDriverWait(driver, 30);
+		//wait_in_report = new WebDriverWait(driver, 30);
+		wait_in_report = new FluentWait<WebDriver>(driver).withTimeout(30, TimeUnit.SECONDS).pollingEvery(5, TimeUnit.SECONDS);
 		System.out.println("Implicitly again wait applied for 1 seconds for check test waiting");
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		}
 
 	// Closing a Browser

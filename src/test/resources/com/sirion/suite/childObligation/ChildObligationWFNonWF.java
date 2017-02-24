@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -60,7 +61,7 @@ public class ChildObligationWFNonWF extends TestSuiteBase {
 
 		// Calling a method for login(at different platform) from TestBase.java file
 		endUserLogin(CONFIG.getProperty("endUserURL"),CONFIG.getProperty("endUserUsername"),CONFIG.getProperty("endUserPassword"));
-		WebDriverWait wait=new WebDriverWait(driver, 50);
+		
 		
 		getObject("analytics_link").click();
 		getObject("obligation_quick_link").click(); // IP Quick Link Clicking
@@ -97,7 +98,7 @@ public class ChildObligationWFNonWF extends TestSuiteBase {
 		
 		if(!WFTask1.equalsIgnoreCase(""))
 		{
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(.,'"+WFTask1+"')]")));
+			wait_in_report.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(.,'"+WFTask1+"')]")));
 			Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'"+WFTask1+"')]")));
 			driver.findElement(By.xpath("//button[contains(.,'"+WFTask1+"')]")).click();
 			Thread.sleep(5000);
@@ -106,13 +107,9 @@ public class ChildObligationWFNonWF extends TestSuiteBase {
 		if(!WFTask2.equalsIgnoreCase(""))
 		{
 			WebElement we = driver.findElement(By.xpath("//button[contains(text(), '"+WFTask2+"')]"));
-			wait.until(ExpectedConditions.visibilityOf(we));
-			driver.findElement(By.xpath("//p[contains(.,'BASIC INFORMATION')]")).click();
+			wait_in_report.until(ExpectedConditions.visibilityOf(we));
 			
-			Robot robot = new Robot();
-			robot.keyPress(KeyEvent.VK_PAGE_DOWN);
-			robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
-			
+			Thread.sleep(5000);
 			if (!cobComment.equalsIgnoreCase("")) {
 				getObject("cob_comment_box").click();
 				getObject("cob_comment_box").sendKeys(cobComment);
@@ -128,43 +125,32 @@ public class ChildObligationWFNonWF extends TestSuiteBase {
 		if(!WFTask3.equalsIgnoreCase(""))
 		{
 			WebElement we = driver.findElement(By.xpath("//button[contains(text(), '"+WFTask3+"')]"));
-			wait.until(ExpectedConditions.visibilityOf(we));
+			wait_in_report.until(ExpectedConditions.visibilityOf(we));
 			Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'"+WFTask3+"')]")));
 			driver.findElement(By.xpath("//button[contains(.,'"+WFTask3+"')]")).click();
 			Thread.sleep(5000);
 		}
 		
-		
-     if(!WFTask4.equalsIgnoreCase(""))
-		{
-			WebElement we = driver.findElement(By.xpath("//button[contains(text(), '"+WFTask4+"')]"));
-			wait.until(ExpectedConditions.visibilityOf(we));
-			Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'"+WFTask4+"')]")));
-			driver.findElement(By.xpath("//button[contains(.,'"+WFTask4+"')]")).click();
-			Thread.sleep(5000);
-		}
-     
+	
      if(!Delete.equalsIgnoreCase(""))
-		{
- 	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(.,'Delete')]")));
- 	 Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Delete')]")));
- 	 driver.findElement(By.xpath("//button[contains(.,'Delete')]")).click();
- 	 Thread.sleep(5000);
-
-      if (driver.getPageSource().contains("Are you sure you would like to delete this entity?")) {
-      	APP_LOGS.debug("Are you sure you would like to delete this entity?");
-
-  		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Yes')]")));
-  		driver.findElement(By.xpath("//button[contains(.,'Yes')]")).click();
-  		Thread.sleep(5000);
-  		
-      	fail=false;
-      	driver.get(CONFIG.getProperty("endUserURL"));
-      	return;
-      	}
+		{ 
+    	 Thread.sleep(10000);	 
 		}
+	 	 wait_in_report.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(.,'Delete')]")));
+	 	 ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//button[contains(.,'Delete')]")));
+	 	 driver.findElement(By.xpath("//button[contains(.,'Delete')]")).click();
+	 	 Thread.sleep(10000);
+
+	      if (driver.getPageSource().contains("Are you sure you would like to delete this entity?")) {
+	      	APP_LOGS.debug("Are you sure you would like to delete this entity?");
+
+	  		Assert.assertNotNull(driver.findElement(By.xpath("//button[contains(.,'Yes')]")));
+	  		driver.findElement(By.xpath("//button[contains(.,'Yes')]")).click();
+	  		Thread.sleep(10000);
+	  		}
               
-		fail = false; //this executes if assertion passes
+	      fail = false;
+	      driver.get(CONFIG.getProperty("endUserURL"));
 	 }
 			 
   @AfterMethod
