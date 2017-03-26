@@ -7,16 +7,16 @@
            time="0.002">
   <properties />
   
-            <testcase name="reportTestResult" time="0.0" classname="test.resources.com.sirion.suite.workOrderRequest.ActionCreation">
+            <testcase name="reportTestResult" time="0.0" classname="test.resources.com.gojek.suite.workOrderRequest.ActionCreation">
           <skipped />
     </testcase>
-            <testcase name="reportDataSetResult" time="0.0" classname="test.resources.com.sirion.suite.workOrderRequest.ActionCreation">
+            <testcase name="reportDataSetResult" time="0.0" classname="test.resources.com.gojek.suite.workOrderRequest.ActionCreation">
           <skipped />
     </testcase>
-            <testcase name="checkTestSkip" time="0.0" classname="test.resources.com.sirion.suite.workOrderRequest.ActionCreation">
+            <testcase name="checkTestSkip" time="0.0" classname="test.resources.com.gojek.suite.workOrderRequest.ActionCreation">
           <skipped />
     </testcase>
-            <testcase name="ActionCreation" time="0.0" classname="test.resources.com.sirion.suite.workOrderRequest.ActionCreation">
+            <testcase name="ActionCreation" time="0.0" classname="test.resources.com.gojek.suite.workOrderRequest.ActionCreation">
           <skipped />
     </testcase>
   

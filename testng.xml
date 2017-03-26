@@ -8,39 +8,9 @@
 	</listeners>
 
 	<suite-files>
-<!-- 
-	   	<suite-file path="Sirion Admin Suite.xml" />
-		<suite-file path="Client Setup Admin Suite.xml" />
-		<suite-file path="Sirion User Admin Suite.xml" />
-	    <suite-file path="Client Admin Suite.xml" />
- -->
-		<suite-file path="Vendor Hierarchy Suite.xml" />
-		<suite-file path="Supplier Suite.xml" />
-		<suite-file path="Contract Suite.xml" />
-
-		<suite-file path="SL Suite.xml" />
-		<suite-file path="Obligation Suite.xml" />
-		<suite-file path="GB Suite.xml" />
-
-	    <suite-file path="Action Suite.xml" />
-	    <suite-file path="Issue Suite.xml" />
-		<suite-file path="CR Suite.xml" />
-		<suite-file path="Interpretation Suite.xml" />
-
-		<suite-file path="WOR Suite.xml" />
-		<suite-file path="PO Suite.xml" />
-<!-- 		<suite-file path="Invoice Suite.xml" />
- -->
-		<suite-file path="Clause Suite.xml" />
-		<suite-file path="Contract Template Suite.xml" />
-		<suite-file path="CDR Suite.xml" />
-<!-- 
-		<suite-file path="Child SL Suite.xml" />
-		<suite-file path="Child Obligation Suite.xml" />
- -->		
-		<suite-file path="Common Listings Suite.xml" />
-		<suite-file path="Common Reports Suite.xml" />
-		
+	   		
+	   	<suite-file path="SignIn And Register Suite.xml" />	
+	   	<suite-file path="Flight Suite.xml" />		
 	</suite-files>
-	
+		
 </suite>

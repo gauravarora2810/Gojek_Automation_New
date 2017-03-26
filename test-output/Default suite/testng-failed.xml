@@ -3,16 +3,16 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="test.resources.com.sirion.suite.action.ActionWorkflow">
+      <class name="test.resources.com.gojek.suite.flight.RoundTrip">
         <methods>
-          <include name="ContractListing" invocation-numbers="0"/>
-          <include name="checkTestSkip"/>
           <include name="checkSuiteClosure"/>
+          <include name="checkTestSkip"/>
+          <include name="reportTestResult"/>
           <include name="checkSuiteSkip"/>
           <include name="reportDataSetResult"/>
-          <include name="reportTestResult"/>
+          <include name="roundTripTest" invocation-numbers="1"/>
         </methods>
-      </class> <!-- test.resources.com.sirion.suite.action.ActionWorkflow -->
+      </class> <!-- test.resources.com.gojek.suite.flight.RoundTrip -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

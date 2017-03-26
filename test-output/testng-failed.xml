@@ -1,70 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Interpretation Suite]">
-  <test name="Interpretation Creation Test(failed)">
+<suite name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
     <classes>
-      <class name="test.resources.com.sirion.suite.interpretation.IPWorkflowNonWorkflow">
+      <class name="test.resources.com.gojek.suite.flight.RoundTrip">
         <methods>
+          <include name="checkSuiteClosure"/>
+          <include name="checkTestSkip"/>
           <include name="reportTestResult"/>
-          <include name="checkTestSkip"/>
-        </methods>
-      </class> <!-- test.resources.com.sirion.suite.interpretation.IPWorkflowNonWorkflow -->
-      <class name="test.resources.com.sirion.suite.interpretation.InterpretationUpdate">
-        <methods>
           <include name="checkSuiteSkip"/>
-          <include name="checkTestSkip"/>
+          <include name="reportDataSetResult"/>
+          <include name="roundTripTest" invocation-numbers="1"/>
         </methods>
-      </class> <!-- test.resources.com.sirion.suite.interpretation.InterpretationUpdate -->
-      <class name="test.resources.com.sirion.suite.interpretation.InterpretationCreation">
-        <methods>
-          <include name="checkTestSkip"/>
-          <include name="InterpretationCreateTest"/>
-        </methods>
-      </class> <!-- test.resources.com.sirion.suite.interpretation.InterpretationCreation -->
+      </class> <!-- test.resources.com.gojek.suite.flight.RoundTrip -->
     </classes>
-  </test> <!-- Interpretation Creation Test(failed) -->
-  <test name="Interpretation Workflow Non workflow Test(failed)">
-    <classes>
-      <class name="test.resources.com.sirion.suite.interpretation.IPWorkflowNonWorkflow">
-        <methods>
-          <include name="reportTestResult"/>
-          <include name="checkTestSkip"/>
-          <include name="interpretationNonWorkflowTest"/>
-        </methods>
-      </class> <!-- test.resources.com.sirion.suite.interpretation.IPWorkflowNonWorkflow -->
-      <class name="test.resources.com.sirion.suite.interpretation.InterpretationUpdate">
-        <methods>
-          <include name="checkSuiteSkip"/>
-          <include name="checkTestSkip"/>
-        </methods>
-      </class> <!-- test.resources.com.sirion.suite.interpretation.InterpretationUpdate -->
-      <class name="test.resources.com.sirion.suite.interpretation.InterpretationCreation">
-        <methods>
-          <include name="checkTestSkip"/>
-        </methods>
-      </class> <!-- test.resources.com.sirion.suite.interpretation.InterpretationCreation -->
-    </classes>
-  </test> <!-- Interpretation Workflow Non workflow Test(failed) -->
-  <test name="Interpretation updation Test(failed)">
-    <classes>
-      <class name="test.resources.com.sirion.suite.interpretation.IPWorkflowNonWorkflow">
-        <methods>
-          <include name="reportTestResult"/>
-          <include name="checkTestSkip"/>
-        </methods>
-      </class> <!-- test.resources.com.sirion.suite.interpretation.IPWorkflowNonWorkflow -->
-      <class name="test.resources.com.sirion.suite.interpretation.InterpretationUpdate">
-        <methods>
-          <include name="checkSuiteSkip"/>
-          <include name="checkTestSkip"/>
-          <include name="InterpretationUpdateTest"/>
-        </methods>
-      </class> <!-- test.resources.com.sirion.suite.interpretation.InterpretationUpdate -->
-      <class name="test.resources.com.sirion.suite.interpretation.InterpretationCreation">
-        <methods>
-          <include name="checkTestSkip"/>
-        </methods>
-      </class> <!-- test.resources.com.sirion.suite.interpretation.InterpretationCreation -->
-    </classes>
-  </test> <!-- Interpretation updation Test(failed) -->
-</suite> <!-- Failed suite [Interpretation Suite] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
