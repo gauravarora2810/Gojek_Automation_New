@@ -3,14 +3,14 @@
 
 	<test name="SignIn And Register - Register">
 		<classes>
-			<class name="test.resources.com.gojek.signin_and_register.Register"></class>
+			<class name="test.resources.com.gojek.suite.signin_and_register.Register"></class>
 		</classes>
 	</test>
 
 	
 		<test name="SignIn And Register - SignIn">
 		<classes>
-			<class name="test.resources.com.gojek.signin_and_register.SignIn"></class>
+			<class name="test.resources.com.gojek.suite.signin_and_register.SignIn"></class>
 		</classes>
 	</test>
 	

@@ -1,27 +1,21 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Flight Suite">
 
-	<test name="Flight - One Way">
+	<!-- <test name="Flight - One Way">
 		<classes>
 			<class name="test.resources.com.gojek.suite.flight.OneWay"></class>
 		</classes>
-	</test>
+	</test> -->
 
 	
 		<test name="Flight - Round Trip">
-		 
-		    
-		       <groups>
-        <run>
-            <include name="Register and Login Functionality SignIn" />
-        </run>
-    </groups>
+		
 		<classes>
 			<class name="test.resources.com.gojek.suite.flight.RoundTrip"></class>
 		</classes>
 	</test>
 	
-		
+		<!-- 
 			<test name="Flight - Multi City">
 		<classes>
 			<class name="test.resources.com.gojek.suite.flight.MultiCity"></class>
@@ -34,6 +28,6 @@
 		<classes>
 			<class name="test.resources.com.gojek.suite.flight.FlightAndHotel"></class>
 		</classes>
-	</test>
+	</test> -->
 
 </suite>
