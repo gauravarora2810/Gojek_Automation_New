@@ -1,4 +1,4 @@
-package test.resources.com.gojek.signin_and_register;
+package test.resources.com.gojek.suite.signin_and_register;
 
 import org.testng.SkipException;
 import org.testng.annotations.AfterSuite;

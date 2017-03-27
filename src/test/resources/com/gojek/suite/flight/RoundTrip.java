@@ -15,7 +15,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import test.resources.com.gojek.base.TestBase;
-import test.resources.com.gojek.signin_and_register.SignIn;
+import test.resources.com.gojek.suite.signin_and_register.SignIn;
 import test.resources.com.gojek.util.DatePicker;
 import test.resources.com.gojek.util.TestUtil;
 
